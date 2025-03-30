@@ -11,6 +11,18 @@ public class GameHandler : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void RestartGame() 
+    {
+        SceneManager.LoadScene("peterSlingScene");
+        GameHandler_PauseMenu.GameisPaused = false;
+    }
+
+    public void ReplayLastLevel()
+    {
+        GameHandler_PauseMenu.GameisPaused = false;
+        SceneManager.LoadScene("peterSlingScene");
+    }
+
     // Update is called once per frame
     void Update()
     {
