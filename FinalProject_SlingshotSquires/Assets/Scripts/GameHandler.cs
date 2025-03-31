@@ -66,4 +66,14 @@ public class GameHandler : MonoBehaviour
         SceneManager.LoadScene("charlieScene");
     }
 
+    public void loadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void returnMain()
+    {
+        SceneManager.LoadScene("charlieScene");
+    }
+
 }
