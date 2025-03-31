@@ -5,13 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
+    public struct ballStat
+    {
+        public float damage;
+        public float speed;
+
+        public ballStat(float damage, float speed)
+        {
+            this.damage = damage;
+            this.speed = speed;
+        }
+    };
+
+    // Define a list to reference various ball stats based off the above struct.
+    public Dictionary<string, ballStat> ballStats = new Dictionary<string, ballStat> {
+        {"default", new ballStat(50f, 1.75f)}, {"fireball", new ballStat(75f, 2f)}
+    };
+    public float SLING_reload_time = 1f;
+    public float SLING_force_multiplier = 1.25f;
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
     }
 
-    public void RestartGame() 
+    public void RestartGame()
     {
         SceneManager.LoadScene("peterSlingScene");
         GameHandler_PauseMenu.GameisPaused = false;
@@ -47,4 +65,5 @@ public class GameHandler : MonoBehaviour
         Debug.Log("Ending countdown");
         SceneManager.LoadScene("charlieScene");
     }
+
 }

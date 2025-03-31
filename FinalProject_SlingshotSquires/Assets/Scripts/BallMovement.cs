@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
+    public string ballType = "default";
+    public GameObject GameHandler;
+    public GameObject sling;
+    private Sling slingBehavior;
+    private GameHandler gh;
     private bool isPressed;
     private Rigidbody2D rb;
     private SpringJoint2D sj;
@@ -11,7 +16,7 @@ public class BallMovement : MonoBehaviour
     private LineRenderer lr;
     private float releaseDelay;
 
-    private float maxDragDistance = 3f;
+    private float maxDragDistance = 1.75f;
     private Rigidbody2D slingRb;
 
     private TrailRenderer tr;
@@ -19,6 +24,8 @@ public class BallMovement : MonoBehaviour
 
     private void Awake()
     {
+        slingBehavior = sling.GetComponent<Sling>();
+        gh = GameHandler.GetComponent<GameHandler>();
         rb = GetComponent<Rigidbody2D>();
         sj = GetComponent<SpringJoint2D>();
         lr = GetComponent<LineRenderer>();
@@ -49,7 +56,7 @@ public class BallMovement : MonoBehaviour
         if (distance > maxDragDistance)
         {
             Vector2 direction = (mousePosition - slingRb.position).normalized;
-            rb.position = slingRb.position + direction * maxDragDistance;
+            rb.position = slingRb.position + direction * (maxDragDistance * gh.SLING_force_multiplier);
         }
         else
         {
@@ -76,6 +83,7 @@ public class BallMovement : MonoBehaviour
     {
         isPressed = false;
         rb.isKinematic = false;
+        slingBehavior.reload();
         StartCoroutine(Release());
         lr.enabled = false;
     }
@@ -84,7 +92,15 @@ public class BallMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(releaseDelay);
         sj.enabled = false;
-        tr.enabled = true;
+        tr.enabled = false;
+        yield return new WaitForSeconds(10f);
+        destroyBall();
     }
 
+
+
+    public void destroyBall()
+    {
+        Destroy(gameObject);
+    }
 }
