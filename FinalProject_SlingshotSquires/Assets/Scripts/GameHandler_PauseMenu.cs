@@ -55,6 +55,7 @@ public class GameHandler_PauseMenu : MonoBehaviour {
                 pauseMenuUI.SetActive(false);
                 Time.timeScale = 1f;
                 GameisPaused = false;
+                playSound.Play();
         }
 
         public void SetLevel(float sliderValue){
