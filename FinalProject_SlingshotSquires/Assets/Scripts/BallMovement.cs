@@ -20,6 +20,9 @@ public class BallMovement : MonoBehaviour
     private Rigidbody2D slingRb;
 
     private TrailRenderer tr;
+    private AudioSource audioSource;
+
+
 
 
     private void Awake()
@@ -29,6 +32,7 @@ public class BallMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sj = GetComponent<SpringJoint2D>();
         lr = GetComponent<LineRenderer>();
+        audioSource = GetComponent<AudioSource>();
 
         tr = GetComponent<TrailRenderer>();
         slingRb = sj.connectedBody;
@@ -90,6 +94,7 @@ public class BallMovement : MonoBehaviour
 
     private IEnumerator Release()
     {
+        audioSource.Play();
         yield return new WaitForSeconds(releaseDelay);
         sj.enabled = false;
         tr.enabled = false;
