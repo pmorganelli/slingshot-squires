@@ -31,8 +31,8 @@ public class GameHandler : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("peterSlingScene");
         GameHandler_PauseMenu.GameisPaused = false;
+        SceneManager.LoadScene("peterSlingScene");
     }
 
     public void ReplayLastLevel()

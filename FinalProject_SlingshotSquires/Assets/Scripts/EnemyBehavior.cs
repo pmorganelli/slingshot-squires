@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
+    public AudioSource hitSound;
+    private bool isDead = false;
+    public AudioSource deathSound;
     public float health = 100f;
     public float enemySpeed = 1f;
     public GameObject GameHandler;
@@ -17,7 +20,7 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position -= Vector3.right * enemySpeed * Time.deltaTime;
+        if (!isDead) transform.position -= Vector3.right * enemySpeed * Time.deltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -30,8 +33,19 @@ public class EnemyBehavior : MonoBehaviour
             ball.destroyBall();
             if (health <= 0)
             {
-                Destroy(gameObject);
+                Die();
+            }
+            else
+            {
+                hitSound.Play();
             }
         }
+    }
+
+    private void Die()
+    {
+        isDead = true;
+        deathSound.Play();
+        Destroy(gameObject, deathSound.clip.length);
     }
 }
