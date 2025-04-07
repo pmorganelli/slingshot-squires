@@ -46,6 +46,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         isDead = true;
         deathSound.Play();
+        FindObjectOfType<WaveManager>().EnemyKilled();
         Destroy(gameObject, deathSound.clip.length);
     }
 }
