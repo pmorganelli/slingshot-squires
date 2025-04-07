@@ -118,7 +118,7 @@ SpringJoint2D:
   m_Anchor: {x: -0.008644104, y: -0.28093225}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 6.599427
+  m_Distance: 12.805952
   m_DampingRatio: 0
   m_Frequency: 1.5
 --- !u!114 &6603879552579274948
@@ -136,6 +136,9 @@ MonoBehaviour:
   ballType: default
   GameHandler: {fileID: 0}
   sling: {fileID: 0}
+  trajectoryDotPrefab: {fileID: 247599225665281616, guid: 27d5e25a7808b47c5b29431b266fe31a, type: 3}
+  numberOfDots: 15
+  dotSpacing: 0.1
 --- !u!120 &7162971354212563292
 LineRenderer:
   serializedVersion: 2

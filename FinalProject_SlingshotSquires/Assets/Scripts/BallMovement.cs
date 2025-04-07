@@ -7,23 +7,22 @@ public class BallMovement : MonoBehaviour
     public string ballType = "default";
     public GameObject GameHandler;
     public GameObject sling;
+    public GameObject trajectoryDotPrefab;
+    public int numberOfDots = 15;
+    public float dotSpacing = 0.1f;
+
+    private List<GameObject> dots;
     private Sling slingBehavior;
     private GameHandler gh;
     private bool isPressed;
     private Rigidbody2D rb;
     private SpringJoint2D sj;
-
     private LineRenderer lr;
     private float releaseDelay;
-
     private float maxDragDistance = 1.75f;
     private Rigidbody2D slingRb;
-
     private TrailRenderer tr;
     private AudioSource audioSource;
-
-
-
 
     private void Awake()
     {
@@ -33,13 +32,23 @@ public class BallMovement : MonoBehaviour
         sj = GetComponent<SpringJoint2D>();
         lr = GetComponent<LineRenderer>();
         audioSource = GetComponent<AudioSource>();
-
         tr = GetComponent<TrailRenderer>();
         slingRb = sj.connectedBody;
 
         lr.enabled = false;
         tr.enabled = false;
+
         releaseDelay = 1 / (sj.frequency * 4);
+
+        // Initialize trajectory dots
+        dots = new List<GameObject>();
+        for (int i = 0; i < numberOfDots; i++)
+        {
+            GameObject dot = Instantiate(trajectoryDotPrefab);
+            dot.transform.localScale = new Vector3(0.1f, 0.1f, 1f); // Small dots
+            dot.SetActive(false);
+            dots.Add(dot);
+        }
     }
 
     void Update()
@@ -47,8 +56,8 @@ public class BallMovement : MonoBehaviour
         if (isPressed)
         {
             DragBall();
+            ShowTrajectory();
         }
-
     }
 
     private void DragBall()
@@ -90,6 +99,7 @@ public class BallMovement : MonoBehaviour
         slingBehavior.reload();
         StartCoroutine(Release());
         lr.enabled = false;
+        HideTrajectory();
     }
 
     private IEnumerator Release()
@@ -97,15 +107,36 @@ public class BallMovement : MonoBehaviour
         audioSource.Play();
         yield return new WaitForSeconds(releaseDelay);
         sj.enabled = false;
-        tr.enabled = false;
+        tr.enabled = true;
         yield return new WaitForSeconds(10f);
         destroyBall();
     }
 
-
-
     public void destroyBall()
     {
         Destroy(gameObject);
+    }
+
+    private void ShowTrajectory()
+    {
+        Vector2 launchPos = rb.position;
+        Vector2 force = (slingRb.position - rb.position) * (sj.frequency * 4f); // Linear force direction
+        float timeStep = dotSpacing;
+
+        for (int i = 0; i < numberOfDots; i++)
+        {
+            float t = i * timeStep;
+            Vector2 pos = launchPos + force * t; // No gravity, straight path
+            dots[i].transform.position = pos;
+            dots[i].SetActive(true);
+        }
+    }
+
+    private void HideTrajectory()
+    {
+        foreach (var dot in dots)
+        {
+            dot.SetActive(false);
+        }
     }
 }
