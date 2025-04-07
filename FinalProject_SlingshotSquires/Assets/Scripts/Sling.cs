@@ -16,7 +16,6 @@ public class Sling : MonoBehaviour
 
     public void reload()
     {
-        Debug.Log("RELOADING");
         StartCoroutine(reloadNextBall());
     }
 

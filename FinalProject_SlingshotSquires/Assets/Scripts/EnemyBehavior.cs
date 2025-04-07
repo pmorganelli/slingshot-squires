@@ -12,11 +12,14 @@ public class EnemyBehavior : MonoBehaviour
     public GameObject GameHandler;
     private GameHandler gh;
 
+    private CurrencyManager currencyManager;
+    public int valorCoinValue = 5;
     private Transform targetCrop;
 
     void Start()
     {
         gh = GameHandler.GetComponent<GameHandler>();
+        currencyManager = FindObjectOfType<CurrencyManager>();
         FindClosestCrop();
     }
 
@@ -82,6 +85,10 @@ public class EnemyBehavior : MonoBehaviour
         isDead = true;
         deathSound.Play();
         FindObjectOfType<WaveManager>().EnemyKilled();
+        if (currencyManager != null)
+        {
+            currencyManager.AddValorCoins(valorCoinValue);
+        }
         Destroy(gameObject, deathSound.clip.length);
     }
 }
