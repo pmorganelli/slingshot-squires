@@ -69,7 +69,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.054883003, y: 0.021953195}
+  m_Offset: {x: -0.13814592, y: -0.098778486}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -80,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6267948, y: 0.8682806}
+  m_Size: {x: 1.3428583, y: 0.9432173}
   m_EdgeRadius: 0
 --- !u!114 &394101542916874553
 MonoBehaviour:
@@ -94,9 +94,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5de229e9e85f047a792bc504381864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 2712862149777590596}
   hitSound: {fileID: 1001386944017536367}
   deathSound: {fileID: 818226963448980854}
-  health: 100
+  totalHealth: 100
+  currHealth: 100
   enemySpeed: 1
   GameHandler: {fileID: 3299434645145404044, guid: 3033f5ed8c1d3fd4fb3eff7bc818e5b9, type: 3}
   valorCoinValue: 5
@@ -326,8 +328,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -4.709999, y: 0}
+  m_SizeDelta: {x: -19.43, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4805999066449113820
 GameObject:
@@ -390,7 +392,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &4719960930437719605
 MonoBehaviour:
@@ -504,7 +506,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1039193211, guid: b4e15294ec85f41bb9af63b82da82651, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -526,7 +528,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2261353292941563325}
   - component: {fileID: 2712862149777590596}
-  - component: {fileID: 3657957841351827976}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -553,7 +554,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3.13}
+  m_AnchoredPosition: {x: 14.7, y: -13.135}
   m_SizeDelta: {x: 160, y: 26.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2712862149777590596
@@ -603,23 +604,10 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3657957841351827976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7309118580483666377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcaa9f335ceb54abaab6e7a1ed7f984b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 0}
 --- !u!1 &7320159670430610657
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,8 +643,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 74.7, y: 0}
-  m_SizeDelta: {x: 159.4, y: 0}
+  m_AnchoredPosition: {x: -4.849991, y: 0}
+  m_SizeDelta: {x: 0.2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6781929222792800428
 CanvasRenderer:
@@ -731,8 +719,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -10.01, y: 0}
+  m_SizeDelta: {x: -20.01, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7134595855115756192
 CanvasRenderer:

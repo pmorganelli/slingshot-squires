@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class EnemyBehavior : MonoBehaviour
 {
+    public Slider healthBar;
     public AudioSource hitSound;
     private bool isDead = false;
     public AudioSource deathSound;
-    public float health = 100f;
+    public float totalHealth = 100f;
+    public float currHealth = 100f;
     public float enemySpeed = 1f;
     public GameObject GameHandler;
     private GameHandler gh;
@@ -59,10 +61,11 @@ public class EnemyBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("Projectile"))
         {
             BallMovement ball = other.gameObject.GetComponent<BallMovement>();
-            health -= gh.ballStats[ball.ballType].damage;
+            currHealth -= gh.ballStats[ball.ballType].damage;
+            healthBar.value = (currHealth / totalHealth);
             ball.destroyBall();
 
-            if (health <= 0)
+            if (currHealth <= 0)
             {
                 Die();
             }

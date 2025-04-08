@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7513214819252564931}
   - component: {fileID: 8229940433088236784}
+  - component: {fileID: 2055504181665542408}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -44,3 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f1c3840e5ff22478563ac0a5fa1290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SLING_reload_time: 1
+  SLING_force_multiplier: 1.25
+  waveSlider: {fileID: 0}
+--- !u!114 &2055504181665542408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299434645145404044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdfd0bb19e9474a5791055ac24d418a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valorCoins: 0
+  currencyText: {fileID: 0}
