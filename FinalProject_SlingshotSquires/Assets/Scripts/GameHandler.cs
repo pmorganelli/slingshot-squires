@@ -45,8 +45,8 @@ public class GameHandler : MonoBehaviour
     public float SLING_reload_time = 1f;
     public float SLING_force_multiplier = 1.25f;
     // Start is called before the first frame update
-
-    public Slider waveSlider;
+    public bool waveComplete = false;
+    public int coinCount = 0;
     void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -61,14 +61,16 @@ public class GameHandler : MonoBehaviour
     public void ReplayLastLevel()
     {
         GameHandler_PauseMenu.GameisPaused = false;
+        waveComplete = false;
         SceneManager.LoadScene("peterSlingScene");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (waveSlider.value == 1)
+        if (waveComplete)
         {
+            waveComplete = false;
             SceneManager.LoadScene("charlieScene");
         }
     }
@@ -85,6 +87,7 @@ public class GameHandler : MonoBehaviour
 
     IEnumerator QuitAfter10()
     {
+        waveComplete = false;
         SceneManager.LoadScene("peterSlingScene");
         Debug.Log("Starting countdown");
         yield return new WaitForSeconds(120f);
