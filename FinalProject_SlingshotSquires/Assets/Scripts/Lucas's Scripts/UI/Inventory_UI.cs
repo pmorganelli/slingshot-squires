@@ -14,7 +14,10 @@ public class Inventory_UI : MonoBehaviour
     
     // AudioClip for when closing the inventory menu
     public AudioClip closeSound;
-    
+    void Start()
+    {
+        inventoryPanel.SetActive(false);
+    }
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Tab))
