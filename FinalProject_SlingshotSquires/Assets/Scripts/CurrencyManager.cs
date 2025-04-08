@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CurrencyManager : MonoBehaviour
 {
+    //just to push
     public int valorCoins = 0;
     public TextMeshProUGUI currencyText;
 
