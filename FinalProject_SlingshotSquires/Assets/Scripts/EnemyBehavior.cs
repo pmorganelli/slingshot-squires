@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // Required for UI elements
 
 public class EnemyBehavior : MonoBehaviour
 {
     public AudioSource hitSound;
-    private bool isDead = false;
     public AudioSource deathSound;
-    public float health = 100f;
+
+    private bool isDead = false;
+
+    public float maxHealth = 100f;
+    public float minHealth = 0f;
+
     public float enemySpeed = 1f;
     public GameObject GameHandler;
     private GameHandler gh;
@@ -16,8 +21,15 @@ public class EnemyBehavior : MonoBehaviour
     public int valorCoinValue = 5;
     private Transform targetCrop;
 
+    // (Optional) UI Slider to show health bar
+    public EnemyHealthBar healthBar;
+
     void Start()
     {
+        health = Mathf.Clamp(health, minHealth, maxHealth); // Clamp at start
+        healthBar = GetComponentInChildren<EnemyHealthBar>();
+        healthBar.UpdateHealthBar(health, maxHealth);
+
         gh = GameHandler.GetComponent<GameHandler>();
         currencyManager = FindObjectOfType<CurrencyManager>();
         FindClosestCrop();
@@ -60,9 +72,12 @@ public class EnemyBehavior : MonoBehaviour
         {
             BallMovement ball = other.gameObject.GetComponent<BallMovement>();
             health -= gh.ballStats[ball.ballType].damage;
+            health = Mathf.Clamp(health, minHealth, maxHealth); // Clamp after taking damage
+            healthBar.UpdateHealthBar(health, maxHealth);
+
             ball.destroyBall();
 
-            if (health <= 0)
+            if (health <= minHealth)
             {
                 Die();
             }
@@ -74,21 +89,31 @@ public class EnemyBehavior : MonoBehaviour
 
         if (other.gameObject.CompareTag("Crop"))
         {
-            Destroy(other.gameObject); // Remove crop
+            Destroy(other.gameObject);
             targetCrop = null;
-            FindClosestCrop(); // Optional: move to next crop if any exist
+            FindClosestCrop();
         }
     }
+
+    // private void UpdateHealthBar()
+    // {
+    //     if (healthBar != null)
+    //     {
+    //         healthBar.value = health / maxHealth;
+    //     }
+    // }
 
     private void Die()
     {
         isDead = true;
         deathSound.Play();
         FindObjectOfType<WaveManager>().EnemyKilled();
+
         if (currencyManager != null)
         {
             currencyManager.AddValorCoins(valorCoinValue);
         }
+
         Destroy(gameObject, deathSound.clip.length);
     }
 }
