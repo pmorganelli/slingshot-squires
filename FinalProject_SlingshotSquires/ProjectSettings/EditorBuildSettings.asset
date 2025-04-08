@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/peterSlingScene.unity
     guid: adb409892999b4a689cc88938bd713bf
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 4adec26dcf8b1412aa8a37c75bf3f0ae
   m_configObjects: {}
