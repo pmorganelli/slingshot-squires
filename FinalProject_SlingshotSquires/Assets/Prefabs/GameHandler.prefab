@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f1c3840e5ff22478563ac0a5fa1290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SLING_reload_time: 1
+  SLING_force_multiplier: 1.25
+  waveComplete: 0
+  coinCount: 0
