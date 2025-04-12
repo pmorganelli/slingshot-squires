@@ -46,7 +46,8 @@ public class GameHandler_PauseMenu : MonoBehaviour {
               if (!GameisPaused){
                 pauseMenuUI.SetActive(true);
                 Time.timeScale = 0f;
-                GameisPaused = true;}
+                GameisPaused = true;
+                pauseSound.Play();}
              else{ Resume ();}
              //NOTE: This added conditional is for a pause button
         }
