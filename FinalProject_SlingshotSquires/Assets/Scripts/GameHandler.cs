@@ -17,20 +17,29 @@ public class GameHandler : MonoBehaviour
         }
     };
 
-    public struct Crop
+    public class Crop
     {
-        public int growthState;
+        public string cropName;
         public float salePrice;
+
+        public int totalGrowthStates;
+        public int growthState;
         // Growth interval-- how many days between incrementing growthState
         public int growthInterval;
         // How many days has the plant been planted?
         public int age;
-        public Crop(int state, float price, int interval, int age)
+        public int totalHealth;
+        public int currHealth;
+        public Crop(string name, float price, int totalGrowthStates, int state, int interval, int age, int totalHealth, int currHealth)
         {
-            this.growthState = state;
+            this.totalGrowthStates = totalGrowthStates;
+            this.cropName = name;
             this.salePrice = price;
+            this.growthState = state;
             this.growthInterval = interval;
             this.age = age;
+            this.totalHealth = totalHealth;
+            this.currHealth = currHealth;
         }
     };
 
@@ -46,9 +55,6 @@ public class GameHandler : MonoBehaviour
     // Start is called before the first frame update
     public static bool waveComplete = false;
     public static int coinCount = 0;
-    void Start()
-    {
-    }
 
     public void RestartGame()
     {
@@ -70,6 +76,11 @@ public class GameHandler : MonoBehaviour
         {
             waveComplete = false;
             SceneManager.LoadScene("charlieScene");
+        }
+
+        if (cropInventory.Count == 0)
+        {
+            Debug.Log("LOSE GAME HERE");
         }
     }
 
@@ -101,6 +112,27 @@ public class GameHandler : MonoBehaviour
     public void returnMain()
     {
         SceneManager.LoadScene("charlieScene");
+    }
+
+    public void ProgressCrops()
+    {
+        for (int i = 0; i < cropInventory.Count; i++)
+        {
+            Crop crop = cropInventory[i];
+            crop.age += 1;
+            if (crop.age >= crop.growthInterval)
+            {
+                crop.growthState += 1;
+                crop.age = 0;
+            }
+            if (crop.growthState >= crop.totalGrowthStates)
+            {
+                coinCount += (int)crop.salePrice;
+                Debug.Log("Crop sold for: " + crop.salePrice);
+                cropInventory.RemoveAt(i);
+                i--;
+            }
+        }
     }
 
 }

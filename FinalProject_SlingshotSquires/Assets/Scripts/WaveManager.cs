@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 
@@ -8,9 +9,11 @@ public class WaveManager : MonoBehaviour
     public TextMeshProUGUI waveText;
     private int totalEnemies;
     private int enemiesKilled;
+    public CropSpawner spawner;
 
     void Start()
     {
+        spawner.LoadCrops();
         CountTotalEnemies();
         UpdateUI();
     }

@@ -11,9 +11,13 @@ public class EnemyBehavior : MonoBehaviour
     public float totalHealth = 100f;
     public float currHealth = 100f;
     public float enemySpeed = 1f;
+    public float enemyAttackSpeed = 1f;
+    public int enemyAttackDamage = 10;
+    private float damageTimer = 0f;
     private CurrencyManager currencyManager;
     public int valorCoinValue = 5;
     private Transform targetCrop;
+    private CropBehavior targetCropStats;
 
     void Start()
     {
@@ -21,6 +25,18 @@ public class EnemyBehavior : MonoBehaviour
         FindClosestCrop();
     }
 
+    void Update()
+    {
+        if (targetCropStats != null)
+        {
+            damageTimer += Time.deltaTime;
+            if (damageTimer >= enemyAttackSpeed)
+            {
+                targetCropStats.cropDamage(enemyAttackDamage);
+                damageTimer = 0f;
+            }
+        }
+    }
     void FixedUpdate()
     {
         if (!isDead && targetCrop != null)
@@ -49,6 +65,20 @@ public class EnemyBehavior : MonoBehaviour
             }
         }
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        targetCropStats = other.GetComponent<CropBehavior>();
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.GetComponent<CropBehavior>() == targetCropStats)
+        {
+            targetCrop = null;
+            damageTimer = 0f;
+            FindClosestCrop();
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -69,13 +99,6 @@ public class EnemyBehavior : MonoBehaviour
             {
                 hitSound.Play();
             }
-        }
-
-        if (other.gameObject.CompareTag("Crop"))
-        {
-            Destroy(other.gameObject); // Remove crop
-            targetCrop = null;
-            FindClosestCrop(); // Optional: move to next crop if any exist
         }
     }
 

@@ -1037,7 +1037,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5bd27d5674dfd4e9d8b708dd914f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameHandler: {fileID: 232413423}
   nextBall: {fileID: 2076266862}
 --- !u!1 &389657268
 GameObject:
@@ -1087,7 +1086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveSlider: {fileID: 2043932489}
   waveText: {fileID: 743077526}
-  GameHandler: {fileID: 232413423}
+  plantPrefabsList: []
 --- !u!4 &403209517 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6875416043903532985, guid: 6befec4d97ef63f498c7ef949c6f65a6, type: 3}
@@ -7933,7 +7932,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfd0bb19e9474a5791055ac24d418a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameHandler: {fileID: 232413423}
   currencyText: {fileID: 1443393810}
 --- !u!4 &1697209287 stripped
 Transform:
