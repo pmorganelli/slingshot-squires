@@ -6,15 +6,11 @@ public class WaveManager : MonoBehaviour
 {
     public Slider waveSlider;
     public TextMeshProUGUI waveText;
-    public GameObject GameHandler;
-    private GameHandler gh;
-
     private int totalEnemies;
     private int enemiesKilled;
 
     void Start()
     {
-        gh = GameHandler.GetComponent<GameHandler>();
         CountTotalEnemies();
         UpdateUI();
     }
@@ -38,7 +34,7 @@ public class WaveManager : MonoBehaviour
         waveText.text = $"{enemiesKilled} / {totalEnemies} Enemies Killed";
         if (waveSlider.value == 1)
         {
-            gh.waveComplete = true;
+            GameHandler.waveComplete = true;
         }
     }
 }

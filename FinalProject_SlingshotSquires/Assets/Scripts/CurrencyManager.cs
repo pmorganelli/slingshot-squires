@@ -4,19 +4,16 @@ using UnityEngine;
 public class CurrencyManager : MonoBehaviour
 {
     //just to push
-    public GameObject GameHandler;
-    private GameHandler gh;
     public TextMeshProUGUI currencyText;
 
     private void Start()
     {
-        gh = GameHandler.GetComponent<GameHandler>();
         UpdateUI();
     }
 
     public void AddValorCoins(int amount)
     {
-        gh.coinCount += amount;
+        GameHandler.coinCount += amount;
         UpdateUI();
     }
 
@@ -24,7 +21,7 @@ public class CurrencyManager : MonoBehaviour
     {
         if (currencyText)
         {
-            currencyText.text = $"Valor Coins: {gh.coinCount}";
+            currencyText.text = $"Valor Coins: {GameHandler.coinCount}";
 
         }
     }

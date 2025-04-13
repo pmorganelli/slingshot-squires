@@ -5,7 +5,6 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour
 {
     public string ballType = "default";
-    public GameObject GameHandler;
     public GameObject sling;
     public GameObject trajectoryDotPrefab;
     public int numberOfDots = 15;
@@ -13,7 +12,6 @@ public class BallMovement : MonoBehaviour
 
     private List<GameObject> dots;
     private Sling slingBehavior;
-    private GameHandler gh;
     private bool isPressed;
     private Rigidbody2D rb;
     private SpringJoint2D sj;
@@ -27,7 +25,6 @@ public class BallMovement : MonoBehaviour
     private void Awake()
     {
         slingBehavior = sling.GetComponent<Sling>();
-        gh = GameHandler.GetComponent<GameHandler>();
         rb = GetComponent<Rigidbody2D>();
         sj = GetComponent<SpringJoint2D>();
         lr = GetComponent<LineRenderer>();
@@ -69,7 +66,7 @@ public class BallMovement : MonoBehaviour
         if (distance > maxDragDistance)
         {
             Vector2 direction = (mousePosition - slingRb.position).normalized;
-            rb.position = slingRb.position + direction * (maxDragDistance * gh.SLING_force_multiplier);
+            rb.position = slingRb.position + direction * (maxDragDistance * GameHandler.SLING_force_multiplier);
         }
         else
         {

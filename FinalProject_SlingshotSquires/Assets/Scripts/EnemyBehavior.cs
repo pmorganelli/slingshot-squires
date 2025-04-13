@@ -11,16 +11,12 @@ public class EnemyBehavior : MonoBehaviour
     public float totalHealth = 100f;
     public float currHealth = 100f;
     public float enemySpeed = 1f;
-    public GameObject GameHandler;
-    private GameHandler gh;
-
     private CurrencyManager currencyManager;
     public int valorCoinValue = 5;
     private Transform targetCrop;
 
     void Start()
     {
-        gh = GameHandler.GetComponent<GameHandler>();
         currencyManager = FindObjectOfType<CurrencyManager>();
         FindClosestCrop();
     }
@@ -61,7 +57,7 @@ public class EnemyBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("Projectile"))
         {
             BallMovement ball = other.gameObject.GetComponent<BallMovement>();
-            currHealth -= gh.ballStats[ball.ballType].damage;
+            currHealth -= GameHandler.ballStats[ball.ballType].damage;
             healthBar.value = (currHealth / totalHealth);
             ball.destroyBall();
 

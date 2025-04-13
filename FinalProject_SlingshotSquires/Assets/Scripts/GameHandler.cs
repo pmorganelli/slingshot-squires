@@ -25,7 +25,6 @@ public class GameHandler : MonoBehaviour
         public int growthInterval;
         // How many days has the plant been planted?
         public int age;
-
         public Crop(int state, float price, int interval, int age)
         {
             this.growthState = state;
@@ -36,20 +35,19 @@ public class GameHandler : MonoBehaviour
     };
 
     // Define a list to reference various ball stats based off the above struct.
-    public Dictionary<string, ballStat> ballStats = new Dictionary<string, ballStat> {
+    public static Dictionary<string, ballStat> ballStats = new Dictionary<string, ballStat> {
         {"default", new ballStat(50f, 1.75f)}, {"fireball", new ballStat(75f, 2f)}
     };
     // Array containing all crops planted
-    public List<Crop> cropInventory = new List<Crop>();
+    public static List<Crop> cropInventory = new List<Crop>();
 
-    public float SLING_reload_time = 1f;
-    public float SLING_force_multiplier = 1.25f;
+    public static float SLING_reload_time = 1f;
+    public static float SLING_force_multiplier = 1.25f;
     // Start is called before the first frame update
-    public bool waveComplete = false;
-    public int coinCount = 0;
+    public static bool waveComplete = false;
+    public static int coinCount = 0;
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
     }
 
     public void RestartGame()
