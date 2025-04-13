@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveSlider: {fileID: 2043932489}
   waveText: {fileID: 743077526}
-  plantPrefabsList: []
+  spawner: {fileID: 747784306}
 --- !u!4 &403209517 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6875416043903532985, guid: 6befec4d97ef63f498c7ef949c6f65a6, type: 3}
@@ -2078,6 +2078,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 747784305}
+  - component: {fileID: 747784306}
   m_Layer: 0
   m_Name: CROPS
   m_TagString: Untagged
@@ -2121,9 +2122,28 @@ Transform:
   - {fileID: 467057961}
   - {fileID: 2013365770}
   - {fileID: 1279568950}
+  - {fileID: 1811739413}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &747784306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747784304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97230b0f23fc9934a90ff31aa75b449e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridWidth: 5
+  gridHeight: 4
+  cellWidth: 1.5
+  cellHeight: 1.5
+  gridOrigin: {fileID: 1811739413}
+  plantPrefabsList: []
 --- !u!4 &872375202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3422368386613906222, guid: 2c238907d47bdd44ba84f225d593cccb, type: 3}
@@ -8309,6 +8329,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.13960075, y: 10.579104}
   m_EdgeRadius: 0
+--- !u!1 &1811739412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1811739413}
+  m_Layer: 0
+  m_Name: GridStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1811739413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811739412}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.0599308, y: 4.3863487, z: 2.1474106}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 747784305}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1827435927
 GameObject:
   m_ObjectHideFlags: 0
