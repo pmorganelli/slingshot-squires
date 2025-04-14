@@ -55,6 +55,11 @@ public class EnemyBehavior : MonoBehaviour
         GameObject[] crops = GameObject.FindGameObjectsWithTag("Crop");
         float minDistance = Mathf.Infinity;
 
+        if (crops.Length == 0)
+        {
+            GameHandler.lost = true;
+            return;
+        }
         foreach (GameObject crop in crops)
         {
             float distance = Vector2.Distance(transform.position, crop.transform.position);

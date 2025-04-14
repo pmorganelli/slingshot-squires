@@ -8,7 +8,6 @@ public class CropSpawner : MonoBehaviour
     public int gridHeight = 4;
     public float cellWidth = 1.5f;
     public float cellHeight = 1.5f;
-    public Transform gridOrigin; // wherever we want the grid to start
     [SerializeField]
     private List<PlantPrefabEntry> plantPrefabsList;
     public Dictionary<string, GameObject> cropPrefabs = new();
@@ -26,29 +25,37 @@ public class CropSpawner : MonoBehaviour
         {
             cropPrefabs[entry.plantType] = entry.prefab;
         }
+        LoadCrops();
     }
     // Start is called before the first frame update
     public void LoadCrops()
     {
-        List<GameHandler.Crop> crops = GameHandler.cropInventory;
 
-        for (int y = 0; y < gridHeight; y++)
+        // Clear existing crops in the grid
+        foreach (Transform child in transform)
         {
-            for (int x = 0; x < gridWidth; x++)
+            Destroy(child.gameObject);
+        }
+
+        List<Crop> crops = GameHandler.cropInventory;
+
+        for (int x = 0; x < gridWidth; x++)
+        {
+            for (int y = 0; y < gridHeight; y++)
             {
-                int index = y * gridWidth + x;
+                int index = x * gridHeight + y;
                 if (index >= GameHandler.cropInventory.Count)
                     return;
 
-                GameHandler.Crop cropData = crops[index];
+                Crop cropData = crops[index];
+                Debug.Log("Spawning crop: " + cropData.cropName + " at index: " + index);
                 GameObject prefab = cropPrefabs[cropData.cropName];
 
-                Vector3 position = new Vector3(
-                    x * cellWidth,
-                    y * -cellHeight,
-                    0);
+                Vector3 localOffset = new Vector3(x * cellWidth, y * -cellHeight, 0);
 
-                GameObject instance = Instantiate(prefab, position, Quaternion.identity);
+                GameObject instance = Instantiate(prefab, gameObject.transform);
+                instance.transform.localPosition = localOffset;
+                instance.transform.localRotation = Quaternion.identity;
 
                 CropBehavior cb = instance.GetComponent<CropBehavior>();
                 if (cb != null)

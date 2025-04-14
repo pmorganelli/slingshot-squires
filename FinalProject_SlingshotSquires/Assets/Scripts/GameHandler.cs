@@ -17,44 +17,22 @@ public class GameHandler : MonoBehaviour
         }
     };
 
-    public class Crop
-    {
-        public string cropName;
-        public float salePrice;
-
-        public int totalGrowthStates;
-        public int growthState;
-        // Growth interval-- how many days between incrementing growthState
-        public int growthInterval;
-        // How many days has the plant been planted?
-        public int age;
-        public int totalHealth;
-        public int currHealth;
-        public Crop(string name, float price, int totalGrowthStates, int state, int interval, int age, int totalHealth, int currHealth)
-        {
-            this.totalGrowthStates = totalGrowthStates;
-            this.cropName = name;
-            this.salePrice = price;
-            this.growthState = state;
-            this.growthInterval = interval;
-            this.age = age;
-            this.totalHealth = totalHealth;
-            this.currHealth = currHealth;
-        }
-    };
 
     // Define a list to reference various ball stats based off the above struct.
     public static Dictionary<string, ballStat> ballStats = new Dictionary<string, ballStat> {
         {"default", new ballStat(50f, 1.75f)}, {"fireball", new ballStat(75f, 2f)}
     };
     // Array containing all crops planted
-    public static List<Crop> cropInventory = new List<Crop>();
+    public static List<Crop> cropInventory = new List<Crop> { Crop.Carrot(), Crop.Lettuce(), Crop.Tomato(), Crop.Pumpkin(), Crop.Watermelon() };
+    // 
 
     public static float SLING_reload_time = 1f;
     public static float SLING_force_multiplier = 1.25f;
     // Start is called before the first frame update
     public static bool waveComplete = false;
     public static int coinCount = 0;
+    public static int waveCount = 0;
+    public static bool lost = false;
 
     public void RestartGame()
     {
@@ -78,7 +56,7 @@ public class GameHandler : MonoBehaviour
             SceneManager.LoadScene("charlieScene");
         }
 
-        if (cropInventory.Count == 0)
+        if (lost)
         {
             Debug.Log("LOSE GAME HERE");
         }
@@ -114,17 +92,13 @@ public class GameHandler : MonoBehaviour
         SceneManager.LoadScene("charlieScene");
     }
 
-    public void ProgressCrops()
+    public static void ProgressCrops()
     {
         for (int i = 0; i < cropInventory.Count; i++)
         {
             Crop crop = cropInventory[i];
-            crop.age += 1;
-            if (crop.age >= crop.growthInterval)
-            {
-                crop.growthState += 1;
-                crop.age = 0;
-            }
+            crop.growthState += 1;
+
             if (crop.growthState >= crop.totalGrowthStates)
             {
                 coinCount += (int)crop.salePrice;

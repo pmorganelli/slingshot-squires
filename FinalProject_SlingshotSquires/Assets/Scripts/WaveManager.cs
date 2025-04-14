@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
@@ -13,7 +14,6 @@ public class WaveManager : MonoBehaviour
 
     void Start()
     {
-        spawner.LoadCrops();
         CountTotalEnemies();
         UpdateUI();
     }
@@ -37,7 +37,17 @@ public class WaveManager : MonoBehaviour
         waveText.text = $"{enemiesKilled} / {totalEnemies} Enemies Killed";
         if (waveSlider.value == 1)
         {
-            GameHandler.waveComplete = true;
+            StartCoroutine(completeWave());
         }
+    }
+
+    private IEnumerator completeWave()
+    {
+        /* TODO: Give some indication wave is complete */
+        GameHandler.ProgressCrops();
+        spawner.LoadCrops(); // Load updated crops
+        yield return new WaitForSeconds(5f); // Give player time to see their crops grow
+        GameHandler.waveCount++;
+        GameHandler.waveComplete = true; // go next wave.
     }
 }
