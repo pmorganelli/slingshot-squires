@@ -2,22 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class EnemyBehavior : MonoBehaviour
 {
     public Slider healthBar;
     public AudioSource hitSound;
     private bool isDead = false;
     public AudioSource deathSound;
+
     public float totalHealth = 100f;
     public float currHealth = 100f;
     public float enemySpeed = 1f;
     public float enemyAttackSpeed = 1f;
     public int enemyAttackDamage = 10;
+    public int valorCoinValue = 5;
+
     private float damageTimer = 0f;
     private CurrencyManager currencyManager;
-    public int valorCoinValue = 5;
+
     private Transform targetCrop;
     private CropBehavior targetCropStats;
+
+    // === Slot System ===
+    private Transform slotTarget;
+    private int slotIndex = -1;
+    private CropSlotManager cropSlotManager;
 
     void Start()
     {
@@ -27,33 +36,64 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
-        if (targetCropStats != null)
+        if (targetCropStats != null && slotTarget != null)
         {
-            damageTimer += Time.deltaTime;
-            if (damageTimer >= enemyAttackSpeed)
+            float distance = Vector2.Distance(transform.position, slotTarget.position);
+
+            // Only attack if fully arrived
+            if (distance <= 0.02f)
             {
-                targetCropStats.cropDamage(enemyAttackDamage);
-                damageTimer = 0f;
-                if (targetCropStats.thisCrop.currHealth <= 0)
+                damageTimer += Time.deltaTime;
+
+                if (damageTimer >= enemyAttackSpeed)
                 {
-                    targetCrop = null;
-                    FindClosestCrop();
+                    damageTimer = 0f;
+
+                    // Double-check that thisCrop is still valid before applying damage
+                    if (targetCropStats != null && targetCropStats.thisCrop != null)
+                    {
+                        targetCropStats.cropDamage(enemyAttackDamage);
+                    }
+
+                    // If crop is dead or missing, move on
+                    if (targetCropStats == null || targetCropStats.thisCrop == null || targetCropStats.thisCrop.currHealth <= 0)
+                    {
+                        // Unclaim slot
+                        if (cropSlotManager != null && slotIndex != -1)
+                        {
+                            cropSlotManager.ReleaseSlot(slotIndex);
+                        }
+
+                        // Reset everything
+                        targetCrop = null;
+                        targetCropStats = null;
+                        slotTarget = null;
+                        cropSlotManager = null;
+                        slotIndex = -1;
+
+                        FindClosestCrop();
+                    }
                 }
             }
         }
     }
+
+
+
+
     void FixedUpdate()
     {
-        if (!isDead && targetCrop != null)
+        if (!isDead && slotTarget != null)
         {
-            float distance = Vector2.Distance(transform.position, targetCrop.position);
-            if (distance > 0.1f)
+            float distance = Vector2.Distance(transform.position, slotTarget.position);
+            if (distance > 0.02f)
             {
-                Vector2 dir = (targetCrop.position - transform.position).normalized;
+                Debug.DrawLine(transform.position, slotTarget.position, Color.red);
+                Vector2 dir = (slotTarget.position - transform.position).normalized;
                 transform.position += (Vector3)(dir * enemySpeed * Time.deltaTime);
             }
         }
-        else
+        else if (!isDead)
         {
             FindClosestCrop();
         }
@@ -69,20 +109,35 @@ public class EnemyBehavior : MonoBehaviour
             GameHandler.lost = true;
             return;
         }
+
         foreach (GameObject crop in crops)
         {
             float distance = Vector2.Distance(transform.position, crop.transform.position);
             if (distance < minDistance)
             {
-                minDistance = distance;
-                targetCrop = crop.transform;
+                CropSlotManager slotManager = crop.GetComponent<CropSlotManager>();
+                if (slotManager == null) continue;
+
+                Transform availableSlot = slotManager.ClaimSlot(out int claimedIndex);
+                if (availableSlot != null)
+                {
+                    minDistance = distance;
+                    targetCrop = crop.transform;
+                    targetCropStats = crop.GetComponent<CropBehavior>();
+                    cropSlotManager = slotManager;
+                    slotTarget = availableSlot;
+                    slotIndex = claimedIndex;
+                }
             }
         }
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger Entered: " + other.gameObject.name);
-        targetCropStats = other.GetComponent<CropBehavior>();
+        if (targetCropStats == null && other.GetComponent<CropBehavior>() != null)
+        {
+            targetCropStats = other.GetComponent<CropBehavior>();
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -90,6 +145,7 @@ public class EnemyBehavior : MonoBehaviour
         if (other.GetComponent<CropBehavior>() == targetCropStats)
         {
             targetCrop = null;
+            targetCropStats = null;
             damageTimer = 0f;
             FindClosestCrop();
         }
@@ -122,10 +178,38 @@ public class EnemyBehavior : MonoBehaviour
         isDead = true;
         deathSound.Play();
         FindObjectOfType<WaveManager>().EnemyKilled();
+
         if (currencyManager != null)
         {
             currencyManager.AddValorCoins(valorCoinValue);
         }
+
+        ReleaseCropSlot();
         Destroy(gameObject, deathSound.clip.length);
     }
+
+
+    private void OnDestroy()
+    {
+        ReleaseCropSlot();
+    }
+
+
+    private void ReleaseCropSlot()
+    {
+        if (cropSlotManager != null && slotIndex != -1)
+        {
+            cropSlotManager.ReleaseSlot(slotIndex);
+            cropSlotManager = null;
+            slotIndex = -1;
+            slotTarget = null;
+        }
+    }
+
+    private void OnDisable()
+    {
+        ReleaseCropSlot();
+    }
+
+
 }

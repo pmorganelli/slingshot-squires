@@ -47,7 +47,7 @@ public class CropSpawner : MonoBehaviour
                     return;
 
                 Crop cropData = crops[index];
-                Debug.Log("Spawning crop: " + cropData.cropName + " at index: " + index);
+                // Debug.Log("Spawning crop: " + cropData.cropName + " at index: " + index);
                 GameObject prefab = cropPrefabs[cropData.cropName];
 
                 Vector3 localOffset = new Vector3(x * cellWidth, y * -cellHeight, 0);
