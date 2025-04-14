@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CropBehavior : MonoBehaviour
 {
@@ -8,10 +9,12 @@ public class CropBehavior : MonoBehaviour
     [SerializeField] private Sprite[] growthStages;
     // Start is called before the first frame update
     public Crop thisCrop;
+    public Slider healthBar;
 
     public void Initialize(Crop crop)
     {
         thisCrop = crop;
+        healthBar.value = thisCrop.currHealth / thisCrop.totalHealth;
         UpdateCropSprite();
     }
 
@@ -30,6 +33,7 @@ public class CropBehavior : MonoBehaviour
     public void cropDamage(int damage)
     {
         thisCrop.currHealth -= damage;
+        healthBar.value = thisCrop.currHealth / thisCrop.totalHealth;
         // UPDATE HEALTH BAR UI HERE
         if (thisCrop.currHealth <= 0)
         {

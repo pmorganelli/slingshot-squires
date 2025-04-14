@@ -34,6 +34,11 @@ public class EnemyBehavior : MonoBehaviour
             {
                 targetCropStats.cropDamage(enemyAttackDamage);
                 damageTimer = 0f;
+                if (targetCropStats.thisCrop.currHealth <= 0)
+                {
+                    targetCrop = null;
+                    FindClosestCrop();
+                }
             }
         }
     }
@@ -47,6 +52,10 @@ public class EnemyBehavior : MonoBehaviour
                 Vector2 dir = (targetCrop.position - transform.position).normalized;
                 transform.position += (Vector3)(dir * enemySpeed * Time.deltaTime);
             }
+        }
+        else
+        {
+            FindClosestCrop();
         }
     }
 
@@ -72,6 +81,7 @@ public class EnemyBehavior : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Trigger Entered: " + other.gameObject.name);
         targetCropStats = other.GetComponent<CropBehavior>();
     }
 

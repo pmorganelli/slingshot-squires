@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 394101542916874553}
   - component: {fileID: 1001386944017536367}
   - component: {fileID: 818226963448980854}
+  - component: {fileID: 3286862249616770351}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -100,7 +101,8 @@ MonoBehaviour:
   totalHealth: 100
   currHealth: 100
   enemySpeed: 1
-  GameHandler: {fileID: 3299434645145404044, guid: 3033f5ed8c1d3fd4fb3eff7bc818e5b9, type: 3}
+  enemyAttackSpeed: 1
+  enemyAttackDamage: 10
   valorCoinValue: 5
 --- !u!82 &1001386944017536367
 AudioSource:
@@ -294,6 +296,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!50 &3286862249616770351
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531724726179543876}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &797729180559612566
 GameObject:
   m_ObjectHideFlags: 0

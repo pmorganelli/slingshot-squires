@@ -27,7 +27,6 @@ public class CropSpawner : MonoBehaviour
         }
         LoadCrops();
     }
-    // Start is called before the first frame update
     public void LoadCrops()
     {
 
