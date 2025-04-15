@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Scenes/Level1.unity
     guid: 790bd3384bef44029b2973cc0cf02f92
   - enabled: 1
-    path: Assets/Scenes/waveWin.unity
+    path: Assets/Scenes/Final Scenes/waveWin.unity
     guid: 5f1ce751004ab480f951c9002992c9c8
   m_configObjects: {}

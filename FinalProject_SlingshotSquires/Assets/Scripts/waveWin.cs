@@ -8,6 +8,6 @@ public class waveWin : MonoBehaviour
     // Start is called before the first frame update
     public void nextLevel()
     {
-        SceneManager.LoadScene("charlieScene");
+        SceneManager.LoadScene("TitleScreen");
     }
 }
