@@ -36,7 +36,7 @@ public class Crop
     public static Crop Tomato()
     {
         float price = 5.0f;
-        int growthStates = 5;
+        int growthStates = 1;
         int startingState = 0;
         int totalHealth = 100;
         int currHealth = 100;

@@ -13,8 +13,9 @@ public class CropBehavior : MonoBehaviour
 
     public void Initialize(Crop crop)
     {
+        // GameHandler.existingCropObjects.Add(gameObject.GetComponent<CropBehavior>());
         thisCrop = crop;
-        healthBar.value = thisCrop.currHealth / thisCrop.totalHealth;
+        healthBar.value = (float)thisCrop.currHealth / (float)thisCrop.totalHealth;
         UpdateCropSprite();
     }
 
@@ -26,15 +27,19 @@ public class CropBehavior : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Growth state exceeds available sprites. Using last sprite.");
             cropRenderer.sprite = growthStages[growthStages.Length - 1];
         }
+    }
+
+    public void AddStage()
+    {
+        thisCrop.growthState++;
+        UpdateCropSprite();
     }
     public void cropDamage(int damage)
     {
         thisCrop.currHealth -= damage;
-        healthBar.value = thisCrop.currHealth / thisCrop.totalHealth;
-        // UPDATE HEALTH BAR UI HERE
+        healthBar.value = (float)thisCrop.currHealth / (float)thisCrop.totalHealth;
         if (thisCrop.currHealth <= 0)
         {
             Debug.Log("Crop is dead! Removing from inventory");

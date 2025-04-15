@@ -98,8 +98,8 @@ MonoBehaviour:
   healthBar: {fileID: 2712862149777590596}
   hitSound: {fileID: 1001386944017536367}
   deathSound: {fileID: 818226963448980854}
-  totalHealth: 100
-  currHealth: 100
+  totalHealth: 50
+  currHealth: 50
   enemySpeed: 1
   enemyAttackSpeed: 1
   enemyAttackDamage: 10
