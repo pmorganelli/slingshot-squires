@@ -9,11 +9,19 @@ public class ShopManagerScript : MonoBehaviour
     public int[,] shopItems = new int[5,5];
     public float coins;
     public Text CoinsTxt;
+    GameHandler myGameHandler;
+    public GameObject coinWarning; 
+    public GameObject coinWarningBG;
 
     // Start is called before the first frame update
     void Start()
     {
+        myGameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+        coins = myGameHandler.getCointAmount();
         CoinsTxt.text = "Coins:" + coins.ToString();
+
+        coinWarning.gameObject.SetActive(false);
+        coinWarningBG.gameObject.SetActive(false);
 
         // IDs
         shopItems[1, 1] = 1;
@@ -41,10 +49,17 @@ public class ShopManagerScript : MonoBehaviour
 
         if (coins >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID])
         {
+            coinWarning.gameObject.SetActive(false);
+            coinWarningBG.gameObject.SetActive(false);
             coins -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID];
             shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID]++;
+            myGameHandler.AddItem(ButtonRef.GetComponent<ButtonInfo>().ItemID);
+            myGameHandler.subtractCoins(shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID]);
             CoinsTxt.text = "Coins:" + coins.ToString();
             ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString();
+        } else {
+            coinWarning.gameObject.SetActive(true);
+            coinWarningBG.gameObject.SetActive(true);
         }
     }
 }

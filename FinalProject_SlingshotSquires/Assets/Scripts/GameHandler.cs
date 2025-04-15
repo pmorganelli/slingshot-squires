@@ -30,15 +30,18 @@ public class GameHandler : MonoBehaviour
     public static float SLING_force_multiplier = 1.25f;
     // Start is called before the first frame update
     public static bool waveComplete = false;
-    public static int coinCount = 0;
+    public static int coinCount = 50;
     public static int waveCount = 0;
     public static bool lost = false;
     public GameObject text1; 
     public GameObject text2;
     public GameObject text3; 
     public int textCount = 0;
-
-
+    public static int tomatoes = 0;
+    public static int carrots = 0;
+    public static int pumpkins = 0;
+    public static int watermelon = 0;
+    public static int levelCount = 0;
 
     public void RestartGame()
     {
@@ -122,7 +125,7 @@ public class GameHandler : MonoBehaviour
 
     public void enterTutorial()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("lucasScene1");
     }
 
     public void nextText() 
@@ -138,7 +141,42 @@ public class GameHandler : MonoBehaviour
             text3.gameObject.SetActive(true);
             textCount = textCount + 1;
         } else {
+            SceneManager.LoadScene("lucasScene1");
+        }
+    }
+
+    public void AddItem(int itemID) 
+    {   
+        if (itemID == 1) {
+            tomatoes = tomatoes + 1;
+        } else if (itemID == 2) {
+            carrots = carrots + 1;
+        } else if (itemID == 3) {
+            pumpkins = pumpkins + 1;
+        } else {
+            watermelon = watermelon + 1;
+        }
+    }
+
+    public void subtractCoins(int amount) 
+    {
+        coinCount = coinCount - amount;
+        Debug.Log("Coint Count: " + coinCount);
+    }
+
+    public int getCointAmount() 
+    {
+        return coinCount;
+    }
+
+    public void nextLevel() 
+    {
+        if (levelCount == 0) 
+        {
             SceneManager.LoadScene("Tutorial");
+            levelCount = levelCount + 1;
+        } else {
+           SceneManager.LoadScene("peterSlingScene");
         }
     }
 }

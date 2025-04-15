@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Crop
   - Event
+  - GameHandler
   layers:
   - Default
   - TransparentFX
