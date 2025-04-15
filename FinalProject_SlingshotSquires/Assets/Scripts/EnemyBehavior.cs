@@ -36,6 +36,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
+        if (!GameHandler.waveStarted) return;
         if (targetCropStats != null && slotTarget != null)
         {
             float distance = Vector2.Distance(transform.position, slotTarget.position);
@@ -83,6 +84,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!GameHandler.waveStarted) return;
         if (!isDead && slotTarget != null)
         {
             float distance = Vector2.Distance(transform.position, slotTarget.position);
@@ -99,7 +101,7 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    private void FindClosestCrop()
+    public void FindClosestCrop()
     {
         GameObject[] crops = GameObject.FindGameObjectsWithTag("Crop");
         float minDistance = Mathf.Infinity;

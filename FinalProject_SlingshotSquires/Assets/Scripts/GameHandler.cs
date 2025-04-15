@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Linq;
+
 public class GameHandler : MonoBehaviour
 {
     public struct ballStat
@@ -23,8 +25,17 @@ public class GameHandler : MonoBehaviour
         {"default", new ballStat(50f, 1.75f)}, {"fireball", new ballStat(75f, 2f)}
     };
     // Array containing all crops planted
-    public static List<Crop> cropInventory = new List<Crop> { Crop.Carrot(), Crop.Lettuce(), Crop.Tomato(), Crop.Pumpkin(), Crop.Watermelon() };
+    public static List<Crop> cropInventory = new List<Crop> {};
     // 
+
+    public GameObject nextButton;
+    public GameObject waveButton;
+    public GameObject textA;
+    public GameObject textB;
+    public GameObject textC;
+    public GameObject textD;
+    public GameObject tutBG;
+    public int textNum = 0;
 
     public static float SLING_reload_time = 1f;
     public static float SLING_force_multiplier = 1.25f;
@@ -36,12 +47,15 @@ public class GameHandler : MonoBehaviour
     public GameObject text1; 
     public GameObject text2;
     public GameObject text3; 
+    public GameObject waveClear;
     public int textCount = 0;
     public static int tomatoes = 0;
     public static int carrots = 0;
     public static int pumpkins = 0;
     public static int watermelon = 0;
     public static int levelCount = 0;
+    public static bool waveStarted = false;
+
 
     public void RestartGame()
     {
@@ -62,7 +76,8 @@ public class GameHandler : MonoBehaviour
         if (waveComplete)
         {
             waveComplete = false;
-            SceneManager.LoadScene("charlieScene");
+            Debug.Log("COMPLETE");
+            SceneManager.LoadScene("waveWin");
         }
 
         if (lost)
@@ -70,6 +85,11 @@ public class GameHandler : MonoBehaviour
             Debug.Log("LOSE GAME HERE");
         }
     }
+    IEnumerator WaitFiveSeconds()
+    {
+        yield return new WaitForSeconds(5f);
+    }
+
 
     public void PlayGame()
     {
@@ -148,20 +168,22 @@ public class GameHandler : MonoBehaviour
     public void AddItem(int itemID) 
     {   
         if (itemID == 1) {
-            tomatoes = tomatoes + 1;
+            cropInventory.Add(Crop.Tomato());
+            int tomatoCount = cropInventory.Count(crop => crop.cropName == "Tomato");
+            Debug.Log("Tomato Count: " + tomatoCount);
         } else if (itemID == 2) {
-            carrots = carrots + 1;
+            cropInventory.Add(Crop.Carrot());
         } else if (itemID == 3) {
-            pumpkins = pumpkins + 1;
+            cropInventory.Add(Crop.Pumpkin());
         } else {
-            watermelon = watermelon + 1;
+            cropInventory.Add(Crop.Watermelon());
         }
     }
 
     public void subtractCoins(int amount) 
     {
         coinCount = coinCount - amount;
-        Debug.Log("Coint Count: " + coinCount);
+        Debug.Log("Coin Count: " + coinCount);
     }
 
     public int getCointAmount() 
@@ -173,10 +195,35 @@ public class GameHandler : MonoBehaviour
     {
         if (levelCount == 0) 
         {
-            SceneManager.LoadScene("Tutorial");
+            SceneManager.LoadScene("peterSlingScene");
             levelCount = levelCount + 1;
         } else {
            SceneManager.LoadScene("peterSlingScene");
         }
+    }
+    public void nextWasClicked() 
+    {
+        if (textNum == 0) {
+            textA.gameObject.SetActive(false);
+            textB.gameObject.SetActive(true);
+            textNum = textNum + 1;
+        } else if (textNum == 1) {
+            textB.gameObject.SetActive(false);
+            textC.gameObject.SetActive(true);
+            textNum = textNum + 1;
+        } else {
+            textC.gameObject.SetActive(false);
+            textD.gameObject.SetActive(true);
+            waveButton.gameObject.SetActive(true);
+        }
+    }
+
+    public void waveWasClicked() 
+    {
+        textD.gameObject.SetActive(false);
+        nextButton.gameObject.SetActive(false);
+        waveButton.gameObject.SetActive(false);
+        tutBG.gameObject.SetActive(false);
+        waveStarted = true; 
     }
 }
