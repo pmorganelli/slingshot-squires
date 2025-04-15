@@ -7,17 +7,17 @@ public class CropBehavior : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer cropRenderer;
     [SerializeField] private Sprite[] growthStages;
-    // Start is called before the first frame update
+
     public Crop thisCrop;
     public Slider healthBar;
     public AudioSource sellSound;
 
     public void Initialize(Crop crop)
     {
-        // GameHandler.existingCropObjects.Add(gameObject.GetComponent<CropBehavior>());
         thisCrop = crop;
         healthBar.value = (float)thisCrop.currHealth / (float)thisCrop.totalHealth;
         UpdateCropSprite();
+        cropRenderer.color = Color.white;
     }
 
     private void UpdateCropSprite()
@@ -37,16 +37,23 @@ public class CropBehavior : MonoBehaviour
         thisCrop.growthState++;
         UpdateCropSprite();
     }
+
     public void cropDamage(int damage)
     {
         thisCrop.currHealth -= damage;
         healthBar.value = (float)thisCrop.currHealth / (float)thisCrop.totalHealth;
+
+        float darkenAmount = 0.1f;
+        Color color = cropRenderer.color;
+        color.r = Mathf.Clamp01(color.r - darkenAmount);
+        color.g = Mathf.Clamp01(color.g - darkenAmount);
+        color.b = Mathf.Clamp01(color.b - darkenAmount);
+        cropRenderer.color = color;
+
         if (thisCrop.currHealth <= 0)
         {
-            Debug.Log("Crop is dead! Removing from inventory");
             GameHandler.cropInventory.Remove(thisCrop);
             Destroy(gameObject);
         }
     }
-
 }

@@ -6,23 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/charlieScene.unity
-    guid: 37402d083099a4eec9dc5bbe72fad66c
-  - enabled: 1
-    path: Assets/Scenes/peterSlingScene.unity
-    guid: adb409892999b4a689cc88938bd713bf
-  - enabled: 1
-    path: Assets/Scenes/Credits.unity
+    path: Assets/Scenes/Final Scenes/Credits.unity
     guid: 4adec26dcf8b1412aa8a37c75bf3f0ae
   - enabled: 1
-    path: Assets/Scenes/Intro1.unity
+    path: Assets/Scenes/Final Scenes/TitleScreen.unity
+    guid: f053ca6c61c7045638a5659299cff970
+  - enabled: 1
+    path: Assets/Scenes/Final Scenes/Intro1.unity
     guid: 77160d1e17d4749c0a84f5738e8d5a2a
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
-    guid: 84bf37946b3d243d69cb3623e16f1b57
+    path: Assets/Scenes/Final Scenes/ShopScene.unity
+    guid: 75af791fcb6134b17aeb645ba20b3c7e
   - enabled: 1
-    path: Assets/Scenes/lucasScene1.unity
-    guid: 31f391cceec091341bf68169f46a26f9
+    path: Assets/Scenes/Final Scenes/Level1.unity
+    guid: 790bd3384bef44029b2973cc0cf02f92
   - enabled: 1
     path: Assets/Scenes/waveWin.unity
     guid: 5f1ce751004ab480f951c9002992c9c8

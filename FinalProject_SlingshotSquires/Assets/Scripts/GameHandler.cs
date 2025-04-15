@@ -60,14 +60,14 @@ public class GameHandler : MonoBehaviour
     public void RestartGame()
     {
         GameHandler_PauseMenu.GameisPaused = false;
-        SceneManager.LoadScene("charlieScene");
+        SceneManager.LoadScene("TitleScreen");
     }
 
     public void ReplayLastLevel()
     {
         GameHandler_PauseMenu.GameisPaused = false;
         waveComplete = false;
-        SceneManager.LoadScene("peterSlingScene");
+        SceneManager.LoadScene("Level1");
     }
 
     // Update is called once per frame
@@ -104,11 +104,11 @@ public class GameHandler : MonoBehaviour
     IEnumerator QuitAfter10()
     {
         waveComplete = false;
-        SceneManager.LoadScene("peterSlingScene");
+        SceneManager.LoadScene("Level1");
         Debug.Log("Starting countdown");
         yield return new WaitForSeconds(120f);
         Debug.Log("Ending countdown");
-        SceneManager.LoadScene("charlieScene");
+        SceneManager.LoadScene("TitleScreen");
     }
 
     public void loadCredits()
@@ -118,7 +118,7 @@ public class GameHandler : MonoBehaviour
 
     public void returnMain()
     {
-        SceneManager.LoadScene("charlieScene");
+        SceneManager.LoadScene("TitleScreen");
     }
 
     public void enterIntro()
@@ -128,7 +128,7 @@ public class GameHandler : MonoBehaviour
 
     public void enterTutorial()
     {
-        SceneManager.LoadScene("lucasScene1");
+        SceneManager.LoadScene("ShopScene");
     }
 
     public void nextText()
@@ -149,7 +149,7 @@ public class GameHandler : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("lucasScene1");
+            SceneManager.LoadScene("ShopScene");
         }
     }
 
@@ -159,7 +159,7 @@ public class GameHandler : MonoBehaviour
         {
             cropInventory.Add(Crop.Tomato());
             int tomatoCount = cropInventory.Count(crop => crop.cropName == "Tomato");
-            Debug.Log("Tomato Count: " + tomatoCount);
+            // Debug.Log("Tomato Count: " + tomatoCount);
         }
         else if (itemID == 2)
         {
@@ -178,7 +178,7 @@ public class GameHandler : MonoBehaviour
     public void subtractCoins(int amount)
     {
         coinCount = coinCount - amount;
-        Debug.Log("Coin Count: " + coinCount);
+        // Debug.Log("Coin Count: " + coinCount);
     }
 
     public int getCointAmount()
@@ -190,12 +190,12 @@ public class GameHandler : MonoBehaviour
     {
         if (levelCount == 0)
         {
-            SceneManager.LoadScene("peterSlingScene");
+            SceneManager.LoadScene("Level1");
             levelCount = levelCount + 1;
         }
         else
         {
-            SceneManager.LoadScene("peterSlingScene");
+            SceneManager.LoadScene("Level1");
         }
     }
     public void nextWasClicked()
