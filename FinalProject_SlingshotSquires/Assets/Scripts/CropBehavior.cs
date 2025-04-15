@@ -10,6 +10,7 @@ public class CropBehavior : MonoBehaviour
     // Start is called before the first frame update
     public Crop thisCrop;
     public Slider healthBar;
+    public AudioSource sellSound;
 
     public void Initialize(Crop crop)
     {

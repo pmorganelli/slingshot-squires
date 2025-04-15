@@ -121,23 +121,6 @@ public class GameHandler : MonoBehaviour
         SceneManager.LoadScene("charlieScene");
     }
 
-    public static void ProgressCrops()
-    {
-        for (int i = 0; i < cropInventory.Count; i++)
-        {
-            Crop crop = cropInventory[i];
-            crop.growthState += 1;
-
-            if (crop.growthState >= crop.totalGrowthStates)
-            {
-                coinCount += (int)crop.salePrice;
-                Debug.Log("Crop sold for: " + crop.salePrice);
-                cropInventory.RemoveAt(i);
-                i--;
-            }
-        }
-    }
-
     public void enterIntro()
     {
         SceneManager.LoadScene("Intro1");

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,9 @@ public class CropSpawner : MonoBehaviour
     public float cellHeight = 1.5f;
     [SerializeField]
     private List<PlantPrefabEntry> plantPrefabsList;
+
     public Dictionary<string, GameObject> cropPrefabs = new();
+    public AudioSource sellSound;
 
     [System.Serializable]
     public class PlantPrefabEntry
@@ -61,5 +64,33 @@ public class CropSpawner : MonoBehaviour
                     cb.Initialize(cropData);
             }
         }
+    }
+
+    public void ProgressCrops()
+    {
+        List<Crop> cropsToRemove = new List<Crop>();
+
+        foreach (Crop crop in GameHandler.cropInventory)
+        {
+            crop.growthState += 1;
+
+            if (crop.growthState >= crop.totalGrowthStates)
+            {
+                cropsToRemove.Add(crop);
+                StartCoroutine(playSellSound());
+            }
+        }
+
+        foreach (Crop crop in cropsToRemove)
+        {
+            GameHandler.cropInventory.Remove(crop);
+        }
+    }
+
+
+    private IEnumerator playSellSound()
+    {
+        sellSound.Play();
+        yield return new WaitForSeconds(sellSound.clip.length);
     }
 }
