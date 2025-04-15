@@ -33,6 +33,12 @@ public class GameHandler : MonoBehaviour
     public static int coinCount = 0;
     public static int waveCount = 0;
     public static bool lost = false;
+    public GameObject text1; 
+    public GameObject text2;
+    public GameObject text3; 
+    public int textCount = 0;
+
+
 
     public void RestartGame()
     {
@@ -64,7 +70,7 @@ public class GameHandler : MonoBehaviour
 
     public void PlayGame()
     {
-        StartCoroutine(QuitAfter10());
+        SceneManager.LoadScene("Intro1");
     }
 
     public void QuitGame()
@@ -109,4 +115,30 @@ public class GameHandler : MonoBehaviour
         }
     }
 
+    public void enterIntro()
+    {
+        SceneManager.LoadScene("Intro1");
+    }
+
+    public void enterTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
+    public void nextText() 
+    {
+        if(textCount == 0) {
+            text1.gameObject.SetActive(false);
+            text2.gameObject.SetActive(true);
+            text3.gameObject.SetActive(false);
+            textCount = textCount + 1;
+        } else if (textCount == 1) {
+            text1.gameObject.SetActive(false);
+            text2.gameObject.SetActive(false);
+            text3.gameObject.SetActive(true);
+            textCount = textCount + 1;
+        } else {
+            SceneManager.LoadScene("Tutorial");
+        }
+    }
 }
