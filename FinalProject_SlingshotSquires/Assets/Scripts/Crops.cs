@@ -1,7 +1,7 @@
 public class Crop
 {
     public string cropName;
-    public float salePrice;
+    public int salePrice;
 
     public int totalGrowthStates;
     public int growthState;
@@ -12,7 +12,7 @@ public class Crop
     public int totalHealth;
     public int currHealth;
 
-    public Crop(string name, float price, int totalGrowthStates, int state, int totalHealth, int currHealth)
+    public Crop(string name, int price, int totalGrowthStates, int state, int totalHealth, int currHealth)
     {
         this.cropName = name;
         this.salePrice = price;
@@ -25,7 +25,7 @@ public class Crop
     /* ADD A CONSTRUCTOR FOR ANY NEW CROP HERE */
     public static Crop Pumpkin()
     {
-        float price = 5.0f;
+        int price = 5;
         int growthStates = 5;
         int startingState = 0;
         int totalHealth = 100;
@@ -35,7 +35,7 @@ public class Crop
 
     public static Crop Tomato()
     {
-        float price = 5.0f;
+        int price = 5;
         int growthStates = 1;
         int startingState = 0;
         int totalHealth = 100;
@@ -44,7 +44,7 @@ public class Crop
     }
     public static Crop Carrot()
     {
-        float price = 5.0f;
+        int price = 5;
         int growthStates = 5;
         int startingState = 0;
         int totalHealth = 100;
@@ -53,7 +53,7 @@ public class Crop
     }
     public static Crop Lettuce()
     {
-        float price = 5.0f;
+        int price = 5;
         int growthStates = 5;
         int startingState = 0;
         int totalHealth = 100;
@@ -62,7 +62,7 @@ public class Crop
     }
     public static Crop Watermelon()
     {
-        float price = 5.0f;
+        int price = 5;
         int growthStates = 5;
         int startingState = 0;
         int totalHealth = 100;

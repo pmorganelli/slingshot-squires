@@ -76,6 +76,7 @@ public class CropSpawner : MonoBehaviour
 
             if (crop.growthState >= crop.totalGrowthStates)
             {
+                GameHandler.coinCount += crop.salePrice;
                 cropsToRemove.Add(crop);
                 StartCoroutine(playSellSound());
             }

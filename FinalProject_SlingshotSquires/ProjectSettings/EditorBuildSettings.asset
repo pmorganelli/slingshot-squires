@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Final Scenes/Credits.unity
-    guid: 4adec26dcf8b1412aa8a37c75bf3f0ae
-  - enabled: 1
     path: Assets/Scenes/Final Scenes/TitleScreen.unity
     guid: f053ca6c61c7045638a5659299cff970
+  - enabled: 1
+    path: Assets/Scenes/Final Scenes/Credits.unity
+    guid: 4adec26dcf8b1412aa8a37c75bf3f0ae
   - enabled: 1
     path: Assets/Scenes/Final Scenes/Intro1.unity
     guid: 77160d1e17d4749c0a84f5738e8d5a2a
