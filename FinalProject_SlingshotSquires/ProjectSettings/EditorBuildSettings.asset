@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final Scenes/waveWin.unity
     guid: 5f1ce751004ab480f951c9002992c9c8
+  - enabled: 0
+    path: Assets/Scenes/andriaScene.unity
+    guid: 26eabac0784a04dc39ba479ba1d9d17d
+  - enabled: 1
+    path: Assets/Scenes/andriaShopScene.unity
+    guid: 8110b09102c6649898056772b6e53f2c
   m_configObjects: {}

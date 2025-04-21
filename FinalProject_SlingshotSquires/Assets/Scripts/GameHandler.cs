@@ -186,6 +186,11 @@ public class GameHandler : MonoBehaviour
         return coinCount;
     }
 
+    public void backToShop()
+    {
+        SceneManager.LoadScene("andriaShopScene");
+    }
+
     public void nextLevel()
     {
         if (levelCount == 0)
@@ -195,6 +200,7 @@ public class GameHandler : MonoBehaviour
         }
         else
         {
+            //add more levels 
             SceneManager.LoadScene("Level1");
         }
     }

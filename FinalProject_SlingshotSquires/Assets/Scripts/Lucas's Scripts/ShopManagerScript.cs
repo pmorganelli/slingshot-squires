@@ -8,10 +8,30 @@ public class ShopManagerScript : MonoBehaviour
 {
     public int[,] shopItems = new int[5,5];
     public float coins;
+    public int itemNum;
     public Text CoinsTxt;
     GameHandler myGameHandler;
     public GameObject coinWarning; 
     public GameObject coinWarningBG;
+
+    public GameObject TomatoImage;
+    public GameObject CarrotImage;
+    public GameObject PumpkinImage;
+    public GameObject WatermelonImage;
+    public GameObject TomatoTitle;
+    public GameObject CarrotTitle;
+    public GameObject PumpkinTitle;
+    public GameObject WatermelonTitle;
+    public GameObject TomatoDescription;
+    public GameObject CarrotDescription;
+    public GameObject PumpkinDescription;
+    public GameObject WatermelonDescription;
+    public GameObject InfoPanel;
+    public GameObject ConfirmButton;
+    public GameObject backButton;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +42,22 @@ public class ShopManagerScript : MonoBehaviour
 
         coinWarning.gameObject.SetActive(false);
         coinWarningBG.gameObject.SetActive(false);
+        TomatoImage.gameObject.SetActive(false);
+        TomatoDescription.gameObject.SetActive(false);
+        TomatoTitle.gameObject.SetActive(false);
+        CarrotImage.gameObject.SetActive(false);
+        CarrotDescription.gameObject.SetActive(false);
+        CarrotTitle.gameObject.SetActive(false);
+        PumpkinImage.gameObject.SetActive(false);
+        PumpkinDescription.gameObject.SetActive(false);
+        PumpkinTitle.gameObject.SetActive(false);
+        WatermelonImage.gameObject.SetActive(false);
+        WatermelonDescription.gameObject.SetActive(false);
+        WatermelonTitle.gameObject.SetActive(false);
+        InfoPanel.gameObject.SetActive(false);
+        ConfirmButton.gameObject.SetActive(false);
+        backButton.gameObject.SetActive(false);
+
 
         // IDs
         shopItems[1, 1] = 1;
@@ -34,12 +70,6 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[2, 2] = 20;
         shopItems[2, 3] = 30;
         shopItems[2, 4] = 40;
-
-        // Quantity
-        shopItems[3, 1] = 0;
-        shopItems[3, 2] = 0;
-        shopItems[3, 3] = 0;
-        shopItems[3, 4] = 0;
     }
 
     // Update is called once per frame
@@ -51,15 +81,75 @@ public class ShopManagerScript : MonoBehaviour
         {
             coinWarning.gameObject.SetActive(false);
             coinWarningBG.gameObject.SetActive(false);
-            coins -= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID];
-            shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID]++;
-            myGameHandler.AddItem(ButtonRef.GetComponent<ButtonInfo>().ItemID);
-            myGameHandler.subtractCoins(shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID]);
-            CoinsTxt.text = "Coins:" + coins.ToString();
-            ButtonRef.GetComponent<ButtonInfo>().QuantityTxt.text = shopItems[3, ButtonRef.GetComponent<ButtonInfo>().ItemID].ToString();
+            itemNum = ButtonRef.GetComponent<ButtonInfo>().ItemID;
+            // confirm first 
+            if(ButtonRef.GetComponent<ButtonInfo>().ItemID == 1) {
+               //tomato
+                TomatoImage.gameObject.SetActive(true);
+                TomatoDescription.gameObject.SetActive(true);
+                TomatoTitle.gameObject.SetActive(true);
+                InfoPanel.gameObject.SetActive(true);
+                ConfirmButton.gameObject.SetActive(true);
+                backButton.gameObject.SetActive(true);
+            } else if (ButtonRef.GetComponent<ButtonInfo>().ItemID == 2) {
+                //carrot
+                CarrotImage.gameObject.SetActive(true);
+                CarrotDescription.gameObject.SetActive(true);
+                CarrotTitle.gameObject.SetActive(true);
+                InfoPanel.gameObject.SetActive(true);
+                ConfirmButton.gameObject.SetActive(true);
+                backButton.gameObject.SetActive(true);
+            } else if (ButtonRef.GetComponent<ButtonInfo>().ItemID == 3) {
+                //pumpkin
+                PumpkinImage.gameObject.SetActive(true);
+                PumpkinDescription.gameObject.SetActive(true);
+                PumpkinTitle.gameObject.SetActive(true);
+                InfoPanel.gameObject.SetActive(true);
+                ConfirmButton.gameObject.SetActive(true);
+                backButton.gameObject.SetActive(true);
+            } else {
+                //watermelon
+                WatermelonImage.gameObject.SetActive(true);
+                WatermelonDescription.gameObject.SetActive(true);
+                WatermelonTitle.gameObject.SetActive(true);
+                InfoPanel.gameObject.SetActive(true);
+                ConfirmButton.gameObject.SetActive(true);
+                backButton.gameObject.SetActive(true);
+            }       
         } else {
             coinWarning.gameObject.SetActive(true);
             coinWarningBG.gameObject.SetActive(true);
         }
+    }
+
+    public void ConfirmPurchase() 
+    {
+        coins -= shopItems[2, itemNum];
+        shopItems[3, itemNum]++;
+        myGameHandler.AddItem(itemNum);
+        myGameHandler.subtractCoins(shopItems[2, itemNum]);
+        CoinsTxt.text = "Coins:" + coins.ToString();         
+    }
+
+    public void back()
+    {
+        coinWarning.gameObject.SetActive(false);
+        coinWarningBG.gameObject.SetActive(false);
+        TomatoImage.gameObject.SetActive(false);
+        TomatoDescription.gameObject.SetActive(false);
+        TomatoTitle.gameObject.SetActive(false);
+        CarrotImage.gameObject.SetActive(false);
+        CarrotDescription.gameObject.SetActive(false);
+        CarrotTitle.gameObject.SetActive(false);
+        PumpkinImage.gameObject.SetActive(false);
+        PumpkinDescription.gameObject.SetActive(false);
+        PumpkinTitle.gameObject.SetActive(false);
+        WatermelonImage.gameObject.SetActive(false);
+        WatermelonDescription.gameObject.SetActive(false);
+        WatermelonTitle.gameObject.SetActive(false);
+        InfoPanel.gameObject.SetActive(false);
+        ConfirmButton.gameObject.SetActive(false);
+        backButton.gameObject.SetActive(false);
+
     }
 }
