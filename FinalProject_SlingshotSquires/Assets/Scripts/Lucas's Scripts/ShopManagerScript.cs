@@ -124,11 +124,16 @@ public class ShopManagerScript : MonoBehaviour
 
     public void ConfirmPurchase() 
     {
-        coins -= shopItems[2, itemNum];
-        shopItems[3, itemNum]++;
-        myGameHandler.AddItem(itemNum);
-        myGameHandler.subtractCoins(shopItems[2, itemNum]);
-        CoinsTxt.text = "Coins:" + coins.ToString();         
+        if (coins >= shopItems[2, itemNum]) {
+            coins -= shopItems[2, itemNum];
+            shopItems[3, itemNum]++;
+            myGameHandler.AddItem(itemNum);
+            myGameHandler.subtractCoins(shopItems[2, itemNum]);
+            CoinsTxt.text = "Coins:" + coins.ToString();
+        } else {
+            coinWarning.gameObject.SetActive(true);
+            coinWarningBG.gameObject.SetActive(true);
+        }      
     }
 
     public void back()
