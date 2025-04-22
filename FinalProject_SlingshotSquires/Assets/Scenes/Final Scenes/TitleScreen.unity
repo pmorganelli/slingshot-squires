@@ -666,6 +666,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 192
       objectReference: {fileID: 0}
+    - target: {fileID: 852731720321037520, guid: 5f750600ad940ad48aa03f761b753ec9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 852731720321037520, guid: 5f750600ad940ad48aa03f761b753ec9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 170
+      objectReference: {fileID: 0}
     - target: {fileID: 1108529422900324115, guid: 5f750600ad940ad48aa03f761b753ec9, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
       value: 1
@@ -733,6 +741,14 @@ PrefabInstance:
     - target: {fileID: 2920905027975870293, guid: 5f750600ad940ad48aa03f761b753ec9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120660140702177282, guid: 5f750600ad940ad48aa03f761b753ec9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120660140702177282, guid: 5f750600ad940ad48aa03f761b753ec9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 3452357222460129746, guid: 5f750600ad940ad48aa03f761b753ec9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -952,11 +968,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: eba47472942fc044682a310d603715c8, type: 3}
     - target: {fileID: 7258946702218234440, guid: 5f750600ad940ad48aa03f761b753ec9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 242.371
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 7258946702218234440, guid: 5f750600ad940ad48aa03f761b753ec9, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 170
+      value: 185
       objectReference: {fileID: 0}
     - target: {fileID: 7258946702218234440, guid: 5f750600ad940ad48aa03f761b753ec9, type: 3}
       propertyPath: m_AnchoredPosition.x
