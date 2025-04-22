@@ -1701,7 +1701,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 765761606}
         m_TargetAssemblyTypeName: GameHandler, Assembly-CSharp
-        m_MethodName: backToShop
+        m_MethodName: startLevelOne
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1984,8 +1984,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1196401299}
   m_HandleRect: {fileID: 1196401298}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.99875164
+  m_Value: 0.000030517578
+  m_Size: 0.9987516
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

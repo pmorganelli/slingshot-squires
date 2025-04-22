@@ -191,6 +191,11 @@ public class GameHandler : MonoBehaviour
         SceneManager.LoadScene("andriaShopScene");
     }
 
+    public void startLevelOne()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+
     public void nextLevel()
     {
         if (levelCount == 0)
