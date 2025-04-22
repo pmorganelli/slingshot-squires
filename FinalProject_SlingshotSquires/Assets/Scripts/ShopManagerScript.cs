@@ -38,7 +38,7 @@ public class ShopManagerScript : MonoBehaviour
     {
         myGameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
         coins = myGameHandler.getCointAmount();
-        CoinsTxt.text = "Coins:" + coins.ToString();
+        CoinsTxt.text = "Coins: " + coins.ToString();
 
         coinWarning.gameObject.SetActive(false);
         coinWarningBG.gameObject.SetActive(false);
