@@ -25,7 +25,7 @@ public class GameHandler : MonoBehaviour
         {"default", new ballStat(50f, 1.75f)}, {"fireball", new ballStat(75f, 2f)}
     };
     // Array containing all crops planted
-    public static List<Crop> cropInventory = new List<Crop> { };
+    public static List<Crop> cropInventory = new List<Crop> { Crop.Tomato() };
 
     public static float SLING_reload_time = 1f;
     public static float SLING_force_multiplier = 1.25f;
@@ -48,6 +48,11 @@ public class GameHandler : MonoBehaviour
 
     public void RestartGame()
     {
+        coinCount = 50;
+        lost = false;
+        waveComplete = false;
+        levelCount = 0;
+        cropInventory.Clear();
         GameHandler_PauseMenu.GameisPaused = false;
         SceneManager.LoadScene("TitleScreen");
     }
@@ -71,7 +76,8 @@ public class GameHandler : MonoBehaviour
 
         if (lost)
         {
-            Debug.Log("LOSE GAME HERE");
+            lost = false;
+            SceneManager.LoadScene("waveLose");
         }
     }
     IEnumerator WaitFiveSeconds()
@@ -142,7 +148,7 @@ public class GameHandler : MonoBehaviour
         }
     }
 
-    public void AddItem(int itemID)
+    public static void AddItem(int itemID)
     {
         if (itemID == 1)
         {
@@ -164,7 +170,7 @@ public class GameHandler : MonoBehaviour
         }
     }
 
-    public void subtractCoins(int amount)
+    public static void subtractCoins(int amount)
     {
         coinCount = coinCount - amount;
         // Debug.Log("Coin Count: " + coinCount);

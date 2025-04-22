@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CropSpawner : MonoBehaviour
 {
+    public WaveManager wave;
     public int gridWidth = 5;
     public int gridHeight = 4;
     public float cellWidth = 1.5f;
@@ -29,6 +30,9 @@ public class CropSpawner : MonoBehaviour
             cropPrefabs[entry.plantType] = entry.prefab;
         }
         LoadCrops();
+        wave.SpawnNewEnemies();
+        wave.CountTotalEnemies();
+        wave.UpdateUI();
     }
     public void LoadCrops()
     {

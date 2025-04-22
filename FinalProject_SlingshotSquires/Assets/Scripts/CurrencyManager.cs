@@ -21,7 +21,7 @@ public class CurrencyManager : MonoBehaviour
     {
         if (currencyText)
         {
-            currencyText.text = $"Valor Coins: {GameHandler.coinCount}";
+            currencyText.text = $"{GameHandler.coinCount}";
 
         }
     }

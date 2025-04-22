@@ -11,12 +11,12 @@ public class TutorialManager : MonoBehaviour
         {
             gameObject.SetActive(true);
         }
+
         else
         {
             gameObject.SetActive(false);
         }
     }
-
     public GameObject nextButton;
     public GameObject waveButton;
     public GameObject textA;
@@ -43,6 +43,7 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
+            nextButton.SetActive(false);
             textC.gameObject.SetActive(false);
             textD.gameObject.SetActive(true);
             waveButton.gameObject.SetActive(true);

@@ -12,13 +12,15 @@ public class WaveManager : MonoBehaviour
     private int enemiesKilled;
     public CropSpawner spawner;
 
+    public Transform SpawnPoint;
+    public GameObject EnemyFab;
+
     void Start()
     {
-        CountTotalEnemies();
-        UpdateUI();
+
     }
 
-    void CountTotalEnemies()
+    public void CountTotalEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         totalEnemies = enemies.Length;
@@ -30,11 +32,11 @@ public class WaveManager : MonoBehaviour
         UpdateUI();
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         float progress = totalEnemies > 0 ? (float)enemiesKilled / totalEnemies : 0;
         waveSlider.value = progress;
-        waveText.text = $"{enemiesKilled} / {totalEnemies} Enemies Killed";
+        waveText.text = $"{enemiesKilled}/{totalEnemies} Enemies Killed";
         if (waveSlider.value == 1)
         {
             StartCoroutine(completeWave());
@@ -49,5 +51,18 @@ public class WaveManager : MonoBehaviour
         yield return new WaitForSeconds(1f); // Give player time to see their crops grow
         GameHandler.levelCount++;
         GameHandler.waveComplete = true; // go next wave.
+    }
+
+    public void SpawnNewEnemies()
+    {
+        int enemy_ct = (2 * GameHandler.levelCount) + 3;
+
+        for (int i = 0; i < enemy_ct; i++)
+        {
+            Debug.Log("SPAWNING" + i);
+            Vector3 spawnPt = new Vector3(SpawnPoint.position.x, (SpawnPoint.position.y + (float)Random.Range(-5.5f, 5.5f)), 0);
+            GameObject newEnemy = Instantiate(EnemyFab, SpawnPoint);
+            newEnemy.transform.position = spawnPt;
+        }
     }
 }
