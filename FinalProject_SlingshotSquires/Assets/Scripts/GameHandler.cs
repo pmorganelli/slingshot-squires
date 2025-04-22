@@ -33,6 +33,7 @@ public class GameHandler : MonoBehaviour
     public static bool waveComplete = false;
     public static int coinCount = 50;
     public static bool lost = false;
+    
     public GameObject text1;
     public GameObject text2;
     public GameObject text3;
@@ -163,6 +164,9 @@ public class GameHandler : MonoBehaviour
             cropInventory.Add(Crop.Watermelon());
         }
     }
+
+
+
 
     public void subtractCoins(int amount)
     {
