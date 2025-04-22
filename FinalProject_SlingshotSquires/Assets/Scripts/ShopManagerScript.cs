@@ -129,7 +129,7 @@ public class ShopManagerScript : MonoBehaviour
             shopItems[3, itemNum]++;
             myGameHandler.AddItem(itemNum);
             myGameHandler.subtractCoins(shopItems[2, itemNum]);
-            CoinsTxt.text = "Coins:" + coins.ToString();
+            CoinsTxt.text = "Coins: " + coins.ToString();
         } else {
             coinWarning.gameObject.SetActive(true);
             coinWarningBG.gameObject.SetActive(true);
