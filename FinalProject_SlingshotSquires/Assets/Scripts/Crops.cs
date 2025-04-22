@@ -25,8 +25,8 @@ public class Crop
     /* ADD A CONSTRUCTOR FOR ANY NEW CROP HERE */
     public static Crop Pumpkin()
     {
-        int price = 5;
-        int growthStates = 5;
+        int price = 50;
+        int growthStates = 4;
         int startingState = 0;
         int totalHealth = 100;
         int currHealth = 100;
@@ -35,7 +35,7 @@ public class Crop
 
     public static Crop Tomato()
     {
-        int price = 5;
+        int price = 15;
         int growthStates = 1;
         int startingState = 0;
         int totalHealth = 100;
@@ -44,8 +44,8 @@ public class Crop
     }
     public static Crop Carrot()
     {
-        int price = 5;
-        int growthStates = 5;
+        int price = 30;
+        int growthStates = 2;
         int startingState = 0;
         int totalHealth = 100;
         int currHealth = 100;
@@ -62,7 +62,7 @@ public class Crop
     }
     public static Crop Watermelon()
     {
-        int price = 5;
+        int price = 80;
         int growthStates = 5;
         int startingState = 0;
         int totalHealth = 100;

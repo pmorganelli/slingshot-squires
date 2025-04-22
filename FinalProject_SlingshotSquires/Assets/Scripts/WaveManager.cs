@@ -47,7 +47,7 @@ public class WaveManager : MonoBehaviour
         spawner.ProgressCrops();
         spawner.LoadCrops(); // Load updated crops
         yield return new WaitForSeconds(1f); // Give player time to see their crops grow
-        GameHandler.waveCount++;
+        GameHandler.levelCount++;
         GameHandler.waveComplete = true; // go next wave.
     }
 }

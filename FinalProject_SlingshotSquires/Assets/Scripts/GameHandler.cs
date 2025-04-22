@@ -26,23 +26,12 @@ public class GameHandler : MonoBehaviour
     };
     // Array containing all crops planted
     public static List<Crop> cropInventory = new List<Crop> { };
-    // 
-
-    public GameObject nextButton;
-    public GameObject waveButton;
-    public GameObject textA;
-    public GameObject textB;
-    public GameObject textC;
-    public GameObject textD;
-    public GameObject tutBG;
-    public int textNum = 0;
 
     public static float SLING_reload_time = 1f;
     public static float SLING_force_multiplier = 1.25f;
     // Start is called before the first frame update
     public static bool waveComplete = false;
     public static int coinCount = 50;
-    public static int waveCount = 0;
     public static bool lost = false;
     public GameObject text1;
     public GameObject text2;
@@ -191,52 +180,34 @@ public class GameHandler : MonoBehaviour
         SceneManager.LoadScene("andriaShopScene");
     }
 
-    public void startLevelOne()
+    public void startLevel()
     {
-        SceneManager.LoadScene("Level1");
+        if (cropInventory.Count == 0)
+        {
+            // TODO: popup that you must have more than 0 seeds bought to start the round
+            Debug.Log("0 CROPS CANNOT PROCEED");
+            return;
+        }
+        else
+        {
+            nextLevel();
+        }
     }
 
     public void nextLevel()
     {
-        if (levelCount == 0)
+        Debug.Log("Entering");
+        if (cropInventory.Count == 0)
+        {
+            // TODO: Popup about 0 seeds-- they need to buy more.
+            Debug.Log("Going To Shop");
+            SceneManager.LoadScene("ShopScene");
+        }
+        else
         {
             SceneManager.LoadScene("Level1");
             levelCount = levelCount + 1;
+            Debug.Log("NEXT LEVEL: " + levelCount);
         }
-        else
-        {
-            //add more levels 
-            SceneManager.LoadScene("Level1");
-        }
-    }
-    public void nextWasClicked()
-    {
-        if (textNum == 0)
-        {
-            textA.gameObject.SetActive(false);
-            textB.gameObject.SetActive(true);
-            textNum = textNum + 1;
-        }
-        else if (textNum == 1)
-        {
-            textB.gameObject.SetActive(false);
-            textC.gameObject.SetActive(true);
-            textNum = textNum + 1;
-        }
-        else
-        {
-            textC.gameObject.SetActive(false);
-            textD.gameObject.SetActive(true);
-            waveButton.gameObject.SetActive(true);
-        }
-    }
-
-    public void waveWasClicked()
-    {
-        textD.gameObject.SetActive(false);
-        nextButton.gameObject.SetActive(false);
-        waveButton.gameObject.SetActive(false);
-        tutBG.gameObject.SetActive(false);
-        waveStarted = true;
     }
 }
