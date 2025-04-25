@@ -15,6 +15,9 @@ public class ShopManagerScript : MonoBehaviour
     public GameObject insuff_fund_warnings;
     public GameObject panel;
 
+    public GameObject tButton;
+    public GameObject wButton;
+
 
 
 
@@ -54,21 +57,23 @@ public class ShopManagerScript : MonoBehaviour
     {
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
-        if (GameHandler.coinCount >= shopItems[2, ButtonRef.GetComponent<ButtonInfo>().ItemID])
-        {
-            Debug.Log("here");
-            insuff_fund_warnings.SetActive(false);
-            itemNum = ButtonRef.GetComponent<ButtonInfo>().ItemID;
-            // confirm first 
-            windows[itemNum].SetActive(true);
-            panel.SetActive(true);
-            buy_back_buttons.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("insuif");
-            insuff_fund_warnings.SetActive(true);
-        }
+        Debug.Log("here");
+        insuff_fund_warnings.SetActive(false);
+        itemNum = ButtonRef.GetComponent<ButtonInfo>().ItemID;
+
+
+        Button btnComponentT = tButton.GetComponent<Button>();
+        Button btnComponentW = wButton.GetComponent<Button>();
+
+        btnComponentT.enabled = false;
+        btnComponentW.enabled = false;
+
+
+        // confirm first 
+        windows[itemNum].SetActive(true);
+        panel.SetActive(true);
+        buy_back_buttons.SetActive(true);
+
     }
 
     public void ConfirmPurchase()
@@ -102,5 +107,10 @@ public class ShopManagerScript : MonoBehaviour
         windows[itemNum].SetActive(false);
         panel.SetActive(false);
         buy_back_buttons.SetActive(false);
+        Button btnComponentT = tButton.GetComponent<Button>();
+        Button btnComponentW = wButton.GetComponent<Button>();
+
+        btnComponentT.enabled = true;
+        btnComponentW.enabled = true;
     }
 }
