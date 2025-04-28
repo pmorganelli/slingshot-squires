@@ -1455,6 +1455,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3299434645145404044, guid: 3033f5ed8c1d3fd4fb3eff7bc818e5b9, type: 3}
   m_PrefabInstance: {fileID: 76275880}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &427564557 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 348912951133700340, guid: fa2210c91d552441b9782f63905ffa37, type: 3}
+  m_PrefabInstance: {fileID: 1038647520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &427564563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427564557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e3d64efe0041743b6a400f7d9beea6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory:
+    slots:
+    - type: 1
+      count: 0
+      maxAllowed: 99
+      icon: {fileID: -1878058829, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
+    - type: 2
+      count: 0
+      maxAllowed: 99
+      icon: {fileID: 1641233596, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
+    - type: 3
+      count: 0
+      maxAllowed: 0
+      icon: {fileID: 2028099295, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
+    - type: 4
+      count: 0
+      maxAllowed: 0
+      icon: {fileID: -1865638681, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
 --- !u!1 &428990007 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7135595582750654560, guid: f7d8ccec376e34a91b9bf20a7efbfc1f, type: 3}
@@ -2559,7 +2594,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1196401299}
   m_HandleRect: {fileID: 1196401298}
   m_Direction: 0
-  m_Value: 0
+  m_Value: -0.00003051944
   m_Size: 0.99875164
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3338,8 +3373,22 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 348912951133700340, guid: fa2210c91d552441b9782f63905ffa37, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 427564563}
   m_SourcePrefab: {fileID: 100100000, guid: fa2210c91d552441b9782f63905ffa37, type: 3}
+--- !u!114 &1055512493 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3158941280187122908, guid: 6de47c4fe0fa9e749963797862108058, type: 3}
+  m_PrefabInstance: {fileID: 7805217860142276697}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc3a0ed50df5ea4f8ba82b5e075347a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1069924573
 GameObject:
   m_ObjectHideFlags: 0
@@ -6350,7 +6399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507d084b60cf8324087f89acd757a0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNum: 0
+  itemNum: 4
   CoinsTxt: {fileID: 1436402745}
   windows:
   - {fileID: 1172866492}
@@ -6362,6 +6411,14 @@ MonoBehaviour:
   panel: {fileID: 1035675072}
   tButton: {fileID: 386792956}
   wButton: {fileID: 10884859}
+  itemTypes: 01000000020000000300000004000000
+  itemIcons:
+  - {fileID: -1878058829, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
+  - {fileID: 1641233596, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
+  - {fileID: 2028099295, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
+  - {fileID: -1865638681, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
+  player: {fileID: 427564563}
+  inventoryUI: {fileID: 1055512493}
 --- !u!1 &1781239686
 GameObject:
   m_ObjectHideFlags: 0
@@ -7267,12 +7324,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2932331120883289320, guid: 6de47c4fe0fa9e749963797862108058, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3158941280187122908, guid: 6de47c4fe0fa9e749963797862108058, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 427564563}
     - target: {fileID: 3158941280187122908, guid: 6de47c4fe0fa9e749963797862108058, type: 3}
       propertyPath: slots.Array.size
       value: 3

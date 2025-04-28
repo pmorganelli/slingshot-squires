@@ -18,6 +18,11 @@ public class ShopManagerScript : MonoBehaviour
     public GameObject tButton;
     public GameObject wButton;
 
+    public CollectableType[] itemTypes;   
+    public Sprite[]          itemIcons;   
+    public Player            player;     
+    public Inventory_UI      inventoryUI; 
+
 
 
 
@@ -79,24 +84,25 @@ public class ShopManagerScript : MonoBehaviour
     public void ConfirmPurchase()
     {
         int price = shopItems[2, itemNum];
-        Debug.Log("Called");
+
         if (GameHandler.coinCount >= price)
         {
-            Debug.Log("In loop");
-            shopItems[3, itemNum]++;
-
-            Debug.Log("Price: " + price);
-
-            Debug.Log("Ct before: " + GameHandler.coinCount);
+            // Take money
             GameHandler.subtractCoins(price);
-            GameHandler.AddItem(itemNum);
-            Debug.Log("Ct after: " + GameHandler.coinCount);
-            CoinsTxt.text = GameHandler.coinCount.ToString();
-        }
 
+            // Add to inventory
+            player.inventory.Add(itemTypes[itemNum], itemIcons[itemNum]);
+
+            // Refresh inventory popup if it is open
+            if (inventoryUI.inventoryPanel.activeSelf)
+                inventoryUI.Refresh();
+
+            // UI bookkeeping
+            CoinsTxt.text = GameHandler.coinCount.ToString();
+            shopItems[3, itemNum]++; 
+        }
         else
         {
-            Debug.Log("Insuff funds");
             insuff_fund_warnings.SetActive(true);
         }
     }

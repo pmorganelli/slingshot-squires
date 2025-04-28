@@ -53,6 +53,8 @@ public class Inventory_UI : MonoBehaviour
         }
     }
 
+    public void Refresh() => Setup();
+    
     void Setup()
     {
         if(slots.Count == player.inventory.slots.Count)
