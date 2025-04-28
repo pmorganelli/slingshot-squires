@@ -104,6 +104,7 @@ MonoBehaviour:
   enemyAttackSpeed: 1
   enemyAttackDamage: 10
   valorCoinValue: 5
+  poofPrefab: {fileID: 2896242639616193371, guid: 02d1b32a95ba14f928dec940088469cf, type: 3}
 --- !u!82 &1001386944017536367
 AudioSource:
   m_ObjectHideFlags: 0

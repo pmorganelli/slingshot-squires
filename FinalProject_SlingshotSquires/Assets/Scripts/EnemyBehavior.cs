@@ -16,6 +16,7 @@ public class EnemyBehavior : MonoBehaviour
     public float enemyAttackSpeed = 1f;
     public int enemyAttackDamage = 10;
     public int valorCoinValue = 5;
+    public GameObject poofPrefab;
 
     private float damageTimer = 0f;
     private CurrencyManager currencyManager;
@@ -184,6 +185,11 @@ public class EnemyBehavior : MonoBehaviour
         if (currencyManager != null)
         {
             currencyManager.AddValorCoins(valorCoinValue);
+        }
+        if (poofPrefab != null)
+        {
+            GameObject poofInstance = Instantiate(poofPrefab, transform.position, Quaternion.identity);
+            Destroy(poofInstance, 1f);
         }
 
         ReleaseCropSlot();
