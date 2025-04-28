@@ -186,6 +186,16 @@ public class GameHandler : MonoBehaviour
         SceneManager.LoadScene("andriaShopScene");
     }
 
+    public void Intro1To2()
+    {
+        SceneManager.LoadScene("Intro2");
+    }
+
+    public void Intro2To3()
+    {
+        SceneManager.LoadScene("Intro3");
+    }
+
     public void startLevel()
     {
         if (cropInventory.Count == 0)
