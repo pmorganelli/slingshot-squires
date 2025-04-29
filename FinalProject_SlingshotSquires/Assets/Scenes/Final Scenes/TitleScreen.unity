@@ -944,7 +944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5910085516313034259, guid: 5f750600ad940ad48aa03f761b753ec9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 342
+      value: 290
       objectReference: {fileID: 0}
     - target: {fileID: 5914109613541276885, guid: 5f750600ad940ad48aa03f761b753ec9, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
