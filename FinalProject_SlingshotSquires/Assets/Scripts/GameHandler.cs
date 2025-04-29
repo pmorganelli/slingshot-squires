@@ -183,7 +183,7 @@ public class GameHandler : MonoBehaviour
 
     public void backToShop()
     {
-        SceneManager.LoadScene("andriaShopScene");
+        SceneManager.LoadScene("ShopScene");
     }
 
     public void Intro1To2()
