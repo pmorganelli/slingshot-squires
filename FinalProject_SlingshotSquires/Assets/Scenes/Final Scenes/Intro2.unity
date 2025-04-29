@@ -599,7 +599,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8229940433088236784, guid: 3033f5ed8c1d3fd4fb3eff7bc818e5b9, type: 3}
         m_TargetAssemblyTypeName: GameHandler, Assembly-CSharp
         m_MethodName: enterTutorial
         m_Mode: 1

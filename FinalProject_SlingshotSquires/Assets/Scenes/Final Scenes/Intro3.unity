@@ -779,7 +779,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8229940433088236784, guid: 3033f5ed8c1d3fd4fb3eff7bc818e5b9, type: 3}
         m_TargetAssemblyTypeName: GameHandler, Assembly-CSharp
-        m_MethodName: Intro2To3
+        m_MethodName: nextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1273,8 +1273,8 @@ RectTransform:
   - {fileID: 2106881667}
   - {fileID: 607250057}
   - {fileID: 1533520427}
-  - {fileID: 1970029983}
   - {fileID: 995176438}
+  - {fileID: 1970029983}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8229940433088236784, guid: 3033f5ed8c1d3fd4fb3eff7bc818e5b9, type: 3}
         m_TargetAssemblyTypeName: GameHandler, Assembly-CSharp
         m_MethodName: enterTutorial
         m_Mode: 1
