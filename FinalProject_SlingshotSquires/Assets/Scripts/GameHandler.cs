@@ -25,7 +25,7 @@ public class GameHandler : MonoBehaviour
         {"default", new ballStat(50f, 1.75f)}, {"fireball", new ballStat(75f, 2f)}
     };
     // Array containing all crops planted
-    public static List<Crop> cropInventory = new List<Crop> { Crop.Tomato() };
+    public static List<Crop> cropInventory = new List<Crop> { };
 
     public static float SLING_reload_time = 1f;
     public static float SLING_force_multiplier = 1.25f;
@@ -150,17 +150,17 @@ public class GameHandler : MonoBehaviour
 
     public static void AddItem(int itemID)
     {
-        if (itemID == 1)
+        if (itemID == 0)
         {
             cropInventory.Add(Crop.Tomato());
             int tomatoCount = cropInventory.Count(crop => crop.cropName == "Tomato");
             // Debug.Log("Tomato Count: " + tomatoCount);
         }
-        else if (itemID == 2)
+        else if (itemID == 1)
         {
             cropInventory.Add(Crop.Carrot());
         }
-        else if (itemID == 3)
+        else if (itemID == 2)
         {
             cropInventory.Add(Crop.Pumpkin());
         }
@@ -222,7 +222,6 @@ public class GameHandler : MonoBehaviour
         else
         {
             SceneManager.LoadScene("Level1");
-            levelCount = levelCount + 1;
             Debug.Log("NEXT LEVEL: " + levelCount);
         }
     }

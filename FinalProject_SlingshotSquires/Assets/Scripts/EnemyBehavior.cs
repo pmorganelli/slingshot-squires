@@ -14,7 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     public float currHealth = 100f;
     public float enemySpeed = 1f;
     public float enemyAttackSpeed = 1f;
-    public int enemyAttackDamage = 10;
+    public int enemyAttackDamage = 34;
     public int valorCoinValue = 5;
     public GameObject poofPrefab;
 

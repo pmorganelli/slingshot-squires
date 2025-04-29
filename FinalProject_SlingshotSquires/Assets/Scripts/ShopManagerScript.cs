@@ -18,10 +18,10 @@ public class ShopManagerScript : MonoBehaviour
     public GameObject tButton;
     public GameObject wButton;
 
-    public CollectableType[] itemTypes;   
-    public Sprite[]          itemIcons;   
-    public Player            player;     
-    public Inventory_UI      inventoryUI; 
+    public CollectableType[] itemTypes;
+    public Sprite[] itemIcons;
+    public Player player;
+    public Inventory_UI inventoryUI;
 
 
 
@@ -91,7 +91,10 @@ public class ShopManagerScript : MonoBehaviour
             GameHandler.subtractCoins(price);
 
             // Add to inventory
+            Debug.Log("ADDING: " + itemNum);
             player.inventory.Add(itemTypes[itemNum], itemIcons[itemNum]);
+            GameHandler.AddItem(itemNum);
+            Debug.Log(GameHandler.cropInventory[0].cropName);
 
             // Refresh inventory popup if it is open
             if (inventoryUI.inventoryPanel.activeSelf)
@@ -99,7 +102,7 @@ public class ShopManagerScript : MonoBehaviour
 
             // UI bookkeeping
             CoinsTxt.text = GameHandler.coinCount.ToString();
-            shopItems[3, itemNum]++; 
+            shopItems[3, itemNum]++;
         }
         else
         {

@@ -518,9 +518,9 @@ MonoBehaviour:
   - {fileID: 1505702664, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   - {fileID: -677198574, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   - {fileID: -1286018710, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
-  - {fileID: -1421842069, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   - {fileID: 329886610, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   healthBar: {fileID: 1153917908780461673}
+  sellSound: {fileID: 0}
 --- !u!114 &4139363745438222854
 MonoBehaviour:
   m_ObjectHideFlags: 0

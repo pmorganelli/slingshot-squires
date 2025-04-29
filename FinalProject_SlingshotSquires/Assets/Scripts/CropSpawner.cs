@@ -73,13 +73,15 @@ public class CropSpawner : MonoBehaviour
     public void ProgressCrops()
     {
         List<Crop> cropsToRemove = new List<Crop>();
-
+        int ctr = 0;
         foreach (Crop crop in GameHandler.cropInventory)
         {
+            ctr++;
             crop.growthState += 1;
 
             if (crop.growthState >= crop.totalGrowthStates)
             {
+                Debug.Log("SOLD " + ctr);
                 GameHandler.coinCount += crop.salePrice;
                 cropsToRemove.Add(crop);
                 StartCoroutine(playSellSound());

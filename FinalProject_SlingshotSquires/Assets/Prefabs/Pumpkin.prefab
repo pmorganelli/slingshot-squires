@@ -131,11 +131,11 @@ MonoBehaviour:
   cropRenderer: {fileID: 2335291985988256371}
   growthStages:
   - {fileID: -764942330, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
-  - {fileID: -747243434, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   - {fileID: -1252224553, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   - {fileID: 1927638699, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   - {fileID: 537696207, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   healthBar: {fileID: 8968979570491495305}
+  sellSound: {fileID: 0}
 --- !u!114 &5835724875884431908
 MonoBehaviour:
   m_ObjectHideFlags: 0

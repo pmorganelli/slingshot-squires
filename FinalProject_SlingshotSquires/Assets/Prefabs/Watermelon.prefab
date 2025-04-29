@@ -280,10 +280,11 @@ MonoBehaviour:
   growthStages:
   - {fileID: 1542435570, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   - {fileID: 1198617346, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
-  - {fileID: -311451428, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
+  - {fileID: 616645791, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   - {fileID: -491009930, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   - {fileID: 31956622, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   healthBar: {fileID: 3880766820665213920}
+  sellSound: {fileID: 0}
 --- !u!114 &6052869057857952599
 MonoBehaviour:
   m_ObjectHideFlags: 0
