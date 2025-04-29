@@ -1462,7 +1462,7 @@ PrefabInstance:
     - target: {fileID: 1529745478051204400, guid: f7d8ccec376e34a91b9bf20a7efbfc1f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1970110869}
     - target: {fileID: 1529745478051204400, guid: f7d8ccec376e34a91b9bf20a7efbfc1f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitGame
@@ -1558,7 +1558,7 @@ PrefabInstance:
     - target: {fileID: 5209492211503453942, guid: f7d8ccec376e34a91b9bf20a7efbfc1f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1970110869}
     - target: {fileID: 5209492211503453942, guid: f7d8ccec376e34a91b9bf20a7efbfc1f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RestartGame
@@ -1674,7 +1674,7 @@ PrefabInstance:
     - target: {fileID: 6090668709198755581, guid: f7d8ccec376e34a91b9bf20a7efbfc1f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1970110867}
     - target: {fileID: 6090668709198755581, guid: f7d8ccec376e34a91b9bf20a7efbfc1f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Resume
@@ -1758,6 +1758,11 @@ RectTransform:
 --- !u!224 &1533520428 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9166885724433472600, guid: f7d8ccec376e34a91b9bf20a7efbfc1f, type: 3}
+  m_PrefabInstance: {fileID: 1533520426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1533520429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7135595582750654560, guid: f7d8ccec376e34a91b9bf20a7efbfc1f, type: 3}
   m_PrefabInstance: {fileID: 1533520426}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1576179277
@@ -2202,7 +2207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20c5038522b44a71924751070239013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
+  pauseMenuUI: {fileID: 1533520429}
   mixer: {fileID: 24100000, guid: a1bf57db1725d4d8bbf58ecbed6c9fbb, type: 2}
   playSound: {fileID: 0}
   pauseSound: {fileID: 0}
@@ -2221,6 +2226,17 @@ MonoBehaviour:
   text1: {fileID: 0}
   text2: {fileID: 0}
   text3: {fileID: 0}
+--- !u!114 &1970110869 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8229940433088236784, guid: 3033f5ed8c1d3fd4fb3eff7bc818e5b9, type: 3}
+  m_PrefabInstance: {fileID: 1970110865}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970110866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3f1c3840e5ff22478563ac0a5fa1290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1974413197
 GameObject:
   m_ObjectHideFlags: 0
