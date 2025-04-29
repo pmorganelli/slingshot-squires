@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.8802, y: -235}
+  m_AnchoredPosition: {x: 166, y: -137}
   m_SizeDelta: {x: 1213.7601, y: 101.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &144201065
@@ -181,10 +181,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Around here, there are many different enemies trying to attack our crops.
-    \n
-
-    If we let them destroy this farm, then ___'
+  m_text: Around here, there are many different enemies trying to attack our crops.
+    We've got to get rid of them before they destroy the farm!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a13a779717209764dbb8b6d06c522d9b, type: 2}
   m_sharedMaterial: {fileID: -7843110543845778599, guid: a13a779717209764dbb8b6d06c522d9b, type: 2}
@@ -211,8 +209,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -247,7 +245,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 628.6513, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
