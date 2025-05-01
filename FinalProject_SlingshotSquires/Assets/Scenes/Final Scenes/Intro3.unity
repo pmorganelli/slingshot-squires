@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SKIP TO TUTORIAL
+  m_text: SKIP TUTORIAL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a13a779717209764dbb8b6d06c522d9b, type: 2}
   m_sharedMaterial: {fileID: -7843110543845778599, guid: a13a779717209764dbb8b6d06c522d9b, type: 2}
