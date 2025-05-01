@@ -190,7 +190,6 @@ GameObject:
   - component: {fileID: 238258502315156347}
   - component: {fileID: 8661522555254509460}
   - component: {fileID: 9168418330939999163}
-  - component: {fileID: 6052869057857952599}
   - component: {fileID: 6293882317891734996}
   m_Layer: 0
   m_Name: Watermelon
@@ -285,22 +284,7 @@ MonoBehaviour:
   - {fileID: 31956622, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   healthBar: {fileID: 3880766820665213920}
   sellSound: {fileID: 0}
---- !u!114 &6052869057857952599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228747417046203816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddbc04fbecb714b99a1f5cbeaaed3e14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackSlots:
-  - {fileID: 9092453111742462532}
-  - {fileID: 2991477831193547682}
-  - {fileID: 8910571650601623840}
+  attackers: 0
 --- !u!82 &6293882317891734996
 AudioSource:
   m_ObjectHideFlags: 0

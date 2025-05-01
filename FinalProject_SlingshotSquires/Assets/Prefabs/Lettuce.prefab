@@ -426,7 +426,6 @@ GameObject:
   - component: {fileID: 1226039501695756680}
   - component: {fileID: 3041587749154472811}
   - component: {fileID: 3482662173167949056}
-  - component: {fileID: 4139363745438222854}
   - component: {fileID: 3963035636018010033}
   m_Layer: 0
   m_Name: Lettuce
@@ -521,22 +520,7 @@ MonoBehaviour:
   - {fileID: 329886610, guid: 7499ed2f52dd6854f9662bcdd4b7540b, type: 3}
   healthBar: {fileID: 1153917908780461673}
   sellSound: {fileID: 0}
---- !u!114 &4139363745438222854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3629993111122147962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddbc04fbecb714b99a1f5cbeaaed3e14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackSlots:
-  - {fileID: 8726735900551461614}
-  - {fileID: 6728466025938236146}
-  - {fileID: 6462680136589830862}
+  attackers: 0
 --- !u!82 &3963035636018010033
 AudioSource:
   m_ObjectHideFlags: 0

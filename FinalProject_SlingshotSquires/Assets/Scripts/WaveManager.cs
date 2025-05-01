@@ -52,6 +52,7 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator completeWave()
     {
+        CropManager.Instance.CleanupNullCrops(); 
         /* TODO: Give some indication wave is complete */
         spawner.ProgressCrops();
         spawner.LoadCrops(); // Load updated crops
@@ -63,6 +64,8 @@ public class WaveManager : MonoBehaviour
     public void SpawnNewEnemies()
     {
         waveCtrText.text = "Wave " + GameHandler.levelCount;
+        GameObject[] crops = GameObject.FindGameObjectsWithTag("Crop");
+
         wormCt = 0;
         slimeCt = 0;
 

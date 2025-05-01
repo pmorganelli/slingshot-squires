@@ -1,15 +1,18 @@
 using System.Collections;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CropSpawner : MonoBehaviour
 {
     public WaveManager wave;
+
     public int gridWidth = 5;
     public int gridHeight = 4;
     public float cellWidth = 1.5f;
     public float cellHeight = 1.5f;
+
+    public static List<GameObject> spawnedCrops = new();
+
     [SerializeField]
     private List<PlantPrefabEntry> plantPrefabsList;
 
@@ -25,19 +28,24 @@ public class CropSpawner : MonoBehaviour
 
     void Awake()
     {
+        // Initialize crop prefab lookup
         foreach (var entry in plantPrefabsList)
         {
-            cropPrefabs[entry.plantType] = entry.prefab;
+            if (!cropPrefabs.ContainsKey(entry.plantType))
+            {
+                cropPrefabs[entry.plantType] = entry.prefab;
+            }
         }
+
         LoadCrops();
-        wave.SpawnNewEnemies();
-        wave.CountTotalEnemies();
-        wave.UpdateUI();
+        StartCoroutine(DelayedEnemySpawn());
     }
+
     public void LoadCrops()
     {
+        spawnedCrops.Clear();
 
-        // Clear existing crops in the grid
+        // Destroy previous crop instances
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
@@ -50,18 +58,23 @@ public class CropSpawner : MonoBehaviour
             for (int y = 0; y < gridHeight; y++)
             {
                 int index = x * gridHeight + y;
-                if (index >= GameHandler.cropInventory.Count)
+                if (index >= crops.Count)
                     return;
 
                 Crop cropData = crops[index];
-                // Debug.Log("Spawning crop: " + cropData.cropName + " at index: " + index);
-                GameObject prefab = cropPrefabs[cropData.cropName];
+
+                if (!cropPrefabs.TryGetValue(cropData.cropName, out GameObject prefab))
+                {
+                    Debug.LogWarning($"No prefab found for crop type: {cropData.cropName}");
+                    continue;
+                }
 
                 Vector3 localOffset = new Vector3(x * cellWidth, y * -cellHeight, 0);
-
-                GameObject instance = Instantiate(prefab, gameObject.transform);
+                GameObject instance = Instantiate(prefab, transform);
                 instance.transform.localPosition = localOffset;
                 instance.transform.localRotation = Quaternion.identity;
+
+                spawnedCrops.Add(instance);
 
                 CropBehavior cb = instance.GetComponent<CropBehavior>();
                 if (cb != null)
@@ -72,16 +85,14 @@ public class CropSpawner : MonoBehaviour
 
     public void ProgressCrops()
     {
-        List<Crop> cropsToRemove = new List<Crop>();
-        int ctr = 0;
+        List<Crop> cropsToRemove = new();
+
         foreach (Crop crop in GameHandler.cropInventory)
         {
-            ctr++;
-            crop.growthState += 1;
+            crop.growthState++;
 
             if (crop.growthState >= crop.totalGrowthStates)
             {
-                Debug.Log("SOLD " + ctr);
                 GameHandler.coinCount += crop.salePrice;
                 cropsToRemove.Add(crop);
                 StartCoroutine(playSellSound());
@@ -94,10 +105,18 @@ public class CropSpawner : MonoBehaviour
         }
     }
 
-
     private IEnumerator playSellSound()
     {
         sellSound.Play();
         yield return new WaitForSeconds(sellSound.clip.length);
+    }
+
+    private IEnumerator DelayedEnemySpawn()
+    {
+        yield return new WaitForEndOfFrame(); // Wait so crops can register with CropManager
+        CropManager.Instance.CleanupNullCrops();
+        wave.SpawnNewEnemies();
+        wave.CountTotalEnemies();
+        wave.UpdateUI();
     }
 }

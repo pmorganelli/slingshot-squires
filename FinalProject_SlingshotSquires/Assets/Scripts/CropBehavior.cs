@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +11,19 @@ public class CropBehavior : MonoBehaviour
     public Slider healthBar;
     public AudioSource sellSound;
 
+    public int attackers = 0;
+    void Start()
+    {
+        CropManager.Instance.RegisterCrop(this);
+    }
+
+    void OnDestroy()
+    {
+        CropManager.Instance.UnregisterCrop(this);
+    }
+
+    public bool IsAlive() => thisCrop.currHealth > 0;
+
     public void Initialize(Crop crop)
     {
         thisCrop = crop;
@@ -22,14 +34,8 @@ public class CropBehavior : MonoBehaviour
 
     private void UpdateCropSprite()
     {
-        if (thisCrop.growthState < growthStages.Length)
-        {
-            cropRenderer.sprite = growthStages[thisCrop.growthState];
-        }
-        else
-        {
-            cropRenderer.sprite = growthStages[growthStages.Length - 1];
-        }
+        int stage = Mathf.Min(thisCrop.growthState, growthStages.Length - 1);
+        cropRenderer.sprite = growthStages[stage];
     }
 
     public void AddStage()
@@ -43,17 +49,28 @@ public class CropBehavior : MonoBehaviour
         thisCrop.currHealth -= damage;
         healthBar.value = (float)thisCrop.currHealth / (float)thisCrop.totalHealth;
 
-        float darkenAmount = 0.1f;
+        //darken crop visual
         Color color = cropRenderer.color;
+        float darkenAmount = 0.1f;
         color.r = Mathf.Clamp01(color.r - darkenAmount);
         color.g = Mathf.Clamp01(color.g - darkenAmount);
         color.b = Mathf.Clamp01(color.b - darkenAmount);
         cropRenderer.color = color;
 
+        // kill that thing if dead
         if (thisCrop.currHealth <= 0)
         {
+            CropManager.Instance.UnregisterCrop(this);
             GameHandler.cropInventory.Remove(thisCrop);
             Destroy(gameObject);
         }
+    }
+
+    public Vector3 GetOffsetPosition()
+    {
+        float radius = 0.3f;
+        float angle = attackers * 60f;
+        Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0) * radius;
+        return transform.position + offset;
     }
 }

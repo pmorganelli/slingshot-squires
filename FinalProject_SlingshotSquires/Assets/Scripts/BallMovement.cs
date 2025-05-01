@@ -42,7 +42,7 @@ public class BallMovement : MonoBehaviour
         for (int i = 0; i < numberOfDots; i++)
         {
             GameObject dot = Instantiate(trajectoryDotPrefab);
-            dot.transform.localScale = new Vector3(0.1f, 0.1f, 1f); // Small dots
+            dot.transform.localScale = new Vector3(0.1f, 0.1f, 1f);
             dot.SetActive(false);
             dots.Add(dot);
         }
@@ -117,13 +117,13 @@ public class BallMovement : MonoBehaviour
     private void ShowTrajectory()
     {
         Vector2 launchPos = rb.position;
-        Vector2 force = (slingRb.position - rb.position) * (sj.frequency * 4f); // Linear force direction
+        Vector2 force = (slingRb.position - rb.position) * (sj.frequency * 4f);
         float timeStep = dotSpacing;
 
         for (int i = 0; i < numberOfDots; i++)
         {
             float t = i * timeStep;
-            Vector2 pos = launchPos + force * t; // No gravity, straight path
+            Vector2 pos = launchPos + force * t;
             dots[i].transform.position = pos;
             dots[i].SetActive(true);
         }

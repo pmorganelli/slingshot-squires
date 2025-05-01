@@ -24,8 +24,10 @@ public class GameHandler : MonoBehaviour
     public static Dictionary<string, ballStat> ballStats = new Dictionary<string, ballStat> {
         {"default", new ballStat(50f, 1.75f)}, {"fireball", new ballStat(75f, 2f)}
     };
-    // Array containing all crops planted
     public static List<Crop> cropInventory = new List<Crop> { };
+
+    // **FOR TESTING -- give yourself a full inventory of Crops**
+    // public static List<Crop> cropInventory = new List<Crop> { Crop.Tomato(), Crop.Tomato(), Crop.Tomato(),Crop.Tomato(), Crop.Tomato(), Crop.Tomato(), Crop.Tomato(), Crop.Tomato(), Crop.Tomato(),Crop.Tomato(), Crop.Tomato(), Crop.Tomato(), Crop.Tomato(), Crop.Tomato(), Crop.Tomato(), Crop.Tomato(), Crop.Tomato(), Crop.Tomato(), Crop.Tomato(), Crop.Tomato(), Crop.Tomato()};
 
     public static float SLING_reload_time = 1f;
     public static float SLING_force_multiplier = 1.25f;
@@ -42,6 +44,9 @@ public class GameHandler : MonoBehaviour
     public static int carrots = 0;
     public static int pumpkins = 0;
     public static int watermelon = 0;
+
+    //NOTE TO TESTERS: you can modify the variables below instead of playing the game through each time, start at a given level and 
+    // give yourself crops too by uncommenting line 30 and commenting out line 27
     public static int levelCount = 0;
     public static bool waveStarted = false;
 
@@ -64,7 +69,6 @@ public class GameHandler : MonoBehaviour
         SceneManager.LoadScene("Level1");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (waveComplete)

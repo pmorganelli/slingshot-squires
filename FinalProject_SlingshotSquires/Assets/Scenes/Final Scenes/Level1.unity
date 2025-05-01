@@ -714,7 +714,6 @@ MonoBehaviour:
   waveText: {fileID: 743077526}
   spawner: {fileID: 747784306}
   SpawnPoint: {fileID: 590290320}
-  EnemyFab: {fileID: 531724726179543876, guid: fdcdca86601f55c48829df90cdc09bf6, type: 3}
 --- !u!1001 &432886359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1265,7 +1264,7 @@ RectTransform:
   - {fileID: 1207875439}
   - {fileID: 432886360}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1477,7 +1476,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &703578488
 GameObject:
@@ -1769,6 +1768,7 @@ GameObject:
   - component: {fileID: 747784305}
   - component: {fileID: 747784306}
   - component: {fileID: 747784307}
+  - component: {fileID: 747784308}
   m_Layer: 0
   m_Name: CROPS
   m_TagString: Untagged
@@ -1916,6 +1916,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &747784308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747784304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10af5a15468ef454c9a4a986a186a196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeCrops:
+  - {fileID: 0}
 --- !u!1 &786659785
 GameObject:
   m_ObjectHideFlags: 0
@@ -9056,7 +9070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9046934718035889108, guid: 27d5e25a7808b47c5b29431b266fe31a, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9046934718035889108, guid: 27d5e25a7808b47c5b29431b266fe31a, type: 3}
       propertyPath: m_LocalScale.x

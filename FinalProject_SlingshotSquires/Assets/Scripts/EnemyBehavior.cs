@@ -1,223 +1,153 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    public Slider healthBar;
-    public AudioSource hitSound;
-    private bool isDead = false;
-    public AudioSource deathSound;
-
     public float totalHealth = 100f;
     public float currHealth = 100f;
     public float enemySpeed = 1f;
-    public float enemyAttackSpeed = 1f;
-    public int enemyAttackDamage = 34;
+    public float attackRate = 1f;
+    public int enemyAttackDamage = 25;
     public int valorCoinValue = 5;
+
+    public Slider healthBar;
+    public AudioSource hitSound;
+    public AudioSource deathSound;
     public GameObject poofPrefab;
 
-    private float damageTimer = 0f;
+    private float attackCooldown = 0f;
+    private bool isDead = false;
+
+    private CropBehavior targetCrop;
+    private Vector3 attackPosition;
     private CurrencyManager currencyManager;
-
-    private Transform targetCrop;
-    private CropBehavior targetCropStats;
-
-    // === Slot System ===
-    private Transform slotTarget;
-    private int slotIndex = -1;
-    private CropSlotManager cropSlotManager;
 
     void Start()
     {
         currencyManager = FindObjectOfType<CurrencyManager>();
-        FindClosestCrop();
+        FindNewCrop();
     }
 
     void Update()
     {
-        if (!GameHandler.waveStarted) return;
-        if (targetCropStats != null && slotTarget != null)
+        if (isDead || !GameHandler.waveStarted) return;
+
+        if (targetCrop == null || !targetCrop.IsAlive())
         {
-            float distance = Vector2.Distance(transform.position, slotTarget.position);
-
-            // Only attack if fully arrived
-            if (distance <= 0.02f)
-            {
-                damageTimer += Time.deltaTime;
-
-                if (damageTimer >= enemyAttackSpeed)
-                {
-                    damageTimer = 0f;
-
-                    // Double-check that thisCrop is still valid before applying damage
-                    if (targetCropStats != null && targetCropStats.thisCrop != null)
-                    {
-                        targetCropStats.cropDamage(enemyAttackDamage);
-                    }
-
-                    // If crop is dead or missing, move on
-                    if (targetCropStats == null || targetCropStats.thisCrop == null || targetCropStats.thisCrop.currHealth <= 0)
-                    {
-                        // Unclaim slot
-                        if (cropSlotManager != null && slotIndex != -1)
-                        {
-                            cropSlotManager.ReleaseSlot(slotIndex);
-                        }
-
-                        // Reset everything
-                        targetCrop = null;
-                        targetCropStats = null;
-                        slotTarget = null;
-                        cropSlotManager = null;
-                        slotIndex = -1;
-
-                        FindClosestCrop();
-                    }
-                }
-            }
-        }
-    }
-
-
-
-
-    void FixedUpdate()
-    {
-        if (!GameHandler.waveStarted) return;
-        if (!isDead && slotTarget != null)
-        {
-            float distance = Vector2.Distance(transform.position, slotTarget.position);
-            if (distance > 0.02f)
-            {
-                Debug.DrawLine(transform.position, slotTarget.position, Color.red);
-                Vector2 dir = (slotTarget.position - transform.position).normalized;
-                transform.position += (Vector3)(dir * enemySpeed * Time.deltaTime);
-            }
-        }
-        else if (!isDead)
-        {
-            FindClosestCrop();
-        }
-    }
-
-    public void FindClosestCrop()
-    {
-        GameObject[] crops = GameObject.FindGameObjectsWithTag("Crop");
-        float minDistance = Mathf.Infinity;
-
-        if (crops.Length == 0)
-        {
-            GameHandler.lost = true;
+            FindNewCrop();
             return;
         }
 
-        foreach (GameObject crop in crops)
+        float dist = Vector2.Distance(transform.position, attackPosition);
+        if (dist > 0.05f)
         {
-            float distance = Vector2.Distance(transform.position, crop.transform.position);
-            if (distance < minDistance)
+            Vector2 dir = (attackPosition - transform.position).normalized;
+            transform.position += (Vector3)(dir * enemySpeed * Time.deltaTime);
+        }
+        else
+        {
+            attackCooldown -= Time.deltaTime;
+            if (attackCooldown <= 0f)
             {
-                CropSlotManager slotManager = crop.GetComponent<CropSlotManager>();
-                if (slotManager == null) continue;
+                targetCrop.cropDamage(enemyAttackDamage);
+                attackCooldown = attackRate;
 
-                Transform availableSlot = slotManager.ClaimSlot(out int claimedIndex);
-                if (availableSlot != null)
+                if (!targetCrop.IsAlive())
                 {
-                    minDistance = distance;
-                    targetCrop = crop.transform;
-                    targetCropStats = crop.GetComponent<CropBehavior>();
-                    cropSlotManager = slotManager;
-                    slotTarget = availableSlot;
-                    slotIndex = claimedIndex;
+                    targetCrop.attackers--;
+                    targetCrop = null;
+                    FindNewCrop();
                 }
             }
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void FindNewCrop()
     {
-        if (targetCropStats == null && other.GetComponent<CropBehavior>() != null)
+        CropBehavior best = null;
+        float shortest = Mathf.Infinity;
+
+        foreach (var crop in CropManager.Instance.activeCrops)
         {
-            targetCropStats = other.GetComponent<CropBehavior>();
+            if (crop == null || !crop.IsAlive()) continue;
+            float dist = Vector2.Distance(transform.position, crop.transform.position);
+            if (dist < shortest)
+            {
+                shortest = dist;
+                best = crop;
+            }
+        }
+
+        if (best != null)
+        {
+            targetCrop = best;
+            targetCrop.attackers++;
+            attackPosition = targetCrop.GetOffsetPosition();
+        }
+        else
+        {
+            GameHandler.lost = true;
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.GetComponent<CropBehavior>() == targetCropStats)
-        {
-            targetCrop = null;
-            targetCropStats = null;
-            damageTimer = 0f;
-            FindClosestCrop();
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isDead) return;
 
-        if (other.gameObject.CompareTag("Projectile"))
+        if (collision.gameObject.CompareTag("Projectile"))
         {
-            BallMovement ball = other.gameObject.GetComponent<BallMovement>();
-            currHealth -= GameHandler.ballStats[ball.ballType].damage;
-            healthBar.value = (currHealth / totalHealth);
+            BallMovement ball = collision.gameObject.GetComponent<BallMovement>();
+            if (ball == null) return;
+
+            if (!GameHandler.ballStats.TryGetValue(ball.ballType, out GameHandler.ballStat stat))
+                return;
+
+            // Debug.Log($"[Enemy] Hit by {ball.ballType}, Damage: {stat.damage}");
+
+            currHealth -= stat.damage;
+            healthBar.value = currHealth / totalHealth;
+
             ball.destroyBall();
 
-            if (currHealth <= 0)
+            if (currHealth <= 0f)
             {
                 Die();
             }
-            else
+            else if (hitSound != null)
             {
                 hitSound.Play();
             }
         }
     }
 
-    private void Die()
+
+
+
+    void Die()
     {
         isDead = true;
         deathSound.Play();
-        FindObjectOfType<WaveManager>().EnemyKilled();
+        if (poofPrefab) Destroy(Instantiate(poofPrefab, transform.position, Quaternion.identity), 1f);
+
+        if (targetCrop != null)
+            targetCrop.attackers--;
 
         if (currencyManager != null)
-        {
             currencyManager.AddValorCoins(valorCoinValue);
-        }
-        if (poofPrefab != null)
-        {
-            GameObject poofInstance = Instantiate(poofPrefab, transform.position, Quaternion.identity);
-            Destroy(poofInstance, 1f);
-        }
 
-        ReleaseCropSlot();
+        FindObjectOfType<WaveManager>().EnemyKilled();
         Destroy(gameObject, deathSound.clip.length);
     }
 
-
-    private void OnDestroy()
+    void OnDestroy()
     {
-        ReleaseCropSlot();
+        if (targetCrop != null)
+            targetCrop.attackers--;
     }
 
-
-    private void ReleaseCropSlot()
+    void OnDisable()
     {
-        if (cropSlotManager != null && slotIndex != -1)
-        {
-            cropSlotManager.ReleaseSlot(slotIndex);
-            cropSlotManager = null;
-            slotIndex = -1;
-            slotTarget = null;
-        }
+        if (targetCrop != null)
+            targetCrop.attackers--;
     }
-
-    private void OnDisable()
-    {
-        ReleaseCropSlot();
-    }
-
-
 }

@@ -134,7 +134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballType: default
-  GameHandler: {fileID: 0}
   sling: {fileID: 0}
   trajectoryDotPrefab: {fileID: 247599225665281616, guid: 27d5e25a7808b47c5b29431b266fe31a, type: 3}
   numberOfDots: 15

@@ -62,7 +62,7 @@ public class ShopManagerScript : MonoBehaviour
     {
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
-        Debug.Log("here");
+        // Debug.Log("here");
         insuff_fund_warnings.SetActive(false);
         itemNum = ButtonRef.GetComponent<ButtonInfo>().ItemID;
 
@@ -91,7 +91,7 @@ public class ShopManagerScript : MonoBehaviour
             GameHandler.subtractCoins(price);
 
             // Add to inventory
-            Debug.Log("ADDING: " + itemNum);
+            // Debug.Log("ADDING: " + itemNum);
             player.inventory.Add(itemTypes[itemNum], itemIcons[itemNum]);
             GameHandler.AddItem(itemNum);
             Debug.Log(GameHandler.cropInventory[0].cropName);
