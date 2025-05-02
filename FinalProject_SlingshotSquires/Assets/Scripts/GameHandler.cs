@@ -199,6 +199,10 @@ public class GameHandler : MonoBehaviour
     {
         SceneManager.LoadScene("Intro3");
     }
+    public void Intro3To4()
+    {
+        SceneManager.LoadScene("Intro4");
+    }
 
     public void startLevel()
     {

@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Scenes/Intro3.unity
     guid: de9a37570a1d94051a57e24afaafb06f
   - enabled: 1
+    path: Assets/Scenes/Final Scenes/Intro4.unity
+    guid: 09c5f35df6da248c397b5c487c942ecd
+  - enabled: 1
     path: Assets/Scenes/Final Scenes/ShopScene.unity
     guid: 75af791fcb6134b17aeb645ba20b3c7e
   - enabled: 1
