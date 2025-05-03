@@ -10,6 +10,8 @@ TagManager:
   - Crop
   - Event
   - GameHandler
+  - KeyboardToggle
+  - Sling
   layers:
   - Default
   - TransparentFX

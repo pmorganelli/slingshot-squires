@@ -5398,6 +5398,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RestartGame
       objectReference: {fileID: 0}
+    - target: {fileID: 5231449443967515845, guid: f7d8ccec376e34a91b9bf20a7efbfc1f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -191
+      objectReference: {fileID: 0}
     - target: {fileID: 5326975716961641370, guid: f7d8ccec376e34a91b9bf20a7efbfc1f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -125,25 +125,40 @@ public class EnemyBehavior : MonoBehaviour
 
     void Die()
     {
+        if (isDead) return; // Prevent double calls
+
         isDead = true;
-        deathSound.Play();
-        if (poofPrefab) Destroy(Instantiate(poofPrefab, transform.position, Quaternion.identity), 1f);
+
+        if (deathSound != null) deathSound.Play();
+
+        if (poofPrefab != null)
+        {
+            GameObject poof = Instantiate(poofPrefab, transform.position, Quaternion.identity);
+            Destroy(poof, 1f);
+        }
 
         if (targetCrop != null)
+        {
             targetCrop.attackers--;
+            targetCrop = null;
+        }
 
         if (currencyManager != null)
             currencyManager.AddValorCoins(valorCoinValue);
 
-        FindObjectOfType<WaveManager>().EnemyKilled();
-        Destroy(gameObject, deathSound.clip.length);
+        WaveManager wave = FindObjectOfType<WaveManager>();
+        if (wave != null)
+            wave.EnemyKilled();
+
+        Destroy(gameObject, deathSound != null ? deathSound.clip.length : 0.5f);
     }
 
     void OnDestroy()
     {
-        if (targetCrop != null)
+        if (!isDead && targetCrop != null)
             targetCrop.attackers--;
     }
+
 
     void OnDisable()
     {
