@@ -46,7 +46,6 @@ public class GameHandler : MonoBehaviour
     public static int watermelon = 0;
 
     // === TUTORIAL UI ELEMENTS ===
-    public GameObject text1, text2, text3;
     public GameObject waveClear;
     public int textCount = 0;
 
@@ -78,6 +77,20 @@ public class GameHandler : MonoBehaviour
     }
 
     // === GAME FLOW ===
+
+    public void Intro1To2()
+    {
+        SceneManager.LoadScene("Intro2");
+    }
+    public void Intro2To3()
+    {
+        SceneManager.LoadScene("Intro3");
+    }
+    public void Intro3To4()
+    {
+        SceneManager.LoadScene("Intro4");
+    }
+
 
     public void PlayGame() => SceneManager.LoadScene("Intro1");
     public void QuitGame() => Application.Quit();
@@ -129,28 +142,6 @@ public class GameHandler : MonoBehaviour
     }
 
     public void backToShop() => SceneManager.LoadScene("ShopScene");
-
-    public void nextText()
-    {
-        if (textCount == 0)
-        {
-            text1.SetActive(false);
-            text2.SetActive(true);
-            text3.SetActive(false);
-        }
-        else if (textCount == 1)
-        {
-            text1.SetActive(false);
-            text2.SetActive(false);
-            text3.SetActive(true);
-        }
-        else
-        {
-            SceneManager.LoadScene("ShopScene");
-        }
-
-        textCount++;
-    }
 
     // === SHOP / INVENTORY ===
 
