@@ -22,16 +22,14 @@ public class BallMovement : MonoBehaviour
     private float releaseDelay;
     private float maxDragDistance = 1.75f;
     private Rigidbody2D slingRb;
-    private TrailRenderer tr;
     private AudioSource audioSource;
 
 private void Awake()
 {
     rb = GetComponent<Rigidbody2D>();
-    sj = GetComponent<SpringJoint2D>(); // Moved up here
+    sj = GetComponent<SpringJoint2D>();
     lr = GetComponent<LineRenderer>();
     audioSource = GetComponent<AudioSource>();
-    tr = GetComponent<TrailRenderer>();
 
     if (sling == null)
     {
@@ -48,14 +46,13 @@ private void Awake()
     if (sj != null && slingRb != null)
     {
         sj.connectedBody = slingRb;
-        sj.enabled = true; // ✅ spring must be active for non-keyboard launch
+        sj.enabled = true;
     }
 
     keyboardMode = GameHandler_PauseMenu.keyboardModeEnabled;
     hasFired = false;
 
     lr.enabled = false;
-    tr.enabled = false;
 
     releaseDelay = (sj != null && sj.frequency > 0) ? 1 / (sj.frequency * 4) : 0.05f;
 
@@ -70,19 +67,17 @@ private void Awake()
 }
 
 
-// Track last keyboard mode to detect toggle change
 private bool lastKeyboardMode = false;
 
 void Update()
     {
         keyboardMode = GameHandler_PauseMenu.keyboardModeEnabled;
 
-        // 🔄 Handle mode change
         if (keyboardMode != lastKeyboardMode)
         {
             if (!keyboardMode)
             {
-                HideTrajectory(); // ✅ Hide leftover keyboard dots
+                HideTrajectory();
                 rb.isKinematic = false;
             }
 
@@ -143,7 +138,7 @@ void Update()
 
         isPressed = false;
         rb.isKinematic = false;
-        hasFired = true; // ✅ ADD THIS
+        hasFired = true;
         slingBehavior?.reload();
         StartCoroutine(Release());
         lr.enabled = false;
@@ -154,14 +149,8 @@ void Update()
     private IEnumerator Release()
     {
         audioSource.Play();
-
-        // Let physics run one frame
-        yield return new WaitForSeconds(releaseDelay); // ⏳ allow spring to stretch
-
-        sj.enabled = false;                            // ✂️ Disconnect spring AFTER delay
-        tr.enabled = true;                             // 🌠 Enable trail
-
-        // No need to destroy here — handled in OnCollision
+        yield return new WaitForSeconds(releaseDelay);
+        sj.enabled = false;
     }
 
 
@@ -216,22 +205,19 @@ void Update()
 
         rb.isKinematic = false;
         sj.enabled = false;
-        tr.enabled = true;
 
         rb.AddForce(force, ForceMode2D.Impulse);
         audioSource.Play();
         HideTrajectory();
 
         slingBehavior?.reload();
-        // ❌ No delayed destroy — handled in collision
     }
 
-    // ✅ This ensures collision instantly deletes the ball
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            destroyBall(); // immediate destruction on enemy hit
+            destroyBall();
         }
     }
 
