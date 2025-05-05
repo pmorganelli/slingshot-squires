@@ -2102,7 +2102,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Click, drag, and release the sling to shoot!
+  m_Text: 'Click, drag, and release the sling to shoot!
+
+
+    If in Keyboard Mode,
+    press SPACE to shoot!'
 --- !u!222 &981738004
 CanvasRenderer:
   m_ObjectHideFlags: 0
