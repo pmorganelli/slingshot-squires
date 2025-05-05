@@ -40,18 +40,6 @@ PrefabInstance:
       propertyPath: ballType
       value: diamondball
       objectReference: {fileID: 0}
-    - target: {fileID: 6603879552579274948, guid: 8d81001648cac7a40b8f0bafe51c0d1e, type: 3}
-      propertyPath: explosion
-      value: 
-      objectReference: {fileID: 3097831776476305168, guid: 4599638df024e7442ac265f7f5042e63, type: 3}
-    - target: {fileID: 6603879552579274948, guid: 8d81001648cac7a40b8f0bafe51c0d1e, type: 3}
-      propertyPath: shakeDuration
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6603879552579274948, guid: 8d81001648cac7a40b8f0bafe51c0d1e, type: 3}
-      propertyPath: shakeMagnitude
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 7162971354212563292, guid: 8d81001648cac7a40b8f0bafe51c0d1e, type: 3}
       propertyPath: m_Enabled
       value: 0

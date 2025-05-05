@@ -24,13 +24,6 @@ public class BallMovement : MonoBehaviour
     private Rigidbody2D slingRb;
     private AudioSource audioSource;
 
-    //game feel!
-    public GameObject explosion;
-    public CameraShake cameraShake;
-    public float shakeDuration = 0.15f;
-    public float shakeMagnitude = 0.3f;
-
-
 private void Awake()
 {
     rb = GetComponent<Rigidbody2D>();
@@ -38,16 +31,16 @@ private void Awake()
     lr = GetComponent<LineRenderer>();
     audioSource = GetComponent<AudioSource>();
 
-    if (sling == null)
+    GameObject foundSling = GameObject.FindGameObjectWithTag("Sling");
+    if (foundSling != null)
     {
-        GameObject foundSling = GameObject.FindWithTag("Sling");
-        if (foundSling != null) sling = foundSling;
-    }
-
-    if (sling != null)
-    {
+        sling = foundSling;
         slingBehavior = sling.GetComponent<Sling>();
         slingRb = sling.GetComponent<Rigidbody2D>();
+    }
+    else
+    {
+        Debug.LogError("[BallMovement] Could not find Sling in scene. Make sure it's tagged 'Sling'.");
     }
 
     if (sj != null && slingRb != null)
@@ -73,9 +66,6 @@ private void Awake()
     }
 }
 
-    void Start(){
-              cameraShake = GameObject.FindWithTag("MainCamera").GetComponent<CameraShake>();
-    }
 
 private bool lastKeyboardMode = false;
 
@@ -149,6 +139,25 @@ void Update()
         isPressed = false;
         rb.isKinematic = false;
         hasFired = true;
+
+        // --- DEBUG: check slingBehavior reference & active state ---
+        if (slingBehavior == null)
+        {
+            Debug.LogError("[BallMovement] slingBehavior is null!");
+        }
+        else
+        {
+            Debug.Log($"[BallMovement] Sling activeSelf={slingBehavior.gameObject.activeSelf} activeInHierarchy={slingBehavior.gameObject.activeInHierarchy}");
+            
+            // --- DEBUG: print parent chain ---
+            Transform t = slingBehavior.transform;
+            while (t != null)
+            {
+                Debug.Log($"[ParentCheck] {t.name} — activeSelf={t.gameObject.activeSelf}, activeInHierarchy={t.gameObject.activeInHierarchy}");
+                t = t.parent;
+            }
+        }
+
         slingBehavior?.reload();
         StartCoroutine(Release());
         lr.enabled = false;
@@ -227,10 +236,7 @@ void Update()
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Instantiate(explosion, transform.position, Quaternion.identity);
-            cameraShake.ShakeCamera(shakeDuration, shakeMagnitude);
             destroyBall();
-
         }
     }
 
