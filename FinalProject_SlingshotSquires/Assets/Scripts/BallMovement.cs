@@ -31,16 +31,16 @@ private void Awake()
     lr = GetComponent<LineRenderer>();
     audioSource = GetComponent<AudioSource>();
 
-    GameObject foundSling = GameObject.FindGameObjectWithTag("Sling");
-    if (foundSling != null)
+    if (sling == null)
     {
-        sling = foundSling;
+        GameObject foundSling = GameObject.FindWithTag("Sling");
+        if (foundSling != null) sling = foundSling;
+    }
+
+    if (sling != null)
+    {
         slingBehavior = sling.GetComponent<Sling>();
         slingRb = sling.GetComponent<Rigidbody2D>();
-    }
-    else
-    {
-        Debug.LogError("[BallMovement] Could not find Sling in scene. Make sure it's tagged 'Sling'.");
     }
 
     if (sj != null && slingRb != null)
@@ -139,25 +139,6 @@ void Update()
         isPressed = false;
         rb.isKinematic = false;
         hasFired = true;
-
-        // --- DEBUG: check slingBehavior reference & active state ---
-        if (slingBehavior == null)
-        {
-            Debug.LogError("[BallMovement] slingBehavior is null!");
-        }
-        else
-        {
-            Debug.Log($"[BallMovement] Sling activeSelf={slingBehavior.gameObject.activeSelf} activeInHierarchy={slingBehavior.gameObject.activeInHierarchy}");
-            
-            // --- DEBUG: print parent chain ---
-            Transform t = slingBehavior.transform;
-            while (t != null)
-            {
-                Debug.Log($"[ParentCheck] {t.name} — activeSelf={t.gameObject.activeSelf}, activeInHierarchy={t.gameObject.activeInHierarchy}");
-                t = t.parent;
-            }
-        }
-
         slingBehavior?.reload();
         StartCoroutine(Release());
         lr.enabled = false;

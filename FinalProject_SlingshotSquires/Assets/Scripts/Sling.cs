@@ -30,7 +30,6 @@ public class Sling : MonoBehaviour
 
     public void reload()
     {
-        Debug.Log($"[Sling.reload] activeSelf={gameObject.activeSelf} activeInHierarchy={gameObject.activeInHierarchy}");
         StartCoroutine(reloadNextBall());
     }
 
@@ -59,26 +58,25 @@ public class Sling : MonoBehaviour
         }
     }
 
-    private void SpawnBall() {
-        if (currentBall != null)
-            Destroy(currentBall);
-
-        if (nextBall == null) {
+    private void SpawnBall()
+    {
+        if (nextBall == null)
+        {
             Debug.LogError("[Sling] Cannot spawn ball – prefab is null");
             return;
         }
 
-        currentBall = Instantiate(nextBall, transform.position, Quaternion.identity);
-        var bm = currentBall.GetComponent<BallMovement>();
-        if (bm != null) bm.sling = this.gameObject;
+        GameObject newBall = Instantiate(nextBall, transform.position, Quaternion.identity);
+
+        BallMovement bm = newBall.GetComponent<BallMovement>();
+        if (bm != null)
+        {
+            bm.sling = this.gameObject;
+        }
+        else
+        {
+            Debug.LogWarning("[Sling] Spawned ball missing BallMovement script.");
+        }
     }
 
-    public void ChangeBall(GameObject newBallPrefab) {
-        nextBall = newBallPrefab;
-        fallbackBallPrefab = newBallPrefab;
-
-        if (currentBall != null)
-            Destroy(currentBall);
-        SpawnBall();
-    }
 }

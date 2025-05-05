@@ -24,9 +24,7 @@ public class GameHandler : MonoBehaviour
 
     public static Dictionary<string, ballStat> ballStats = new Dictionary<string, ballStat> {
         {"default", new ballStat(50f, 1.75f)},
-        {"fireball", new ballStat(75f, 2f)},
-        {"goldball", new ballStat(75f, 2f)},
-        {"diamondball", new ballStat(100f, 2.25f)},
+        {"fireball", new ballStat(75f, 2f)}
     };
 
     public static List<Crop> cropInventory = new List<Crop> { };
