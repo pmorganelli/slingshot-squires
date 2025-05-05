@@ -25,5 +25,7 @@ public enum CollectableType
     APPLE_SEED,
     CARROT_SEED,
     PUMPKIN_SEED,
-    WATERMELON_SEED 
+    WATERMELON_SEED,
+    GOLD_BALL,
+    DIAMOND_BALL 
 }
