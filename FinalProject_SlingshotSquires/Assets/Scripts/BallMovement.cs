@@ -24,6 +24,13 @@ public class BallMovement : MonoBehaviour
     private Rigidbody2D slingRb;
     private AudioSource audioSource;
 
+    //game feel!
+    public GameObject explosion;
+    public CameraShake cameraShake;
+    public float shakeDuration = 0.15f;
+    public float shakeMagnitude = 0.3f;
+
+
 private void Awake()
 {
     rb = GetComponent<Rigidbody2D>();
@@ -66,6 +73,9 @@ private void Awake()
     }
 }
 
+    void Start(){
+              cameraShake = GameObject.FindWithTag("MainCamera").GetComponent<CameraShake>();
+    }
 
 private bool lastKeyboardMode = false;
 
@@ -217,7 +227,10 @@ void Update()
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            cameraShake.ShakeCamera(shakeDuration, shakeMagnitude);
             destroyBall();
+
         }
     }
 
