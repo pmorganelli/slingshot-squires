@@ -981,8 +981,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 432886362}
   mixer: {fileID: 24100000, guid: a1bf57db1725d4d8bbf58ecbed6c9fbb, type: 2}
-  playSound: {fileID: 1970354020}
-  pauseSound: {fileID: 184173065}
 --- !u!1 &269695069
 GameObject:
   m_ObjectHideFlags: 0
@@ -3231,6 +3229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starsPrefab: {fileID: 3413343909621849350, guid: 92f7a4f2d07e5418b87b685a919f44a4, type: 3}
+  sold: {fileID: 5464375070201415397, guid: e90d2b0cd4e22b144a0bd0ed40bec17d, type: 3}
   growthPrefab: {fileID: 7248690830369685188, guid: a2bce0a52e08946f091fc0b9f76fae51, type: 3}
   wave: {fileID: 389657270}
   gridWidth: 5
@@ -7065,7 +7064,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5fc592d93e691e3449af62f7df002fa4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

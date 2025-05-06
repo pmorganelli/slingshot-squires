@@ -6,7 +6,9 @@ using FMODUnity;
 public class CropSpawner : MonoBehaviour
 {
     public GameObject starsPrefab;
+    public GameObject sold;
     public GameObject growthPrefab;
+
     public WaveManager wave;
 
     public int gridWidth = 5;
@@ -103,14 +105,17 @@ public class CropSpawner : MonoBehaviour
                     GameObject stars = Instantiate(starsPrefab, crop.transform.position, Quaternion.identity);
                     Destroy(stars, 1f);
                 }
+                GameObject soldSign = Instantiate(sold, crop.transform.position, Quaternion.identity);
+                Destroy(soldSign, 1f);
                 GameHandler.coinCount += thisCrop.salePrice;
                 cropsToRemove.Add(thisCrop);
-                StartCoroutine(playSellSound());
+                RuntimeManager.PlayOneShot("event:/SFX/Crop Sell");
             }
             else
             {
                 GameObject stars_0 = Instantiate(growthPrefab, crop.transform.position, Quaternion.identity);
                 Destroy(stars_0, 1f);
+                RuntimeManager.PlayOneShot("event:/SFX/Crop Grow");
             }
         }
 
@@ -118,14 +123,6 @@ public class CropSpawner : MonoBehaviour
         {
             GameHandler.cropInventory.Remove(crop);
         }
-    }
-
-    private IEnumerator playSellSound()
-    {
-        // TODO: CROP SELL
-        // RuntimeManager.PlayOneShot("event:/SFX/Slingshot Launch");
-
-        yield return new WaitForSeconds(sellSound.clip.length);
     }
 
     private IEnumerator DelayedEnemySpawn()

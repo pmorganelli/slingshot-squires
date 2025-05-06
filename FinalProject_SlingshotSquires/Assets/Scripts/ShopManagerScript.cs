@@ -68,6 +68,8 @@ public class ShopManagerScript : MonoBehaviour
     // }
     public void Buy()
     {
+        RuntimeManager.PlayOneShot("event:/SFX/UI Interact");
+
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Event").GetComponent<EventSystem>().currentSelectedGameObject;
 
         // Debug.Log("here");
@@ -133,6 +135,7 @@ public class ShopManagerScript : MonoBehaviour
 
     public void back()
     {
+        RuntimeManager.PlayOneShot("event:/SFX/UI Interact");
         insuff_fund_warnings.SetActive(false);
         if (itemNum >= 0 && itemNum < windows.Length)
             windows[itemNum].SetActive(false);

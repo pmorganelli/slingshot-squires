@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 public class TutorialManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        if (GameHandler.levelCount <= 1)
+        if (GameHandler.levelCount == 0)
         {
             gameObject.SetActive(true);
         }
@@ -29,6 +29,7 @@ public class TutorialManager : MonoBehaviour
 
     public void nextWasClicked()
     {
+        RuntimeManager.PlayOneShot("event:/SFX/UI Interact");
         if (textNum == 0)
         {
             textA.gameObject.SetActive(false);
@@ -52,6 +53,7 @@ public class TutorialManager : MonoBehaviour
 
     public void waveWasClicked()
     {
+        RuntimeManager.PlayOneShot("event:/SFX/UI Interact");
         textD.gameObject.SetActive(false);
         nextButton.gameObject.SetActive(false);
         waveButton.gameObject.SetActive(false);
