@@ -140,6 +140,10 @@ MonoBehaviour:
   numberOfDots: 15
   dotSpacing: 0.1
   keyboardMode: 0
+  explosion: {fileID: 945127726575310448, guid: 8775bf7f4666ad34a8742571ef7423e3, type: 3}
+  cameraShake: {fileID: 0}
+  shakeDuration: 0.1
+  shakeMagnitude: 0.1
 --- !u!120 &7162971354212563292
 LineRenderer:
   serializedVersion: 2
