@@ -1341,6 +1341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97230b0f23fc9934a90ff31aa75b449e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  starsPrefab: {fileID: 3413343909621849350, guid: 92f7a4f2d07e5418b87b685a919f44a4, type: 3}
   wave: {fileID: 389657270}
   gridWidth: 5
   gridHeight: 4

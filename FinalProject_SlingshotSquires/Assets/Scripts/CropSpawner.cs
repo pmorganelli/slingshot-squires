@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CropSpawner : MonoBehaviour
 {
+    public GameObject starsPrefab;
+    public GameObject growthPrefab;
     public WaveManager wave;
 
     public int gridWidth = 5;
@@ -18,6 +20,7 @@ public class CropSpawner : MonoBehaviour
 
     public Dictionary<string, GameObject> cropPrefabs = new();
     public AudioSource sellSound;
+    
 
     [System.Serializable]
     public class PlantPrefabEntry
@@ -89,10 +92,21 @@ public class CropSpawner : MonoBehaviour
 
         foreach (Crop crop in GameHandler.cropInventory)
         {
+
             crop.growthState++;
+            if (growthPrefab != null)
+                {
+                    GameObject stars_0 = Instantiate(growthPrefab, transform.position, Quaternion.identity);
+                    Destroy(stars_0, 1f);
+                }
 
             if (crop.growthState >= crop.totalGrowthStates)
             {
+                if (starsPrefab != null)
+                {
+                    GameObject stars = Instantiate(starsPrefab, transform.position, Quaternion.identity);
+                    Destroy(stars, 1f);
+                }
                 GameHandler.coinCount += crop.salePrice;
                 cropsToRemove.Add(crop);
                 StartCoroutine(playSellSound());
