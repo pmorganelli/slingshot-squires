@@ -91,7 +91,7 @@ public class WaveManager : MonoBehaviour
     {
         CropManager.Instance.CleanupNullCrops();
         spawner.ProgressCrops();
-        spawner.LoadCrops();
+        //spawner.LoadCrops();
 
         yield return new WaitForSeconds(1f);
 

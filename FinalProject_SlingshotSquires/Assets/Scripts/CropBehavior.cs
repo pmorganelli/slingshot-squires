@@ -33,7 +33,7 @@ public class CropBehavior : MonoBehaviour
         cropRenderer.color = Color.white;
     }
 
-    private void UpdateCropSprite()
+    public void UpdateCropSprite()
     {
         int stage = Mathf.Min(thisCrop.growthState, growthStages.Length - 1);
         cropRenderer.sprite = growthStages[stage];

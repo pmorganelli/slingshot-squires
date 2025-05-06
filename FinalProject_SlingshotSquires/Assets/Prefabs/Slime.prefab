@@ -376,7 +376,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11966038, y: 0.10606331}
+  m_Offset: {x: -0.0571599, y: 0.18106383}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -387,7 +387,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.70366, y: 1.8790072}
+  m_Size: {x: 2.0453224, y: 1.7290062}
   m_EdgeRadius: 0
 --- !u!114 &8455659962124854843
 MonoBehaviour:
@@ -401,15 +401,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5de229e9e85f047a792bc504381864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 5023698472996374793}
-  hitSound: {fileID: 7118290282132914235}
-  deathSound: {fileID: 2916842577753828094}
   totalHealth: 250
   currHealth: 250
   enemySpeed: 1
-  enemyAttackSpeed: 2
+  attackRate: 1
   enemyAttackDamage: 100
   valorCoinValue: 50
+  healthBar: {fileID: 5023698472996374793}
+  hitSound: {fileID: 7118290282132914235}
+  deathSound: {fileID: 2916842577753828094}
   poofPrefab: {fileID: 2896242639616193371, guid: 02d1b32a95ba14f928dec940088469cf, type: 3}
 --- !u!82 &7118290282132914235
 AudioSource:

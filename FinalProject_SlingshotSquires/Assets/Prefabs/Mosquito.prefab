@@ -95,15 +95,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5de229e9e85f047a792bc504381864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalHealth: 50
+  currHealth: 50
+  enemySpeed: 1.2
+  attackRate: 1.3
+  enemyAttackDamage: 20
+  valorCoinValue: 5
   healthBar: {fileID: 2712862149777590596}
   hitSound: {fileID: 1001386944017536367}
   deathSound: {fileID: 818226963448980854}
-  totalHealth: 50
-  currHealth: 50
-  enemySpeed: 1.3
-  enemyAttackSpeed: 1.3
-  enemyAttackDamage: 34
-  valorCoinValue: 5
   poofPrefab: {fileID: 2896242639616193371, guid: 02d1b32a95ba14f928dec940088469cf, type: 3}
 --- !u!82 &1001386944017536367
 AudioSource:

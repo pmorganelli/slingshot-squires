@@ -20,8 +20,8 @@ public class GameHandler : MonoBehaviour
     }
 
     // === GAME CONFIG ===
-    public static float SLING_reload_time = 1f;
-    public static float SLING_force_multiplier = 1.25f;
+    public static float SLING_reload_time = 0.5f;
+    public static float SLING_force_multiplier = 1.4f;
 
     public static Dictionary<string, ballStat> ballStats = new Dictionary<string, ballStat> {
         {"default", new ballStat(50f, 1.75f)},

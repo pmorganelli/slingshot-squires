@@ -88,15 +88,16 @@ public class CropSpawner : MonoBehaviour
             }
         }
     }
-
     public void ProgressCrops()
     {
         List<Crop> cropsToRemove = new();
         GameObject[] crops = GameObject.FindGameObjectsWithTag("Crop");
         foreach (GameObject crop in crops)
         {
-            Crop thisCrop = crop.GetComponent<CropBehavior>().thisCrop;
+            CropBehavior behave = crop.GetComponent<CropBehavior>();
+            Crop thisCrop = behave.thisCrop;
             thisCrop.growthState++;
+            behave.UpdateCropSprite();
 
             if (thisCrop.growthState >= thisCrop.totalGrowthStates)
             {
@@ -109,6 +110,7 @@ public class CropSpawner : MonoBehaviour
                 Destroy(soldSign, 1f);
                 GameHandler.coinCount += thisCrop.salePrice;
                 cropsToRemove.Add(thisCrop);
+                Destroy(crop, 0.1f);
                 RuntimeManager.PlayOneShot("event:/SFX/Crop Sell");
             }
             else
