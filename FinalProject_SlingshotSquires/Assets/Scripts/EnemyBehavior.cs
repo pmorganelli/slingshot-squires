@@ -1,4 +1,5 @@
 using UnityEngine;
+using FMODUnity;
 using UnityEngine.UI;
 
 public class EnemyBehavior : MonoBehaviour
@@ -115,7 +116,7 @@ public class EnemyBehavior : MonoBehaviour
             }
             else if (hitSound != null)
             {
-                hitSound.Play();
+                RuntimeManager.PlayOneShot("event:/SFX/Worm Hurt");
             }
         }
     }
@@ -129,7 +130,8 @@ public class EnemyBehavior : MonoBehaviour
 
         isDead = true;
 
-        if (deathSound != null) deathSound.Play();
+        if (deathSound != null)
+            RuntimeManager.PlayOneShot("event:/SFX/Bug Death");
 
         if (poofPrefab != null)
         {

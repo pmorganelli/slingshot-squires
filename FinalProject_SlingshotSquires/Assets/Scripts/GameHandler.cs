@@ -35,7 +35,7 @@ public class GameHandler : MonoBehaviour
 
     public static int goldAmmo = 0;
     public static int diamondAmmo = 0;
-    
+
     public static bool waveComplete = false;
     public static bool waveStarted = false;
     public static bool lost = false;
@@ -105,14 +105,15 @@ public class GameHandler : MonoBehaviour
     public void enterIntro() => SceneManager.LoadScene("Intro1");
     public void enterTutorial() => SceneManager.LoadScene("ShopScene");
 
-    public void startLevel()
+    public bool startLevel()
     {
         if (cropInventory.Count == 0)
         {
             Debug.Log("0 CROPS CANNOT PROCEED");
-            return;
+            return false;
         }
         nextLevel();
+        return true;
     }
 
     public void nextLevel()

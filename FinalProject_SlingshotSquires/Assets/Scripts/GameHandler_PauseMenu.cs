@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class GameHandler_PauseMenu : MonoBehaviour
 {
@@ -39,17 +40,17 @@ public class GameHandler_PauseMenu : MonoBehaviour
         }
     }
 
-        void Start()
-        {
-                pauseMenuUI.SetActive(false);
-                GameisPaused = false;
+    void Start()
+    {
+        pauseMenuUI.SetActive(false);
+        GameisPaused = false;
 
-                // ✅ Ensure toggle reflects actual global setting
-                if (keyboardToggle != null)
-                {
-                        keyboardToggle.isOn = keyboardModeEnabled;
-                }
+        // ✅ Ensure toggle reflects actual global setting
+        if (keyboardToggle != null)
+        {
+            keyboardToggle.isOn = keyboardModeEnabled;
         }
+    }
 
 
     void Update()
@@ -69,19 +70,19 @@ public class GameHandler_PauseMenu : MonoBehaviour
         }
     }
 
-public void Pause()
-{
-    if (!GameisPaused)
+    public void Pause()
     {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameisPaused = true;
+        if (!GameisPaused)
+        {
+            pauseMenuUI.SetActive(true);
+            Time.timeScale = 0f;
+            GameisPaused = true;
+        }
+        else
+        {
+            Resume();
+        }
     }
-    else
-    {
-        Resume();
-    }
-}
 
 
     public void Resume()
@@ -92,13 +93,13 @@ public void Pause()
         playSound.Play();
     }
 
-        // void OnEnable()
-        // {
-        //         if (keyboardToggle != null)
-        //         {
-        //                 keyboardToggle.isOn = keyboardModeEnabled;
-        //         }
-        // }
+    // void OnEnable()
+    // {
+    //         if (keyboardToggle != null)
+    //         {
+    //                 keyboardToggle.isOn = keyboardModeEnabled;
+    //         }
+    // }
 
 
     public void SetLevel(float sliderValue)
@@ -108,17 +109,17 @@ public void Pause()
     }
 
 
-        public void SetKeyboardMode(bool isOn)
-        {
+    public void SetKeyboardMode(bool isOn)
+    {
         keyboardModeEnabled = isOn; // ✅ Save global state
 
         // Update all live balls (optional, for mid-flight toggle)
         BallMovement[] allBalls = FindObjectsOfType<BallMovement>();
         foreach (BallMovement ball in allBalls)
         {
-                ball.keyboardMode = isOn;
+            ball.keyboardMode = isOn;
         }
-        }
+    }
 
 
 }

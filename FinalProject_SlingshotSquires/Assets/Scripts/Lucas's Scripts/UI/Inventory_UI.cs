@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Inventory_UI : MonoBehaviour
 {
@@ -9,13 +10,13 @@ public class Inventory_UI : MonoBehaviour
     public Player player;
 
     public List<Slot_UI> slots = new List<Slot_UI>();
-    
+
     // AudioSource for playing sound effects
     public AudioSource audioSource;
-    
+
     // AudioClip for when opening the inventory menu
     public AudioClip openSound;
-    
+
     // AudioClip for when closing the inventory menu
     public AudioClip closeSound;
     void Start()
@@ -24,7 +25,7 @@ public class Inventory_UI : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             ToggleInventory();
         }
@@ -32,7 +33,7 @@ public class Inventory_UI : MonoBehaviour
 
     public void ToggleInventory()
     {
-        if(!inventoryPanel.activeSelf)
+        if (!inventoryPanel.activeSelf)
         {
             inventoryPanel.SetActive(true);
             Setup();
@@ -54,14 +55,14 @@ public class Inventory_UI : MonoBehaviour
     }
 
     public void Refresh() => Setup();
-    
+
     void Setup()
     {
-        if(slots.Count == player.inventory.slots.Count)
+        if (slots.Count == player.inventory.slots.Count)
         {
-            for(int i = 0; i < slots.Count; i++)
+            for (int i = 0; i < slots.Count; i++)
             {
-                if(player.inventory.slots[i].type != CollectableType.NONE)
+                if (player.inventory.slots[i].type != CollectableType.NONE)
                 {
                     slots[i].SetItem(player.inventory.slots[i]);
                 }

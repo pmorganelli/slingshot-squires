@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 public class BallMovement : MonoBehaviour
@@ -24,61 +25,62 @@ public class BallMovement : MonoBehaviour
     private Rigidbody2D slingRb;
     private AudioSource audioSource;
 
-//game feel!
+    //game feel!
     public GameObject explosion;
     public CameraShake cameraShake;
     public float shakeDuration = 0.15f;
     public float shakeMagnitude = 0.3f;
 
-private void Awake()
-{
-    rb = GetComponent<Rigidbody2D>();
-    sj = GetComponent<SpringJoint2D>();
-    lr = GetComponent<LineRenderer>();
-    audioSource = GetComponent<AudioSource>();
-
-    GameObject foundSling = GameObject.FindGameObjectWithTag("Sling");
-    if (foundSling != null)
+    private void Awake()
     {
-        sling = foundSling;
-        slingBehavior = sling.GetComponent<Sling>();
-        slingRb = sling.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        sj = GetComponent<SpringJoint2D>();
+        lr = GetComponent<LineRenderer>();
+        audioSource = GetComponent<AudioSource>();
+
+        GameObject foundSling = GameObject.FindGameObjectWithTag("Sling");
+        if (foundSling != null)
+        {
+            sling = foundSling;
+            slingBehavior = sling.GetComponent<Sling>();
+            slingRb = sling.GetComponent<Rigidbody2D>();
+        }
+        else
+        {
+            Debug.LogError("[BallMovement] Could not find Sling in scene. Make sure it's tagged 'Sling'.");
+        }
+
+        if (sj != null && slingRb != null)
+        {
+            sj.connectedBody = slingRb;
+            sj.enabled = true;
+        }
+
+        keyboardMode = GameHandler_PauseMenu.keyboardModeEnabled;
+        hasFired = false;
+
+        lr.enabled = false;
+
+        releaseDelay = (sj != null && sj.frequency > 0) ? 1 / (sj.frequency * 4) : 0.05f;
+
+        dots = new List<GameObject>();
+        for (int i = 0; i < numberOfDots; i++)
+        {
+            GameObject dot = Instantiate(trajectoryDotPrefab);
+            dot.transform.localScale = Vector3.one * 0.1f;
+            dot.SetActive(false);
+            dots.Add(dot);
+        }
     }
-    else
+
+    void Start()
     {
-        Debug.LogError("[BallMovement] Could not find Sling in scene. Make sure it's tagged 'Sling'.");
+        cameraShake = GameObject.FindWithTag("MainCamera").GetComponent<CameraShake>();
     }
 
-    if (sj != null && slingRb != null)
-    {
-        sj.connectedBody = slingRb;
-        sj.enabled = true;
-    }
+    private bool lastKeyboardMode = false;
 
-    keyboardMode = GameHandler_PauseMenu.keyboardModeEnabled;
-    hasFired = false;
-
-    lr.enabled = false;
-
-    releaseDelay = (sj != null && sj.frequency > 0) ? 1 / (sj.frequency * 4) : 0.05f;
-
-    dots = new List<GameObject>();
-    for (int i = 0; i < numberOfDots; i++)
-    {
-        GameObject dot = Instantiate(trajectoryDotPrefab);
-        dot.transform.localScale = Vector3.one * 0.1f;
-        dot.SetActive(false);
-        dots.Add(dot);
-    }
-}
-
- void Start(){
-              cameraShake = GameObject.FindWithTag("MainCamera").GetComponent<CameraShake>();
-    }
-
-private bool lastKeyboardMode = false;
-
-void Update()
+    void Update()
     {
         keyboardMode = GameHandler_PauseMenu.keyboardModeEnabled;
 
@@ -157,7 +159,7 @@ void Update()
         else
         {
             Debug.Log($"[BallMovement] Sling activeSelf={slingBehavior.gameObject.activeSelf} activeInHierarchy={slingBehavior.gameObject.activeInHierarchy}");
-            
+
             // --- DEBUG: print parent chain ---
             Transform t = slingBehavior.transform;
             while (t != null)
@@ -176,7 +178,8 @@ void Update()
 
     private IEnumerator Release()
     {
-        audioSource.Play();
+        RuntimeManager.PlayOneShot("event:/SFX/Slingshot Launch");
+
         yield return new WaitForSeconds(releaseDelay);
         sj.enabled = false;
     }
@@ -235,7 +238,8 @@ void Update()
         sj.enabled = false;
 
         rb.AddForce(force, ForceMode2D.Impulse);
-        audioSource.Play();
+        RuntimeManager.PlayOneShot("event:/SFX/Slingshot Launch");
+
         HideTrajectory();
 
         slingBehavior?.reload();

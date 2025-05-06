@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class CropSpawner : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class CropSpawner : MonoBehaviour
 
     public Dictionary<string, GameObject> cropPrefabs = new();
     public AudioSource sellSound;
-    
+
 
     [System.Serializable]
     public class PlantPrefabEntry
@@ -95,10 +96,10 @@ public class CropSpawner : MonoBehaviour
 
             crop.growthState++;
             if (growthPrefab != null)
-                {
-                    GameObject stars_0 = Instantiate(growthPrefab, transform.position, Quaternion.identity);
-                    Destroy(stars_0, 1f);
-                }
+            {
+                GameObject stars_0 = Instantiate(growthPrefab, transform.position, Quaternion.identity);
+                Destroy(stars_0, 1f);
+            }
 
             if (crop.growthState >= crop.totalGrowthStates)
             {
@@ -121,7 +122,9 @@ public class CropSpawner : MonoBehaviour
 
     private IEnumerator playSellSound()
     {
-        sellSound.Play();
+        // TODO: CROP SELL
+        // RuntimeManager.PlayOneShot("event:/SFX/Slingshot Launch");
+
         yield return new WaitForSeconds(sellSound.clip.length);
     }
 

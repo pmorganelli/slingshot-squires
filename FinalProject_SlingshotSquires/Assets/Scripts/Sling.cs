@@ -5,7 +5,7 @@ public class Sling : MonoBehaviour
 {
     [Header("Prefab Settings")]
     public GameObject nextBall;
-    public GameObject defaultBallPrefab;   
+    public GameObject defaultBallPrefab;
     public GameObject goldBallPrefab;
     public GameObject diamondBallPrefab;
     [SerializeField] public GameObject fallbackBallPrefab;
@@ -14,11 +14,11 @@ public class Sling : MonoBehaviour
 
     void Start()
     {
-    // ensure your Inspector references are valid
+        // ensure your Inspector references are valid
         if (goldBallPrefab == null || diamondBallPrefab == null || defaultBallPrefab == null)
             Debug.LogError("[Sling] One or more ball‐prefab references missing.");
 
-    // spawn the very first ball using the same priority you'd use in reload
+        // spawn the very first ball using the same priority you'd use in reload
         GameObject first = defaultBallPrefab;
         if (GameHandler.goldAmmo > 0)
         {
@@ -67,8 +67,11 @@ public class Sling : MonoBehaviour
 
     private void SpawnBall(GameObject prefab)
     {
-        if (currentBall != null)
+        if (currentBall != null && Vector3.Distance(gameObject.transform.position, currentBall.transform.position) < 0.25)
+        {
+            Debug.Log("TRIGGER");
             Destroy(currentBall);
+        }
 
         if (prefab == null)
         {
@@ -84,7 +87,8 @@ public class Sling : MonoBehaviour
             Debug.LogWarning("[Sling] Spawned ball has no BallMovement component.");
     }
 
-    public void ChangeBall(GameObject newBallPrefab) {
+    public void ChangeBall(GameObject newBallPrefab)
+    {
         nextBall = newBallPrefab;
         fallbackBallPrefab = newBallPrefab;
 

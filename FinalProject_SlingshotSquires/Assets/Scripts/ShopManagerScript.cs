@@ -117,7 +117,8 @@ public class ShopManagerScript : MonoBehaviour
             insuff_fund_warnings.SetActive(true);
         }
 
-        switch(itemNum) {
+        switch (itemNum)
+        {
             case 4:  // gold ball
                 GameHandler.goldAmmo += 1;
                 sling.ChangeBall(goldBallPrefab);
@@ -132,7 +133,8 @@ public class ShopManagerScript : MonoBehaviour
     public void back()
     {
         insuff_fund_warnings.SetActive(false);
-        windows[itemNum].SetActive(false);
+        if (itemNum >= 0 && itemNum < windows.Length)
+            windows[itemNum].SetActive(false);
         panel.SetActive(false);
         buy_back_buttons.SetActive(false);
         Button btnComponentT = tButton.GetComponent<Button>();
