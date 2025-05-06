@@ -8,7 +8,7 @@
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 0
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000002070FBD6338 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001BEA07B4838 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -17,36 +17,98 @@
 [LOG] Manager::init                            : done.
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSound                     : filename = FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Affinity: 0x4000000000000003, Priority: 0xFFFF7FFC, Stack Size: 114688, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001BD7E1C4968, queue head = 000001BD7E1C8DE8, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001BD7E1C4968
+[LOG] SystemI::createSound                     :     filename = FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1537536
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 000001BD7E1C6A38, queue head = 000001BD7E1C8DE8, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 35168
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001BEA0B3F418
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSound                     :     filename = FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 000001BD7E1CA598, queue head = 000001BD7E1C8DE8, queue count = 1
+[LOG] SystemI::createSound                     :     filename = FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 000001BD7E1C4C88, queue head = 000001BD7E1C8DE8, queue count = 2
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='First Intro Loop Piano_152bpm - Slingshot Squires', format=5, channels=2, frequency=48000, lengthbytes=252992, lengthpcm=1364211, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.159534.
+[LOG] Thread::initThread                       :     Init FMOD file thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFC, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001BD7E1C4968
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001BD7E1C6A38
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1537536
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 35168
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001BEA0B3E918
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Flute Two_152bpm - Slingshot Squires', format=5, channels=2, frequency=48000, lengthbytes=262784, lengthpcm=1364211, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.038225.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001BD7E1C6A38
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001BD7E1CA598
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1537536
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 35168
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001BEA0B3D478
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Flute One_152bpm - Slingshot Squires', format=5, channels=2, frequency=48000, lengthbytes=317728, lengthpcm=1364211, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.119007.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001BD7E1CA598
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001BD7E1C4C88
+[LOG] SystemI::createSoundInternal             :     Create name='FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1537536
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 35168
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001BEA0B3D898
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='First Intro Loop Guitar_152bpm - Slingshot Squires', format=5, channels=2, frequency=48000, lengthbytes=373056, lengthpcm=1364211, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.160900.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001BD7E1C4C88
+[LOG] SoundI::release                          : First Intro Loop Guitar_152bpm - Slingshot Squires (000001BD7E1C4C88)
+[LOG] SoundI::release                          :     First Intro Loop Guitar_152bpm - Slingshot Squires (000001BEA0998EF8)
+[LOG] SoundI::release                          :     First Intro Loop Guitar_152bpm - Slingshot Squires (000001BD7E1C7078)
+[LOG] SoundI::release                          : Flute One_152bpm - Slingshot Squires (000001BD7E1CA598)
+[LOG] SoundI::release                          :     Flute One_152bpm - Slingshot Squires (000001BEA0998BF8)
+[LOG] SoundI::release                          :     Flute One_152bpm - Slingshot Squires (000001BD7E1C76B8)
+[LOG] SoundI::release                          : Flute Two_152bpm - Slingshot Squires (000001BD7E1C6A38)
+[LOG] SoundI::release                          :     Flute Two_152bpm - Slingshot Squires (000001BEA0998D78)
+[LOG] SoundI::release                          :     Flute Two_152bpm - Slingshot Squires (000001BD7E1C8018)
+[LOG] SoundI::release                          : First Intro Loop Piano_152bpm - Slingshot Squires (000001BD7E1C4968)
+[LOG] SoundI::release                          :     First Intro Loop Piano_152bpm - Slingshot Squires (000001BEA09991F8)
+[LOG] SoundI::release                          :     First Intro Loop Piano_152bpm - Slingshot Squires (000001BD7E1C5908)
 [LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
 [LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 1537536
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 35168
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000089028FF248
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000047EF2FED58
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD0F1AD3E0
 [LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD0F1AD3A0
 [LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD0F1AD4C0
 [LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD0F1AD580
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000002071020FA98
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 4
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='- Slingshot Squires - 0011 - Audio - Crop Hurt One', format=5, channels=2, frequency=48000, lengthbytes=6816, lengthpcm=80658, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.109908.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 1537536
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 35168
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000089028FF248
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD0F1AD3E0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD0F1AD3A0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD0F1AD4C0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD0F1AD580
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000207102106F8
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001BDAEB3EA98
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 4
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='- Slingshot Squires - 0010 - Audio - Purchase Crop - Coin', format=5, channels=2, frequency=48000, lengthbytes=13152, lengthpcm=80658, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.087724.
@@ -55,30 +117,18 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 1537536
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 35168
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000089028FF248
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000047EF2FED58
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD0F1AD3E0
 [LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD0F1AD3A0
 [LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD0F1AD4C0
 [LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD0F1AD580
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000207102104E8
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001BDAEB3EA98
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 4
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Pop (1)', format=5, channels=2, frequency=48000, lengthbytes=2624, lengthpcm=27000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.437898.
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 1537536
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 35168
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000089028FF248
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFD0F1AD3E0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFD0F1AD3A0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFD0F1AD4C0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFD0F1AD580
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000002093ED63308
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 4
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='- Slingshot Squires - 0007 - Audio - Bug Squish', format=5, channels=2, frequency=48000, lengthbytes=5056, lengthpcm=80658, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.195205.
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='- Slingshot Squires - 0011 - Audio - Crop Hurt One', format=5, channels=2, frequency=48000, lengthbytes=6816, lengthpcm=80658, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.109908.
+[LOG] SoundI::release                          :  (000001BEA0B3CF18)
+[LOG] SoundI::release                          :     - Slingshot Squires - 0010 - Audio - Purchase Crop - Coin (000001BEA0AB78F8)
+[LOG] SoundI::release                          :  (000001BEA0B3F178)
+[LOG] SoundI::release                          :     - Slingshot Squires - 0011 - Audio - Crop Hurt One (000001BEA0AB7D78)
