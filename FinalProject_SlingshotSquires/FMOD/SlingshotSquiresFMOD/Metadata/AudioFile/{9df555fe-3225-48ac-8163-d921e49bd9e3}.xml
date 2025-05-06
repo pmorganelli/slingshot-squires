@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{9df555fe-3225-48ac-8163-d921e49bd9e3}">
+		<property name="assetPath">
+			<value>Music/- Slingshot Squires - 0017 - Instrument - Drums.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>33.157916666666665</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a9220191-fb0d-47ef-b76d-53da640a7240}</destination>
+		</relationship>
+	</object>
+</objects>

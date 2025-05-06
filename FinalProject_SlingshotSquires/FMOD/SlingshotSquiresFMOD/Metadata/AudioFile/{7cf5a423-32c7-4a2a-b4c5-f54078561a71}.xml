@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{7cf5a423-32c7-4a2a-b4c5-f54078561a71}">
 		<property name="assetPath">
-			<value>sword-slash-and-swing-185432.mp3</value>
+			<value>SFX/sword-slash-and-swing-185432.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
