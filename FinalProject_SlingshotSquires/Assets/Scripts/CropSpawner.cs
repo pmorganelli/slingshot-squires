@@ -90,27 +90,27 @@ public class CropSpawner : MonoBehaviour
     public void ProgressCrops()
     {
         List<Crop> cropsToRemove = new();
-
-        foreach (Crop crop in GameHandler.cropInventory)
+        GameObject[] crops = GameObject.FindGameObjectsWithTag("Crop");
+        foreach (GameObject crop in crops)
         {
+            Crop thisCrop = crop.GetComponent<CropBehavior>().thisCrop;
+            thisCrop.growthState++;
 
-            crop.growthState++;
-            if (growthPrefab != null)
-            {
-                GameObject stars_0 = Instantiate(growthPrefab, transform.position, Quaternion.identity);
-                Destroy(stars_0, 1f);
-            }
-
-            if (crop.growthState >= crop.totalGrowthStates)
+            if (thisCrop.growthState >= thisCrop.totalGrowthStates)
             {
                 if (starsPrefab != null)
                 {
-                    GameObject stars = Instantiate(starsPrefab, transform.position, Quaternion.identity);
+                    GameObject stars = Instantiate(starsPrefab, crop.transform.position, Quaternion.identity);
                     Destroy(stars, 1f);
                 }
-                GameHandler.coinCount += crop.salePrice;
-                cropsToRemove.Add(crop);
+                GameHandler.coinCount += thisCrop.salePrice;
+                cropsToRemove.Add(thisCrop);
                 StartCoroutine(playSellSound());
+            }
+            else
+            {
+                GameObject stars_0 = Instantiate(growthPrefab, crop.transform.position, Quaternion.identity);
+                Destroy(stars_0, 1f);
             }
         }
 
