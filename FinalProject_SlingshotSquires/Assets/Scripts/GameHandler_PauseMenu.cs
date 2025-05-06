@@ -12,8 +12,6 @@ public class GameHandler_PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public AudioMixer mixer;
     public static float volumeLevel = 1.0f;
-    public AudioSource playSound;
-    public AudioSource pauseSound;
     public static bool keyboardModeEnabled = false;
     private Slider sliderVolumeCtrl;
     private Toggle keyboardToggle;
@@ -57,14 +55,13 @@ public class GameHandler_PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            RuntimeManager.PlayOneShot("event:/SFX/UI Interact");
             if (GameisPaused)
             {
-                playSound.Play();
                 Resume();
             }
             else
             {
-                pauseSound.Play();
                 Pause();
             }
         }
@@ -90,7 +87,7 @@ public class GameHandler_PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameisPaused = false;
-        playSound.Play();
+        RuntimeManager.PlayOneShot("event:/SFX/UI Interact");
     }
 
     // void OnEnable()

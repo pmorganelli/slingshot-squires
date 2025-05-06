@@ -47,6 +47,7 @@ public class CropBehavior : MonoBehaviour
 
     public void cropDamage(int damage)
     {
+        RuntimeManager.PlayOneShot("event:/SFX/Crop Hurt");
         thisCrop.currHealth -= damage;
         healthBar.value = (float)thisCrop.currHealth / (float)thisCrop.totalHealth;
 

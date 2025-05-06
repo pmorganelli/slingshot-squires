@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+using FMODUnity;
 public class ShopManagerScript : MonoBehaviour
 {
+
     public int[,] shopItems = new int[5, 6];
     public int itemNum;
     public Text CoinsTxt;
@@ -26,7 +27,6 @@ public class ShopManagerScript : MonoBehaviour
     public GameObject goldBallPrefab;
     public GameObject diamondBallPrefab;
     public Sling sling;
-
 
 
 
@@ -95,6 +95,7 @@ public class ShopManagerScript : MonoBehaviour
 
         if (GameHandler.coinCount >= price)
         {
+            RuntimeManager.PlayOneShot("event:/SFX/Purchase Crop");
             // Take money
             GameHandler.subtractCoins(price);
 
