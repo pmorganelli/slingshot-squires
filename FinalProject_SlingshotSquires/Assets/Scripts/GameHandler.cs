@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using FMODUnity;
 
 public class GameHandler : MonoBehaviour
 {
@@ -86,14 +87,17 @@ public class GameHandler : MonoBehaviour
 
     public void Intro1To2()
     {
+        RuntimeManager.PlayOneShot("event:/SFX/UI Interact");
         SceneManager.LoadScene("Intro2");
     }
     public void Intro2To3()
     {
+        RuntimeManager.PlayOneShot("event:/SFX/UI Interact");
         SceneManager.LoadScene("Intro3");
     }
     public void Intro3To4()
     {
+        RuntimeManager.PlayOneShot("event:/SFX/UI Interact");
         SceneManager.LoadScene("Intro4");
     }
 
@@ -132,9 +136,17 @@ public class GameHandler : MonoBehaviour
 
     public void RestartGame()
     {
+        Time.timeScale = 1f;
         coinCount = 50;
+        goldAmmo = 0;
+        diamondAmmo = 0;
+        waveStarted = false;
         lost = false;
         waveComplete = false;
+        tomatoes = 0;
+        pumpkins = 0;
+        carrots = 0;
+        watermelon = 0;
         levelCount = 0;
         cropInventory.Clear();
         GameHandler_PauseMenu.GameisPaused = false;

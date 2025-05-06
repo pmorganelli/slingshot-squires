@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using FMODUnity;
 public class Sling : MonoBehaviour
 {
     [Header("Prefab Settings")]
@@ -14,6 +14,8 @@ public class Sling : MonoBehaviour
 
     void Start()
     {
+        RuntimeManager.PlayOneShot("event:/Music/Music Excite");
+        RuntimeManager.PlayOneShot("event:/Parameter Controllers/Battle Phase");
         // ensure your Inspector references are valid
         if (goldBallPrefab == null || diamondBallPrefab == null || defaultBallPrefab == null)
             Debug.LogError("[Sling] One or more ball‐prefab references missing.");

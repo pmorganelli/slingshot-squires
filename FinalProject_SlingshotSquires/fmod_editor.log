@@ -8,7 +8,7 @@
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 0
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001BE76B536E8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000029B0118D188 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -17,8 +17,47 @@
 [LOG] Manager::init                            : done.
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
-[LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1537536
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 35424
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000F27C82EEC8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFAB179D3E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFAB179D3A0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFAB179D4C0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFAB179D580
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000029927E0EB48
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 4
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Pop (1)', format=5, channels=2, frequency=48000, lengthbytes=2624, lengthpcm=27000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.437898.
+[LOG] SoundI::release                          :  (0000029BEE6C2A68)
+[LOG] SoundI::release                          :     Pop (1) (0000029927846A18)
+[LOG] SoundI::release                          : First Intro Loop Guitar_152bpm - Slingshot Squires (0000029B033139C8)
+[LOG] SoundI::release                          :     First Intro Loop Guitar_152bpm - Slingshot Squires (0000029B0059CFF8)
+[LOG] SoundI::release                          :     First Intro Loop Guitar_152bpm - Slingshot Squires (0000029B00160078)
+[LOG] SoundI::release                          : Flute One_152bpm - Slingshot Squires (0000029B033136A8)
+[LOG] SoundI::release                          :     Flute One_152bpm - Slingshot Squires (0000029B0059CE78)
+[LOG] SoundI::release                          :     Flute One_152bpm - Slingshot Squires (0000029B00160398)
+[LOG] SoundI::release                          : Flute Two_152bpm - Slingshot Squires (0000029B03313388)
+[LOG] SoundI::release                          :     Flute Two_152bpm - Slingshot Squires (0000029B0059CCF8)
+[LOG] SoundI::release                          :     Flute Two_152bpm - Slingshot Squires (0000029B001606B8)
+[LOG] SoundI::release                          : First Intro Loop Piano_152bpm - Slingshot Squires (0000029B03312ED8)
+[LOG] SoundI::release                          :     First Intro Loop Piano_152bpm - Slingshot Squires (0000029B02C5FAA8)
+[LOG] SoundI::release                          :     First Intro Loop Piano_152bpm - Slingshot Squires (0000029B00160E88)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::closeInternal                   : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -26,3 +65,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::closeInternal                   : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
