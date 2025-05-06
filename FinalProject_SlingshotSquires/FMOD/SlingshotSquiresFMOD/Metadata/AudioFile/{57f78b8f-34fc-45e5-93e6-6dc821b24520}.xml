@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{57f78b8f-34fc-45e5-93e6-6dc821b24520}">
 		<property name="assetPath">
-			<value>Flute One_152bpm - Slingshot Squires.wav</value>
+			<value>Music/Flute One_152bpm - Slingshot Squires.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{45d46c14-cc23-4981-b891-0763b819cfb6}">
+		<property name="assetPath">
+			<value>SFX/- Slingshot Squires - 0012 - Audio - Crop Hurt Two.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.680375</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a9220191-fb0d-47ef-b76d-53da640a7240}</destination>
+		</relationship>
+	</object>
+</objects>
