@@ -123,13 +123,13 @@ public class WaveManager : MonoBehaviour
         wormCt = 0;
         slimeCt = 0;
 
-        if (GameHandler.levelCount >= 4)
+        if (GameHandler.levelCount >= 2)
         {
             maxWorms += Random.Range(0, 2); // 0 or 1
             Debug.Log("MAXWORMS: " + maxWorms);
         }
 
-        if (GameHandler.levelCount >= 8)
+        if (GameHandler.levelCount >= 4)
         {
             maxSlimes += Random.Range(0, 2);
             Debug.Log("MAXSLIMES: " + maxSlimes);
