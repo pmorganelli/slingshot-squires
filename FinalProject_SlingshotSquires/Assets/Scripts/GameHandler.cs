@@ -102,7 +102,12 @@ public class GameHandler : MonoBehaviour
     }
 
 
-    public void PlayGame() => SceneManager.LoadScene("Intro1");
+    public void PlayGame()
+    {
+        RuntimeManager.PlayOneShot("event:/Music/Play Music");
+        SceneManager.LoadScene("Intro1");
+    }
+
     public void QuitGame() => Application.Quit();
     public void loadCredits() => SceneManager.LoadScene("Credits");
     public void returnMain() => SceneManager.LoadScene("TitleScreen");
