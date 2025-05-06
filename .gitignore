@@ -64,3 +64,4 @@ crashlytics-build.properties
 # Mac OS Finder files
 *.DS_Store
 **/fmod_editor.log
+FinalProject_SlingshotSquires/fmod_editor.log

@@ -21,12 +21,12 @@ MonoBehaviour:
   Banks:
   - {fileID: 5893422180917003943}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 562
+  Length: 1680
 --- !u!114 &-7180600366062868296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,7 +53,34 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 562
+  Length: 1680
+--- !u!114 &-7071777367001546214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Pause Menu Close
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Pause Menu Close
+  Guid:
+    Data1: 1678924587
+    Data2: 1109837155
+    Data3: 1904374958
+    Data4: -1008962490
+  Banks:
+  - {fileID: 5893422180917003943}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 492
 --- !u!114 &-5683144215332260345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +158,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 562
+  Length: 1680
 --- !u!114 &-5267002969771690503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +212,33 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-3325801360821400412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Crop Grow
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Crop Grow
+  Guid:
+    Data1: 1930064473
+    Data2: 1169654871
+    Data3: 1258741667
+    Data4: 519987071
+  Banks:
+  - {fileID: 5893422180917003943}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1680
 --- !u!114 &-2278730088336491426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +346,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 321
+--- !u!114 &-718462645275739988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/Duck Music
+  m_EditorClassIdentifier: 
+  Path: snapshot:/Duck Music
+  Guid:
+    Data1: -92694181
+    Data2: 1240127058
+    Data3: 619580345
+    Data4: 750938188
+  Banks:
+  - {fileID: 5893422180917003943}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +404,11 @@ MonoBehaviour:
   - {fileID: 7321418239488652846}
   - {fileID: -5574426642878038623}
   - {fileID: 2245515568437607866}
+  - {fileID: 5971848185807119408}
+  - {fileID: -7071777367001546214}
+  - {fileID: -3325801360821400412}
+  - {fileID: -718462645275739988}
+  - {fileID: 2643538862368540034}
   EditorParameters:
   - {fileID: 6640095634049454120}
   - {fileID: 2718319406830264806}
@@ -331,7 +417,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 7107379957928598556}
   cacheVersion: 131847
-  cacheTime: 638820831637639151
+  cacheTime: 638821325080328031
   SerializableEventsDict:
   - key: event:/Music/Music Excite
     index: 0
@@ -363,6 +449,16 @@ MonoBehaviour:
     index: 13
   - key: event:/Parameter Controllers/Buy Phase
     index: 14
+  - key: event:/SFX/Pause Menu Open
+    index: 15
+  - key: event:/SFX/Pause Menu Close
+    index: 16
+  - key: event:/SFX/Crop Grow
+    index: 17
+  - key: snapshot:/Duck Music
+    index: 18
+  - key: event:/SFX/Crop Sell
+    index: 19
 --- !u!114 &340957416887980644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,6 +539,33 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &2643538862368540034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Crop Sell
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Crop Sell
+  Guid:
+    Data1: 1175434936
+    Data2: 1219588849
+    Data3: 1909018782
+    Data4: -1418859693
+  Banks:
+  - {fileID: 5893422180917003943}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1680
 --- !u!114 &2718319406830264806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,7 +640,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 562
+  Length: 1680
 --- !u!114 &5893422180917003943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,11 +656,38 @@ MonoBehaviour:
   Path: FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638820831637629155
+  lastModified: 638821325080307956
   FileSizes:
   - Name: Desktop
-    Value: 1230592
+    Value: 1572704
   Exists: 1
+--- !u!114 &5971848185807119408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Pause Menu Open
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Pause Menu Open
+  Guid:
+    Data1: 152421147
+    Data2: 1187173715
+    Data3: -600018780
+    Data4: -886117024
+  Banks:
+  - {fileID: 5893422180917003943}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 484
 --- !u!114 &6182166772902748158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,13 +756,13 @@ MonoBehaviour:
     Data4: 1210442618
   Banks:
   - {fileID: 5893422180917003943}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 562
+  Length: 13644
 --- !u!114 &7107379957928598556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,10 +778,10 @@ MonoBehaviour:
   Path: FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638820831637639151
+  lastModified: 638821325080328031
   FileSizes:
   - Name: Desktop
-    Value: 1566
+    Value: 1840
   Exists: 1
 --- !u!114 &7321418239488652846
 MonoBehaviour:
@@ -659,7 +809,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 562
+  Length: 1680
 --- !u!114 &7458317828896878766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,7 +836,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 562
+  Length: 1680
 --- !u!114 &8637117214658948576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,10 +857,10 @@ MonoBehaviour:
     Data4: 1069817864
   Banks:
   - {fileID: 5893422180917003943}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 562
+  Length: 17284
