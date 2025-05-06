@@ -128,10 +128,37 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 7763995569507197436}
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 2000
+--- !u!114 &-5549112819360719328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Buy Phase/Game State
+  m_EditorClassIdentifier: 
+  Name: Game State
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 790735640
+    data2: 2293727727
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Buy
+  - Battle
+  Exists: 1
 --- !u!114 &-5463371464246658958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +266,32 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1680
+--- !u!114 &-2895737085078779945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Game State
+  m_EditorClassIdentifier: 
+  Name: Game State
+  StudioPath: parameter:/Game State
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 790735640
+    data2: 2293727727
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Buy
+  - Battle
+  Exists: 1
 --- !u!114 &-2278730088336491426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,15 +462,17 @@ MonoBehaviour:
   - {fileID: -3325801360821400412}
   - {fileID: -718462645275739988}
   - {fileID: 2643538862368540034}
+  - {fileID: 3445758221489602779}
   EditorParameters:
   - {fileID: 6640095634049454120}
   - {fileID: 2718319406830264806}
+  - {fileID: -2895737085078779945}
   MasterBanks:
   - {fileID: 5893422180917003943}
   StringsBanks:
   - {fileID: 7107379957928598556}
   cacheVersion: 131847
-  cacheTime: 638821361558423750
+  cacheTime: 638821384845626857
   SerializableEventsDict:
   - key: event:/Music/Music Excite
     index: 0
@@ -459,6 +514,8 @@ MonoBehaviour:
     index: 18
   - key: event:/SFX/Crop Sell
     index: 19
+  - key: event:/SFX/UI Fail
+    index: 20
 --- !u!114 &340957416887980644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,9 +542,36 @@ MonoBehaviour:
   Parameters:
   - {fileID: -2278730088336491426}
   - {fileID: 3021151280725208191}
+  - {fileID: 1448753681495381945}
   MinDistance: 1
   MaxDistance: 20
-  Length: 28421
+  Length: 60000
+--- !u!114 &1448753681495381945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Play Music/Game State
+  m_EditorClassIdentifier: 
+  Name: Game State
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 790735640
+    data2: 2293727727
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Buy
+  - Battle
+  Exists: 1
 --- !u!114 &2245515568437607866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,10 +595,11 @@ MonoBehaviour:
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: -5549112819360719328}
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 2000
 --- !u!114 &2284971625897426988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,6 +699,33 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &3445758221489602779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI Fail
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/UI Fail
+  Guid:
+    Data1: -815663754
+    Data2: 1122471100
+    Data3: -1468915550
+    Data4: 1450802774
+  Banks:
+  - {fileID: 5893422180917003943}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 218
 --- !u!114 &4591116423348368045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,10 +768,10 @@ MonoBehaviour:
   Path: FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638821361558423750
+  lastModified: 638821384845621805
   FileSizes:
   - Name: Desktop
-    Value: 1572960
+    Value: 2922080
   Exists: 1
 --- !u!114 &5971848185807119408
 MonoBehaviour:
@@ -778,10 +890,10 @@ MonoBehaviour:
   Path: FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638821352424995723
+  lastModified: 638821384845626857
   FileSizes:
   - Name: Desktop
-    Value: 1954
+    Value: 2042
   Exists: 1
 --- !u!114 &7321418239488652846
 MonoBehaviour:
@@ -837,6 +949,32 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1680
+--- !u!114 &7763995569507197436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Battle Phase/Game State
+  m_EditorClassIdentifier: 
+  Name: Game State
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 790735640
+    data2: 2293727727
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - Buy
+  - Battle
+  Exists: 1
 --- !u!114 &8637117214658948576
 MonoBehaviour:
   m_ObjectHideFlags: 0

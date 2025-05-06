@@ -33,6 +33,7 @@ public class ShopManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RuntimeManager.PlayOneShot("event:/Parameter Controllers/Buy Phase");
         CoinsTxt.text = GameHandler.coinCount.ToString();
 
         insuff_fund_warnings.SetActive(false);
@@ -117,6 +118,7 @@ public class ShopManagerScript : MonoBehaviour
         }
         else
         {
+            RuntimeManager.PlayOneShot("event:/SFX/UI Fail");
             insuff_fund_warnings.SetActive(true);
         }
 

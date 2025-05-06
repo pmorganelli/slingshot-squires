@@ -22,6 +22,7 @@ public class ContinueBtn : MonoBehaviour
 
     private IEnumerator showNoSeeds()
     {
+        RuntimeManager.PlayOneShot("event:/SFX/UI Fail");
         noSeeds.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         noSeeds.SetActive(false);
