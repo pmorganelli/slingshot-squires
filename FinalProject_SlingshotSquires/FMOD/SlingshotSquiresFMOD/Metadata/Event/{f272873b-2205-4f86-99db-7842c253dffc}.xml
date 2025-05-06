@@ -69,6 +69,9 @@
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{e4acb231-e031-44b5-991e-4b18f73eb2be}">
+		<property name="isPersistent">
+			<value>true</value>
+		</property>
 		<property name="maxVoices">
 			<value>1</value>
 		</property>
@@ -150,6 +153,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{1ea9c86a-079d-482b-b3dc-a2e74d1e6177}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{6d227c5d-e688-49a3-b88f-77c4a279541d}</destination>
 		</relationship>

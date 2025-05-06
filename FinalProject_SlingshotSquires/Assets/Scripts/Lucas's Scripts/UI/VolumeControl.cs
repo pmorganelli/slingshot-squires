@@ -10,7 +10,7 @@ public class VolumeControl : MonoBehaviour
 
     void Start()
     {
-        masterBus = RuntimeManager.GetBus("bus:/"); // Reference to your FMOD bus
+        masterBus = RuntimeManager.GetBus("bus:/");
         volumeSlider.onValueChanged.AddListener(SetVolume);
         volumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 1f);
         SetVolume(volumeSlider.value);
@@ -19,6 +19,9 @@ public class VolumeControl : MonoBehaviour
     public void SetVolume(float volume)
     {
         masterBus.setVolume(volume);
+        masterBus.getVolume(out float currentVolume);
+        Debug.Log("Volume Set To: " + volume + ", Bus reports: " + currentVolume);
         PlayerPrefs.SetFloat("MasterVolume", volume);
     }
+
 }
