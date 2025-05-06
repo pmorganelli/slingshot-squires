@@ -417,7 +417,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 7107379957928598556}
   cacheVersion: 131847
-  cacheTime: 638821336515451059
+  cacheTime: 638821346146052154
   SerializableEventsDict:
   - key: event:/Music/Music Excite
     index: 0
@@ -656,10 +656,10 @@ MonoBehaviour:
   Path: FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638821336515436026
+  lastModified: 638821346146042151
   FileSizes:
   - Name: Desktop
-    Value: 1572704
+    Value: 1572960
   Exists: 1
 --- !u!114 &5971848185807119408
 MonoBehaviour:
@@ -778,10 +778,10 @@ MonoBehaviour:
   Path: FMOD/SlingshotSquiresFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638821336515451059
+  lastModified: 638821346146052154
   FileSizes:
   - Name: Desktop
-    Value: 1840
+    Value: 1954
   Exists: 1
 --- !u!114 &7321418239488652846
 MonoBehaviour:
