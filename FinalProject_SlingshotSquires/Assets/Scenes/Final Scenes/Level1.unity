@@ -4042,7 +4042,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Click, drag, and release the sling to shoot!
+  m_Text: 'Click, drag, and release the sling to shoot!
+
+
+    When in Keyboard Mode,
+    press SPACE to shoot!'
 --- !u!222 &981738004
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13204,7 +13208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 367, y: -312}
+  m_AnchoredPosition: {x: 367, y: -306}
   m_SizeDelta: {x: 500, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2088825121
@@ -13240,9 +13244,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Press ESC to Pause
-
-'
+  m_Text: Press ESC to Pause
 --- !u!222 &2088825122
 CanvasRenderer:
   m_ObjectHideFlags: 0
