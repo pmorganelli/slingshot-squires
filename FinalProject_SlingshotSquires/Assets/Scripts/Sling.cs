@@ -5,32 +5,37 @@ public class Sling : MonoBehaviour
 {
     [Header("Prefab Settings")]
     public GameObject nextBall;
+    public GameObject defaultBallPrefab;   
+    public GameObject goldBallPrefab;
+    public GameObject diamondBallPrefab;
     [SerializeField] public GameObject fallbackBallPrefab;
 
     private GameObject currentBall;
 
     void Start()
     {
-        // Ensure nextBall is valid before first spawn
-        if (nextBall == null && fallbackBallPrefab != null)
+    // ensure your Inspector references are valid
+        if (goldBallPrefab == null || diamondBallPrefab == null || defaultBallPrefab == null)
+            Debug.LogError("[Sling] One or more ball‐prefab references missing.");
+
+    // spawn the very first ball using the same priority you'd use in reload
+        GameObject first = defaultBallPrefab;
+        if (GameHandler.goldAmmo > 0)
         {
-            Debug.LogWarning("[Sling] nextBall was null at Start(), using fallback.");
-            nextBall = fallbackBallPrefab;
+            first = goldBallPrefab;
+            GameHandler.goldAmmo--;
+        }
+        else if (GameHandler.diamondAmmo > 0)
+        {
+            first = diamondBallPrefab;
+            GameHandler.diamondAmmo--;
         }
 
-        if (nextBall != null)
-        {
-            SpawnBall();
-        }
-        else
-        {
-            Debug.LogError("[Sling] Cannot spawn ball — nextBall and fallback are both null.");
-        }
+        SpawnBall(first);
     }
 
     public void reload()
     {
-        Debug.Log($"[Sling.reload] activeSelf={gameObject.activeSelf} activeInHierarchy={gameObject.activeInHierarchy}");
         StartCoroutine(reloadNextBall());
     }
 
@@ -38,39 +43,45 @@ public class Sling : MonoBehaviour
     {
         yield return new WaitForSeconds(GameHandler.SLING_reload_time);
 
-        if (this == null || gameObject == null)
-            yield break;
+        // choose which ammo to consume
+        GameObject prefabToSpawn = defaultBallPrefab;
 
-        // Redundant check for safety after scene reload
-        if (nextBall == null && fallbackBallPrefab != null)
+        if (GameHandler.goldAmmo > 0)
         {
-            Debug.LogWarning("[Sling] nextBall was null during reload — using fallback.");
-            nextBall = fallbackBallPrefab;
+            prefabToSpawn = goldBallPrefab;
+            GameHandler.goldAmmo--;
+        }
+        else if (GameHandler.diamondAmmo > 0)
+        {
+            prefabToSpawn = diamondBallPrefab;
+            GameHandler.diamondAmmo--;
         }
 
-        if (nextBall != null)
-        {
-            Debug.Log("[Sling] Instantiating next ball");
-            SpawnBall();
-        }
-        else
-        {
-            Debug.LogError("[Sling] Cannot spawn ball — both nextBall and fallbackBallPrefab are null.");
-        }
+        SpawnBall(prefabToSpawn);
     }
 
-    private void SpawnBall() {
+    private void SpawnBall()
+    {
+        SpawnBall(defaultBallPrefab);
+    }
+
+    private void SpawnBall(GameObject prefab)
+    {
         if (currentBall != null)
             Destroy(currentBall);
 
-        if (nextBall == null) {
-            Debug.LogError("[Sling] Cannot spawn ball – prefab is null");
+        if (prefab == null)
+        {
+            Debug.LogError("[Sling] Cannot spawn ball – prefab is null!");
             return;
         }
 
-        currentBall = Instantiate(nextBall, transform.position, Quaternion.identity);
+        currentBall = Instantiate(prefab, transform.position, Quaternion.identity);
         var bm = currentBall.GetComponent<BallMovement>();
-        if (bm != null) bm.sling = this.gameObject;
+        if (bm != null)
+            bm.sling = this.gameObject;
+        else
+            Debug.LogWarning("[Sling] Spawned ball has no BallMovement component.");
     }
 
     public void ChangeBall(GameObject newBallPrefab) {

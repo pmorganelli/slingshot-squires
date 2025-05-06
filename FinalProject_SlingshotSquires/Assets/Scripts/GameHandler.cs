@@ -32,6 +32,10 @@ public class GameHandler : MonoBehaviour
     public static List<Crop> cropInventory = new List<Crop> { };
 
     public static int coinCount = 50;
+
+    public static int goldAmmo = 0;
+    public static int diamondAmmo = 0;
+    
     public static bool waveComplete = false;
     public static bool waveStarted = false;
     public static bool lost = false;

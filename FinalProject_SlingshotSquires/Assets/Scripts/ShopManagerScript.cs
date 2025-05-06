@@ -57,8 +57,8 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[2, 1] = 20;
         shopItems[2, 2] = 30;
         shopItems[2, 3] = 40;
-        shopItems[2, 4] = 20;  // Gold Ball
-        shopItems[2, 5] = 30;  // Diamond Ball
+        shopItems[2, 4] = 5;  // Gold Ball
+        shopItems[2, 5] = 10;  // Diamond Ball
     }
 
     // Update is called once per frame
@@ -119,9 +119,11 @@ public class ShopManagerScript : MonoBehaviour
 
         switch(itemNum) {
             case 4:  // gold ball
+                GameHandler.goldAmmo += 1;
                 sling.ChangeBall(goldBallPrefab);
                 break;
             case 5:  // diamond ball
+                GameHandler.diamondAmmo += 1;
                 sling.ChangeBall(diamondBallPrefab);
                 break;
         }

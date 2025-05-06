@@ -8286,6 +8286,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 783466788085091316, guid: e83e6d4e1a6ed4c4faf9919734ba13e4, type: 3}
+      propertyPath: goldBallPrefab
+      value: 
+      objectReference: {fileID: 7777270718645154582, guid: 05079d856d2b4cb4593f02944be08cbe, type: 3}
+    - target: {fileID: 783466788085091316, guid: e83e6d4e1a6ed4c4faf9919734ba13e4, type: 3}
+      propertyPath: defaultBallPrefab
+      value: 
+      objectReference: {fileID: 3258623358530610746, guid: 09a065baaa0ac407f8b96572a315090c, type: 3}
+    - target: {fileID: 783466788085091316, guid: e83e6d4e1a6ed4c4faf9919734ba13e4, type: 3}
+      propertyPath: diamondBallPrefab
+      value: 
+      objectReference: {fileID: 2027996474462004395, guid: acfd8e58cb455e14499f1a771955d7dd, type: 3}
     - target: {fileID: 9179604698343462470, guid: e83e6d4e1a6ed4c4faf9919734ba13e4, type: 3}
       propertyPath: m_RootOrder
       value: 4
