@@ -105,7 +105,11 @@ public class ShopManagerScript : MonoBehaviour
             // Add to inventory
             // Debug.Log("ADDING: " + itemNum);
             player.inventory.Add(itemTypes[itemNum], itemIcons[itemNum]);
-            GameHandler.AddItem(itemNum);
+            if (itemNum >= 3)
+            {
+                // Add crop if ball
+                GameHandler.AddItem(itemNum);
+            }
             Debug.Log(GameHandler.cropInventory[0].cropName);
 
             // Refresh inventory popup if it is open
