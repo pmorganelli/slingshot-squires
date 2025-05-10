@@ -117,7 +117,7 @@ Transform:
   m_Children:
   - {fileID: 7407320007222211499}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8878820991520996103
 SpriteRenderer:
@@ -211,4 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextBall: {fileID: 3258623358530610746, guid: 09a065baaa0ac407f8b96572a315090c, type: 3}
+  defaultBallPrefab: {fileID: 3258623358530610746, guid: 09a065baaa0ac407f8b96572a315090c, type: 3}
+  goldBallPrefab: {fileID: 7777270718645154582, guid: 05079d856d2b4cb4593f02944be08cbe, type: 3}
+  diamondBallPrefab: {fileID: 2027996474462004395, guid: acfd8e58cb455e14499f1a771955d7dd, type: 3}
   fallbackBallPrefab: {fileID: 3258623358530610746, guid: 09a065baaa0ac407f8b96572a315090c, type: 3}

@@ -26,8 +26,6 @@ public class ShopManagerScript : MonoBehaviour
 
     public GameObject goldBallPrefab;
     public GameObject diamondBallPrefab;
-    public Sling sling;
-
 
 
     // Start is called before the first frame update
@@ -58,8 +56,8 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[2, 1] = 20;
         shopItems[2, 2] = 30;
         shopItems[2, 3] = 40;
-        shopItems[2, 4] = 5;  // Gold Ball
-        shopItems[2, 5] = 10;  // Diamond Ball
+        shopItems[2, 4] = 40;  // Gold Ball
+        shopItems[2, 5] = 90;  // Diamond Ball
     }
 
     // Update is called once per frame
@@ -107,10 +105,21 @@ public class ShopManagerScript : MonoBehaviour
             player.inventory.Add(itemTypes[itemNum], itemIcons[itemNum]);
             if (itemNum <= 3)
             {
-                // Add crop if ball
+                // Add crop if not buying ball
                 GameHandler.AddItem(itemNum);
             }
-            Debug.Log(GameHandler.cropInventory[0].cropName);
+            else
+            {
+                switch (itemNum)
+                {
+                    case 4:  // gold ball
+                        Sling.ChangeBall(goldBallPrefab);
+                        break;
+                    case 5:  // diamond ball
+                        Sling.ChangeBall(diamondBallPrefab);
+                        break;
+                }
+            }
 
             // Refresh inventory popup if it is open
             if (inventoryUI.inventoryPanel.activeSelf)
@@ -126,17 +135,7 @@ public class ShopManagerScript : MonoBehaviour
             insuff_fund_warnings.SetActive(true);
         }
 
-        switch (itemNum)
-        {
-            case 4:  // gold ball
-                GameHandler.goldAmmo += 1;
-                sling.ChangeBall(goldBallPrefab);
-                break;
-            case 5:  // diamond ball
-                GameHandler.diamondAmmo += 1;
-                sling.ChangeBall(diamondBallPrefab);
-                break;
-        }
+
     }
 
     public void back()

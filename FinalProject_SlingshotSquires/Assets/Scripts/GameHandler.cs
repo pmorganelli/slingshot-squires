@@ -30,12 +30,12 @@ public class GameHandler : MonoBehaviour
         {"diamondball", new ballStat(100f, 2.25f)},
     };
 
-    public static List<Crop> cropInventory = new List<Crop> { };
+    public static List<Crop> cropInventory = new List<Crop> { Crop.Tomato() };
 
     public static int coinCount = 50;
-
-    public static int goldAmmo = 0;
-    public static int diamondAmmo = 0;
+    public static int totalMade = 0;
+    public static int enemiesKilled = 0;
+    public static int seedsPlanted = 0;
 
     public static bool waveComplete = false;
     public static bool waveStarted = false;
@@ -74,12 +74,6 @@ public class GameHandler : MonoBehaviour
             waveComplete = false;
             Debug.Log("COMPLETE");
             SceneManager.LoadScene("waveWin");
-        }
-
-        if (lost)
-        {
-            lost = false;
-            SceneManager.LoadScene("waveLose");
         }
     }
 
@@ -143,8 +137,9 @@ public class GameHandler : MonoBehaviour
     {
         Time.timeScale = 1f;
         coinCount = 50;
-        goldAmmo = 0;
-        diamondAmmo = 0;
+        totalMade = 0;
+        seedsPlanted = 0;
+        enemiesKilled = 0;
         waveStarted = false;
         lost = false;
         waveComplete = false;
@@ -171,6 +166,7 @@ public class GameHandler : MonoBehaviour
 
     public static void AddItem(int itemID)
     {
+        seedsPlanted++;
         switch (itemID)
         {
             case 0: cropInventory.Add(Crop.Tomato()); break;

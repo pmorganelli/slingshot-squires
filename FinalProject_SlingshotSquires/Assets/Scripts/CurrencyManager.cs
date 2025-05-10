@@ -13,6 +13,7 @@ public class CurrencyManager : MonoBehaviour
 
     public void AddValorCoins(int amount)
     {
+        GameHandler.totalMade += amount;
         GameHandler.coinCount += amount;
         UpdateUI();
     }

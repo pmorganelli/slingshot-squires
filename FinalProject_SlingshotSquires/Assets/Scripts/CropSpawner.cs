@@ -109,6 +109,7 @@ public class CropSpawner : MonoBehaviour
                 GameObject soldSign = Instantiate(sold, crop.transform.position, Quaternion.identity);
                 Destroy(soldSign, 1f);
                 GameHandler.coinCount += thisCrop.salePrice;
+                GameHandler.totalMade += thisCrop.salePrice;
                 cropsToRemove.Add(thisCrop);
                 Destroy(crop, 0.1f);
                 RuntimeManager.PlayOneShot("event:/SFX/Crop Sell");

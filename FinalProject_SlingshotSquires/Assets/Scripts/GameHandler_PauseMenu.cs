@@ -43,7 +43,6 @@ public class GameHandler_PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         GameisPaused = false;
 
-        // ✅ Ensure toggle reflects actual global setting
         if (keyboardToggle != null)
         {
             keyboardToggle.isOn = keyboardModeEnabled;
@@ -108,14 +107,7 @@ public class GameHandler_PauseMenu : MonoBehaviour
 
     public void SetKeyboardMode(bool isOn)
     {
-        keyboardModeEnabled = isOn; // ✅ Save global state
-
-        // Update all live balls (optional, for mid-flight toggle)
-        BallMovement[] allBalls = FindObjectsOfType<BallMovement>();
-        foreach (BallMovement ball in allBalls)
-        {
-            ball.keyboardMode = isOn;
-        }
+        keyboardModeEnabled = isOn; // Save global state
     }
 
 

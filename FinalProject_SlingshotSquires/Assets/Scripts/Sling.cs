@@ -4,13 +4,12 @@ using FMODUnity;
 public class Sling : MonoBehaviour
 {
     [Header("Prefab Settings")]
-    public GameObject nextBall;
+    public static GameObject nextBall;
     public GameObject defaultBallPrefab;
     public GameObject goldBallPrefab;
     public GameObject diamondBallPrefab;
-    [SerializeField] public GameObject fallbackBallPrefab;
 
-    private GameObject currentBall;
+    public GameObject currentBall;
 
     void Start()
     {
@@ -21,19 +20,7 @@ public class Sling : MonoBehaviour
             Debug.LogError("[Sling] One or more ball‐prefab references missing.");
 
         // spawn the very first ball using the same priority you'd use in reload
-        GameObject first = defaultBallPrefab;
-        if (GameHandler.goldAmmo > 0)
-        {
-            first = goldBallPrefab;
-            GameHandler.goldAmmo--;
-        }
-        else if (GameHandler.diamondAmmo > 0)
-        {
-            first = diamondBallPrefab;
-            GameHandler.diamondAmmo--;
-        }
-
-        SpawnBall(first);
+        SpawnBall();
     }
 
     public void reload()
@@ -46,28 +33,10 @@ public class Sling : MonoBehaviour
         yield return new WaitForSeconds(GameHandler.SLING_reload_time);
 
         // choose which ammo to consume
-        GameObject prefabToSpawn = defaultBallPrefab;
-
-        if (GameHandler.goldAmmo > 0)
-        {
-            prefabToSpawn = goldBallPrefab;
-            GameHandler.goldAmmo--;
-        }
-        else if (GameHandler.diamondAmmo > 0)
-        {
-            prefabToSpawn = diamondBallPrefab;
-            GameHandler.diamondAmmo--;
-        }
-
-        SpawnBall(prefabToSpawn);
+        SpawnBall();
     }
 
     private void SpawnBall()
-    {
-        SpawnBall(defaultBallPrefab);
-    }
-
-    private void SpawnBall(GameObject prefab)
     {
         if (currentBall != null && Vector3.Distance(gameObject.transform.position, currentBall.transform.position) < 0.25)
         {
@@ -75,13 +44,13 @@ public class Sling : MonoBehaviour
             Destroy(currentBall);
         }
 
-        if (prefab == null)
+        if (nextBall == null)
         {
-            Debug.LogError("[Sling] Cannot spawn ball – prefab is null!");
-            return;
+            Debug.Log("NULL NEXT--GOING DEFAULT");
+            nextBall = defaultBallPrefab;
         }
-
-        currentBall = Instantiate(prefab, transform.position, Quaternion.identity);
+        Debug.Log("SPAWNING BALL OF TYPE: " + nextBall.name);
+        currentBall = Instantiate(nextBall, transform.position, Quaternion.identity);
         var bm = currentBall.GetComponent<BallMovement>();
         if (bm != null)
             bm.sling = this.gameObject;
@@ -89,13 +58,8 @@ public class Sling : MonoBehaviour
             Debug.LogWarning("[Sling] Spawned ball has no BallMovement component.");
     }
 
-    public void ChangeBall(GameObject newBallPrefab)
+    public static void ChangeBall(GameObject newBallPrefab)
     {
         nextBall = newBallPrefab;
-        fallbackBallPrefab = newBallPrefab;
-
-        if (currentBall != null)
-            Destroy(currentBall);
-        SpawnBall();
     }
 }

@@ -129,7 +129,7 @@ public class EnemyBehavior : MonoBehaviour
         if (isDead) return; // Prevent double calls
 
         isDead = true;
-
+        GameHandler.enemiesKilled++;
         if (deathSound != null)
             RuntimeManager.PlayOneShot("event:/SFX/Bug Death");
 

@@ -1,11 +1,15 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
+
+    public GameObject defaultBall;
+    public GameObject LoseTxt;
     [Header("Enemy Setup")]
     public GameObject[] enemyPrefabs;
 
@@ -27,40 +31,22 @@ public class WaveManager : MonoBehaviour
     public Transform SpawnPoint;
     public GameObject EnemyFab;
 
-    [Header("Slingshot Setup")]
-    public GameObject sling;                // Drag the Sling GameObject in Inspector
-    public GameObject ballPrefab;          // Drag the Ball prefab in Inspector
-
-    void Start()
+    private void Update()
     {
-        AssignSlingReferences();
+        if (GameHandler.lost)
+        {
+            GameHandler.lost = false;
+            StartCoroutine(LoseGame());
+        }
     }
 
-    private void AssignSlingReferences()
+    private IEnumerator LoseGame()
     {
-        if (sling == null)
-        {
-            sling = GameObject.FindWithTag("Sling"); // Optional fallback if not assigned
-        }
+        LoseTxt.SetActive(true);
+        yield return new WaitForSeconds(1.75f);
+        LoseTxt.SetActive(false);
+        SceneManager.LoadScene("waveLose");
 
-        if (sling != null && ballPrefab != null)
-        {
-            Sling slingScript = sling.GetComponent<Sling>();
-            if (slingScript != null)
-            {
-                slingScript.nextBall = ballPrefab;
-                slingScript.fallbackBallPrefab = ballPrefab;
-                Debug.Log("[WaveManager] Assigned ball prefab to Sling");
-            }
-            else
-            {
-                Debug.LogWarning("[WaveManager] Sling GameObject has no Sling script attached");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("[WaveManager] sling or ballPrefab not assigned. Ball reload may fail.");
-        }
     }
 
     public void CountTotalEnemies()
@@ -89,6 +75,7 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator completeWave()
     {
+        Sling.ChangeBall(defaultBall);
         CropManager.Instance.CleanupNullCrops();
         spawner.ProgressCrops();
         //spawner.LoadCrops();
@@ -97,23 +84,6 @@ public class WaveManager : MonoBehaviour
 
         GameHandler.levelCount++;
         GameHandler.waveComplete = true;
-
-        // Ensure sling is still linked after scene reload
-        AssignSlingReferences();
-
-        if (sling != null)
-        {
-            Sling slingScript = sling.GetComponent<Sling>();
-            if (slingScript != null && slingScript.nextBall != null)
-            {
-                Debug.Log("[WaveManager] Reloading ball after wave complete");
-                slingScript.reload();
-            }
-            else
-            {
-                Debug.LogWarning("[WaveManager] Cannot reload ball – Sling script or prefab missing");
-            }
-        }
     }
 
     public void SpawnNewEnemies()

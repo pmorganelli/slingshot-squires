@@ -162,11 +162,6 @@ public class BallMovement : MonoBehaviour
 
             // --- DEBUG: print parent chain ---
             Transform t = slingBehavior.transform;
-            while (t != null)
-            {
-                Debug.Log($"[ParentCheck] {t.name} — activeSelf={t.gameObject.activeSelf}, activeInHierarchy={t.gameObject.activeInHierarchy}");
-                t = t.parent;
-            }
         }
 
         slingBehavior?.reload();
