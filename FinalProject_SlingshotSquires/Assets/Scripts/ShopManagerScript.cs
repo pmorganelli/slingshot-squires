@@ -7,7 +7,7 @@ using FMODUnity;
 public class ShopManagerScript : MonoBehaviour
 {
 
-    public int[,] shopItems = new int[5, 6];
+    public int[,] shopItems = new int[5, 7];
     public int itemNum;
     public Text CoinsTxt;
 
@@ -19,13 +19,14 @@ public class ShopManagerScript : MonoBehaviour
     public GameObject tButton;
     public GameObject wButton;
 
-    public CollectableType[] itemTypes;
+    // public CollectableType[] itemTypes;
     public Sprite[] itemIcons;
     public Player player;
     public Inventory_UI inventoryUI;
 
     public GameObject goldBallPrefab;
     public GameObject diamondBallPrefab;
+    public GameObject bombBallPrefab;
 
 
     // Start is called before the first frame update
@@ -50,6 +51,7 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[1, 3] = 3;
         shopItems[1, 4] = 4;   // Gold Ball
         shopItems[1, 5] = 5;   // Diamond Ball
+        shopItems[1, 6] = 6;   // Bomb Ball
 
         // Price
         shopItems[2, 0] = 10;
@@ -58,12 +60,15 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[2, 3] = 40;
         shopItems[2, 4] = 40;  // Gold Ball
         shopItems[2, 5] = 90;  // Diamond Ball
+        shopItems[2, 6] = 100;  // bomb Ball
     }
 
-    // Update is called once per frame
+    //the code below will gray out the windows but the balls aren't included, still an issue
     // private void Update()
     // {
-    //     // CoinsTxt.text = GameHandler.coinCount.ToString();
+    //     bool anyWindowOpen = panel.activeSelf;
+    //     tButton.GetComponent<Button>().interactable = !anyWindowOpen;
+    //     wButton.GetComponent<Button>().interactable = !anyWindowOpen;
     // }
     public void Buy()
     {
@@ -76,6 +81,7 @@ public class ShopManagerScript : MonoBehaviour
         itemNum = ButtonRef.GetComponent<ButtonInfo>().ItemID;
 
 
+        panel.SetActive(true);
         Button btnComponentT = tButton.GetComponent<Button>();
         Button btnComponentW = wButton.GetComponent<Button>();
 
@@ -85,7 +91,6 @@ public class ShopManagerScript : MonoBehaviour
 
         // confirm first 
         windows[itemNum].SetActive(true);
-        panel.SetActive(true);
         buy_back_buttons.SetActive(true);
 
     }
@@ -102,7 +107,7 @@ public class ShopManagerScript : MonoBehaviour
 
             // Add to inventory
             // Debug.Log("ADDING: " + itemNum);
-            player.inventory.Add(itemTypes[itemNum], itemIcons[itemNum]);
+            // player.inventory.Add(itemTypes[itemNum], itemIcons[itemNum]);
             if (itemNum <= 3)
             {
                 // Add crop if not buying ball
@@ -117,6 +122,9 @@ public class ShopManagerScript : MonoBehaviour
                         break;
                     case 5:  // diamond ball
                         Sling.ChangeBall(diamondBallPrefab);
+                        break;
+                    case 6:  // bomb ball
+                        Sling.ChangeBall(bombBallPrefab);
                         break;
                 }
             }
@@ -144,8 +152,8 @@ public class ShopManagerScript : MonoBehaviour
         insuff_fund_warnings.SetActive(false);
         if (itemNum >= 0 && itemNum < windows.Length)
             windows[itemNum].SetActive(false);
-        panel.SetActive(false);
         buy_back_buttons.SetActive(false);
+        panel.SetActive(false);
         Button btnComponentT = tButton.GetComponent<Button>();
         Button btnComponentW = wButton.GetComponent<Button>();
 

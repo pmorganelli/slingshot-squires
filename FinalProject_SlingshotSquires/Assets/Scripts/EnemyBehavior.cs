@@ -167,4 +167,21 @@ public class EnemyBehavior : MonoBehaviour
         if (targetCrop != null)
             targetCrop.attackers--;
     }
+
+    public void TakeDamage(float damage)
+    {
+        currHealth -= damage;
+        if (healthBar != null)
+            healthBar.value = currHealth / totalHealth;
+
+        if (currHealth <= 0f && !isDead)
+        {
+            Die();
+        }
+        else if (hitSound != null)
+        {
+            hitSound.Play();
+        }
+    }
+
 }

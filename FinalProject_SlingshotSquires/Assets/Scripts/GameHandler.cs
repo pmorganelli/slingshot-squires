@@ -28,6 +28,7 @@ public class GameHandler : MonoBehaviour
         {"fireball", new ballStat(75f, 2f)},
         {"goldball", new ballStat(75f, 2f)},
         {"diamondball", new ballStat(100f, 2.25f)},
+        {"bombball", new ballStat(60f, 1.25f)},
     };
 
     public static List<Crop> cropInventory = new List<Crop> { Crop.Tomato() };

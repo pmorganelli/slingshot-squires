@@ -18,7 +18,7 @@ public class GameHandler_PauseMenu : MonoBehaviour
 
     void Awake()
     {
-        pauseMenuUI.SetActive(true); // So slider & toggle can be initialized
+        pauseMenuUI.SetActive(true);
 
         // Setup volume slider
         SetLevel(volumeLevel);
@@ -29,8 +29,8 @@ public class GameHandler_PauseMenu : MonoBehaviour
             sliderVolumeCtrl.value = volumeLevel;
         }
 
-        // Setup keyboard mode toggle
-        GameObject toggleObj = GameObject.Find("KeyboardModeToggle"); // Ensure this name matches the Toggle in your UI
+        //keyboard mode toggle
+        GameObject toggleObj = GameObject.Find("KeyboardModeToggle");
         if (toggleObj != null)
         {
             keyboardToggle = toggleObj.GetComponent<Toggle>();
@@ -107,7 +107,7 @@ public class GameHandler_PauseMenu : MonoBehaviour
 
     public void SetKeyboardMode(bool isOn)
     {
-        keyboardModeEnabled = isOn; // Save global state
+        keyboardModeEnabled = isOn; // global state
     }
 
 

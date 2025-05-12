@@ -21,9 +21,15 @@ public class BallMovement : MonoBehaviour
     private SpringJoint2D sj;
     private LineRenderer lr;
     private float releaseDelay;
+
     private float maxDragDistance = 1.75f;
     private Rigidbody2D slingRb;
     private AudioSource audioSource;
+
+    [Header("Bomb Properties")]
+    public float splashRadius = 2f;
+    public float splashDamage = 50f;
+
 
     //game feel!
     public GameObject explosion;
@@ -116,6 +122,7 @@ public class BallMovement : MonoBehaviour
 
     private void DragBall()
     {
+        if (ballType == "bombball") maxDragDistance = 1.4f;
         if (slingRb == null) return;
 
         SetLineRendererPositions();
@@ -184,7 +191,7 @@ public class BallMovement : MonoBehaviour
     private void ShowTrajectory()
     {
         if (slingRb == null) return;
-
+        if (ballType == "bombball") maxDragDistance = 1.4f;
         Vector2 launchPos = rb.position;
         Vector2 force = (slingRb.position - rb.position).normalized *
                         Mathf.Min(Vector2.Distance(rb.position, slingRb.position), maxDragDistance) *
@@ -203,6 +210,7 @@ public class BallMovement : MonoBehaviour
     private void ShowKeyboardTrajectory()
     {
         if (slingRb == null) return;
+        if (ballType == "bombball") maxDragDistance = 1.4f;
 
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 dir = slingRb.position - mouseWorldPos;
@@ -224,7 +232,7 @@ public class BallMovement : MonoBehaviour
     {
         if (hasFired) return;
         hasFired = true;
-
+        if (ballType == "bombball") maxDragDistance = 1.4f;
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 dir = slingRb.position - mouseWorldPos;
         Vector2 force = dir.normalized * Mathf.Min(dir.magnitude, maxDragDistance) * (sj.frequency * 4f);
@@ -242,12 +250,35 @@ public class BallMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Instantiate(explosion, transform.position, Quaternion.identity);
-            cameraShake.ShakeCamera(shakeDuration, shakeMagnitude);
+        //explode every time
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        cameraShake.ShakeCamera(shakeDuration, shakeMagnitude);
+
+        //do AOE/splash damate
+        if (ballType == "bombball") {
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, splashRadius);
+            foreach (Collider2D hit in hitColliders)
+            {
+                if (hit.CompareTag("Enemy"))
+                {
+                    //damage logic
+                    EnemyBehavior enemy = hit.GetComponent<EnemyBehavior>();
+                    if (enemy != null)
+                    {
+                        enemy.TakeDamage(splashDamage);
+                    }
+                }
+            }
             destroyBall();
+        } else {
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                cameraShake.ShakeCamera(shakeDuration, shakeMagnitude);
+                destroyBall();
+            }
         }
+
     }
 
     public void destroyBall()
